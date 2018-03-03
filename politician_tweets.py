@@ -1,3 +1,6 @@
+"""
+source: https://gist.github.com/nicolewhite/30020af5a542bfd7e436
+"""
 import tweepy
 from tweepy import Cursor
 import unicodecsv
