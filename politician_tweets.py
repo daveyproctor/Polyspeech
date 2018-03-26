@@ -17,10 +17,10 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 api = tweepy.API(auth)
 
 # Usernames whose tweets we want to gather.
-users = ["lisamurkowski",
+users = [
+"lisamurkowski",        
 "SenJohnMcCain",
 "JeffFlake",
-"SenMarkPryor",
 "JohnBoozman",
 "SenFeinstein",
 "SenatorBoxer",
@@ -79,7 +79,6 @@ users = ["lisamurkowski",
 "GrahamBlog",
 "SenatorTimScott",
 "SenJohnThune",
-"SenTedCruz",
 "SenMikeLee",
 "SenatorLeahy",
 "timkaine",
@@ -88,6 +87,12 @@ users = ["lisamurkowski",
 "SenRonJohnson",
 "SenatorEnzi",
 "SenJohnBarrasso"]
+# 69
+
+# omit:
+# "SenTedCruz",
+# "SenMarkPryor",
+
 
 with open('tweets.csv', 'wb') as file:
     writer = unicodecsv.writer(file, delimiter = ',', quotechar = '"')
@@ -129,7 +134,11 @@ with open('tweets.csv', 'wb') as file:
                     "tweet_contributors"])
 
     for user in users:
-        user_obj = api.get_user(user)
+        try:
+            user_obj = api.get_user(user)
+        except:
+            print(user + ' suspended')
+            continue
 
         # Gather info specific to the current user.
         user_info = [user_obj.name,
