@@ -1,0 +1,510 @@
+---
+title: "R Notebook"
+output:
+  html_document: default
+  html_notebook: default
+---
+```{r}
+congress0 = read.csv('more-data/all_w_IBM_50.csv')
+congress0
+5
+```
+
+## Data cleaning
+```{r}
+congress = read.csv('more-data/all_w_IBM_50.csv')
+# clean data
+congress[is.na(congress)] = 0
+congress$gender = as.numeric(congress$gender)
+congress$type = as.numeric(congress$type)
+congress$party = as.numeric(congress$party)
+congress
+```
+
+### Take rates of tag
+```{r}
+#round_ones = function(col){
+#  col[col != 0] = 1
+#  col
+#}
+#round_ones(congress$Joy)
+
+congress$Sadness[congress$Sadness != 0] = 1
+congress$Joy[congress$Joy != 0] = 1
+congress$Tentative[congress$Tentative != 0] = 1
+congress$Confident[congress$Confident != 0] = 1
+congress$Analytical[congress$Analytical != 0] = 1
+congress$Anger[congress$Anger != 0] = 1
+congress$Fear[congress$Fear != 0] = 1
+congress
+```
+
+## Old style analysis
+* tweets viewed as all $y_i = ax_i + b$ with normally distributed error
+* women more sad
+* men more joyful
+* women MAYBE more tentative
+* women more analytical
+* women more fearful
+```{r}
+women_tweets = congress[congress$gender == 1,]
+men_tweets = congress[congress$gender == 2,]
+t.test(women_tweets$Sadness, men_tweets$Sadness) #, var.equal = TRUE)
+t.test(women_tweets$Joy, men_tweets$Joy)
+t.test(women_tweets$Tentative, men_tweets$Tentative)
+t.test(women_tweets$Analytical, men_tweets$Analytical)
+t.test(women_tweets$Confident, men_tweets$Confident)
+t.test(women_tweets$Fear, men_tweets$Fear)
+t.test(women_tweets$Anger, men_tweets$Anger)
+```
+
+## Retweets, Favorites
+* yes women also favorited when confident, not as much as men (nearly significant)
+```{r}
+dep = log(1+congress$tweet_favorite_count)
+dep_wom = log(1+women_tweets$tweet_favorite_count)
+dep_men = log(1+men_tweets$tweet_favorite_count)
+
+womfav1 = lm(dep_wom ~ women_tweets$Confident)
+menfav1 = lm(dep_men ~ men_tweets$Confident)
+summary(womfav1)
+summary(menfav1)
+#plot(menfav1)
+#plot(men_tweets$Confident, log(1 + men_tweets$tweet_retweet_count))
+#abline(menfav1)
+#mretweet1 = lm(congress$tweet_retweet_count ~ congress$gender)
+mfav1 = lm(dep ~ congress$Confident * congress$gender)
+summary(mfav1)
+```
+
+
+### look for interaction of favorite with gender - would show men favorited for confidence more
+* scatterplot
+```{r}
+# four points, as expected
+dep = log(1+congress$tweet_favorite_count)
+plot(congress$Confident, congress$gender)
+f <- function(arr){
+  mean(log(1+arr))
+}
+agged_favs = aggregate(log(1+congress$tweet_favorite_count), by=list(congress$Confident, congress$gender), FUN=mean)
+f2 = function(arr){
+  sd(arr) / sqrt(length(arr))
+}
+se_favs = aggregate(dep, by=list(congress$gender, congress$Confident), FUN=f2)
+agged_favs
+se_favs
+plot(agged_favs$Group.1, agged_favs$Group.2, col=agged_favs$x) # only men favored more when confident.
+plot(agged_favs$x, ylab = 'mean favorites')
+barCenters = barplot(agged_favs$x, names.arg=c('Women Neutral', 'Women Confident', 'Men Neutral', 'Men Confindent'), main = 'Retweets vs. Confidence and Gender', ylab= 'log favorite (mean)')
+barCenters
+se_favs
+#segments(barCenters, barCenters - se_favs$x * 2, barCenters,
+#         barCenters + se_favs$x * 2, lwd = 1.5)
+#?segments
+```
+
+
+### correct visual
+
+```{r}
+w_tweets = dep[congress$gender == 1]
+g = split(congress, congress$gender)
+wom = split(g$`1`, g$`1`$Confident) # women
+men = split(g$`2`, g$`2`$Confident) # men
+one = wom$`0` # not conf women
+two = wom$`1` # conf women
+three = men$`0` # not conf men
+four = men$`1` # conf men
+```
+
+```{r}
+f = function(dat){
+  log(1+dat$tweet_favorite_count)
+}
+boxplot(f(one), f(two), f(three), f(four), ylab='log favorites', names = c('Women not conf', 'Women conf', 'Men not conf', 'Men conf'), main='Men more rewarded for confidence')
+```
+
+
+### formalism
+* all are more favorited when confident
+* men more so than women
+```{r}
+dep = log(1+congress$tweet_favorite_count)
+mfav0 = lm(dep ~ congress$Confident) # not significant
+mfav1 = lm(dep ~ congress$Confident + congress$gender)
+mfavint = lm(dep ~ congress$Confident * congress$gender)
+summary(mfav0)
+summary(mfav1)
+summary(mfavint)
+anova(mfav1, mfavint) # reject mfav1 at p~.05, means there is an interaction
+```
+
+
+## New analysis: aggregate first
+* note: I'm *AM* doing the nonzero->1 trick with IBM scores.
+* be careful if you run in a certain order the above; the following analysis might change.
+```{r}
+agged = aggregate(congress, by=list(congress$twitter), FUN=mean)
+congress
+agged
+```
+hi
+```{r}
+women = agged[agged$gender == 1,]
+women
+men = agged[agged$gender == 2,]
+men
+#agged$Anger[agged$Anger != 0]
+```
+
+### Gender diffs (or lack thereof) by plots
+* Sadness, Joy, Analytical, Confident = not too sparse
+* Tentative = borderline
+* Fear, anger = too sparse
+```{r}
+measure = "Politician IBM score (mean)"
+shapiro.test(women$Joy) # not normally distributed
+shapiro.test(women$Tentative)
+hist(women$Sadness)
+hist(women$Joy, xlab=measure, main='Joy - Approximately normal (p > .05)')
+hist(women$Tentative, xlab=measure, main='Tentative - Not approx. normal (p < 1e-05)')
+hist(women$Analytical)
+hist(women$Confident)
+hist(women$Fear)
+hist(women$Anger)
+```
+
+### agged women against men plots
+```{r}
+indep_col_1 = rgb(0,0,1,1/4)
+indep_col_2 = rgb(1,0,0,1/4)
+depw = women$Analytical
+depm = men$Analytical
+hist(depw, col=indep_col_1, main='Women as or more Analytical', xlab=measure)
+hist(depm, col=indep_col_2, add=T)
+legend1 = "Analytical - women"
+legend2 = "Analytical - men"
+legend(.25, 30, legend=c(legend1, legend2),
+       col=c(indep_col_1, indep_col_2), lty=1, lwd=10, cex=0.8)
+d = data.frame(women=depw, men=depm[1:107])
+boxplot(d, main='Women as or more Analytical', ylab=measure)
+#stripchart(d,
+#            vertical = TRUE, #method = "jitter", 
+#            pch = 21, col = "maroon", bg = "bisque",
+#            add = TRUE) 
+#hist(women$Sadness, col=indep_col_1)
+#hist(men$Sadness, col=indep_col_2, add=T)
+#plot(p1, col='blue')
+```
+```{r}
+d = data.frame(women_sad=women$Sadness, men_sad=men$Sadness[1:107], women_joy = women$Joy, men_joy = men$Joy[1:107])
+boxplot(d, main='Women not more \"agreeable\"', ylab=measure, names = c("Women sad", "Men sad", "Women joy", "Men joy"))
+d2 = data.frame(women_conf=women$Confident, men_conf = men$Confident[1:107], women_analytic=women$Analytical, men_analytic = men$Analytical[1:107])
+boxplot(d2, main='Women as or more \"forceful\"', ylab=measure, names = c("Women conf", "Men conf", "Women analytical", "Men analytical"))
+```
+
+### Numerical conclusions, correspond to above visuals
+* women more sad
+* Men more joy
+* women more analytical
+* can get confidence interval on women's CONFIDENCE relative to men
+* Women likely more fearful
+* Similar anger
+```{r}
+
+t.test(women$Sadness, men$Sadness) #, var.equal = TRUE)
+t.test(women$Joy, men$Joy)
+t.test(women$Tentative, men$Tentative)
+t.test(women$Analytical, men$Analytical)
+x = t.test(women$Confident, men$Confident)
+x
+x$conf.int
+x$estimate
+# t.test(women$Confident, men$Confident, alternative = 'greater')
+t.test(women$Fear, men$Fear)
+t.test(women$Anger, men$Anger)
+```
+
+### Robustness
+* fuller models into party, age.
+
+* sad women remains stat sig even with party; some small evidence for involving the fuller model with an additive party or interacted party.
+```{r}
+msad1 = lm(agged$Sadness ~ agged$gender)
+msad11 = lm(agged$Sadness ~ agged$party)
+msad111 = lm(agged$Sadness ~ agged$age)
+#plot(msad111)
+#plot(agged$age, agged$Sadness)
+#abline(msad111)
+
+summary(msad1)
+# model involving party:
+msad2 = lm(agged$Sadness ~ agged$gender * agged$party)
+summary(msad2)
+anova(msad1, msad2)
+```
+
+* Men more joy is not robust to party. Republicans are more joyful given Trump, naturally.
+* age not needed
+```{r}
+mjoy1 = lm(agged$Joy ~ agged$gender)
+mjoy2 = lm(agged$Joy ~ agged$gender + agged$party)
+mjoy3 = lm(agged$Joy ~ agged$gender + agged$party + agged$age)
+summary(mjoy1)
+summary(mjoy2)
+summary(mjoy3)
+anova(mjoy1, mjoy2)
+anova(mjoy2, mjoy3)
+```
+
+* _Democrats_ more analytical, women still stat significant
+* interactions not needed, age not needed.
+```{r}
+mAnalytical1 = lm(agged$Analytical ~ agged$gender)
+mAnalytical2 = lm(agged$Analytical ~ agged$gender + agged$party)
+mAnalytical3 = lm(agged$Analytical ~ agged$gender * agged$party)
+mAnalytical4 = lm(agged$Analytical ~ agged$gender + agged$party + agged$age)
+summary(mAnalytical1)
+summary(mAnalytical2)
+anova(mAnalytical1, mAnalytical2)
+# interactions not needed.
+anova(mAnalytical2, mAnalytical3)
+anova(mAnalytical2, mAnalytical4)
+```
+
+* party does not help explain the non-result of confidence.
+```{r}
+mConfident0 = lm(agged$Confident ~ agged$party)
+mConfident1 = lm(agged$Confident ~ agged$gender)
+mConfident2 = lm(agged$Confident ~ agged$gender + agged$party)
+mConfident3 = lm(agged$Confident ~ agged$gender * agged$party)
+mConfident4 = lm(agged$Confident ~ agged$gender + agged$party + agged$age)
+summary(mConfident0)
+summary(mConfident1)
+summary(mConfident2)
+anova(mConfident1, mConfident2)
+# interactions not needed.
+anova(mConfident2, mConfident3)
+anova(mConfident2, mConfident4)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## SCRAP
+
+```{r}
+m1 = lm(congress$Sadness ~ congress$gender)# + congress$age + congress$type + congress$party)
+anova(m1)
+```
+
+```{r}
+# Women sadder than men
+t.test(agged$Sadness[agged$gender == 1], agged$Sadness[agged$gender == 2])
+```
+
+```{r}
+t.test(agged$Tentative[agged$gender == 1], agged$Tentative[agged$gender == 2])
+t.test(agged$Tentative[agged$gender == 1], agged$Tentative[agged$gender == 2])
+t.test(agged$Tentative[agged$gender == 1], agged$Tentative[agged$gender == 2])
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+mtcars
+attach(mtcars)
+aggregate(mtcars, by=list(mtcars$cyl), FUN=mean, na.rm=TRUE)
+```
+
+```{r}
+agged = aggregate(congress, by=list(congress$first_name, congress$last_name, congress$gender, congress$age, congress$type, congress$party, congress$twitter), FUN=mean, na.rm=TRUE)
+```
+
+```{r}
+agged
+```
+
+```{r}
+agged[is.na(agged)] = 0
+agged
+```
+
+```{r}
+gender = as.numeric(factor(agged$Group.3, levels=c('M', 'F')))
+m1 = lm(agged$Confident ~ gender)
+summary(m1)
+anova(m1)
+plot(m1)
+```
+
+```{r}
+m2 = lm(agged$Confident ~ agged$Group.4)
+summary(m2)
+plot(m2)
+```
+
+```{r}
+party = as.numeric(factor(agged$Group.6, levels=c('Democrat', 'Republican')))
+party
+m3 = lm(agged$Fear~party)
+summary(m3)
+plot(m3)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+?aggregate
+congress
+```
+
+
+```{r}
+#aggregate(Confidentpolitician_name, women, mean)
+aggregate(.~twitter, data=congress, mean)
+#aggregate(list(women$Confident, women$Anger), by = women$politician_name, mean)
+```
+
+```{r}
+# assumes equal variance. 
+msad1 = lm(congress$Sadness ~ congress$gender)
+msad11 = lm(congress$Sadness ~ congress$party)
+msad111 = lm(congress$Sadness ~ congress$age)
+#plot(msad111)
+#plot(congress$age, congress$Sadness)
+#abline(msad111)
+
+summary(msad1)
+# model involving party:
+msad2 = lm(congress$Sadness ~ congress$gender + congress$party)
+summary(msad2)
+anova(msad1, msad2)
+
+#summary(lm(congress$Joy ~ congress$gender))
+#summary(lm(congress$Tentative ~ congress$gender))
+#summary(lm(congress$Analytical ~ congress$gender))
+#summary(lm(congress$Confident ~ congress$gender))
+#summary(lm(congress$Fear ~ congress$gender))
+#summary(lm(congress$Anger ~ congress$gender))
+```
+## Sanity check - similar results as before
+* men are favorited when express confidence.
+* MAYBE also retweeted more.
+```{r}
+men_tweets = congress[congress$gender == 2,]
+dep = men_tweets$tweet_retweet_count
+menfav1 = lm(log(1 + dep) ~ men_tweets$Confident)
+summary(menfav1)
+#plot(menfav1)
+plot(men_tweets$Confident, log(1 + dep))
+abline(menfav1)
+```
+```{r}
+dep = women_tweets$tweet_retweet_count
+dep = women_tweets$tweet_favorite_count
+women_tweets = congress[congress$gender == 1,]
+womenfav1 = lm(log(1 + dep) ~ women_tweets$Confident)
+summary(womenfav1)
+#plot(womenfav1)
+plot(women_tweets$Confident, log(1 + dep))
+abline(womenfav1)
+```
+
+```{r}
+dep = log(1+congress$tweet_favorite_count)
+plot(congress$tweet_favorite_count)
+plot(dep)
+boxplot(dep)
+```
+
+
+```{r}
+a = congress$gender == 1  
+b = congress$Confident == 1
+c = a == b
+tail(c, 100)
+TRUE && FALSE
+```
+
+```{r}
+
+
+congress$tweet_favorite_count[M][C]
+```
+```{r}
+dep = congress$tweet_favorite_count
+W = congress$gender == 1
+M = congress$gender == 2
+C = congress$Confident == 1
+notC = congress$Confident == 0
+congress
+
+one = dep[W][notC]
+two = dep[W][C]
+three = dep[M][notC]
+four = dep[M][C]
+boxplot(one, two, three, four)
+length(one)
+length(two)
+length(three)
+length(four)
+one
+two
+#four
+#d = data.frame(women_not_conf=one, 
+#               women_conf=two, 
+#               men_not_conf=three, 
+#               men_not_conf=four)
+#boxplot(d, main='Women more \"agreeable\"?', ylab='Mean IBM score')
+```
