@@ -96,7 +96,7 @@ agged_favs
 se_favs
 plot(agged_favs$Group.1, agged_favs$Group.2, col=agged_favs$x) # only men favored more when confident.
 plot(agged_favs$x, ylab = 'mean favorites')
-barCenters = barplot(agged_favs$x, names.arg=c('Women Neutral', 'Women Confident', 'Men Neutral', 'Men Confindent'), main = 'Retweets vs. Confidence and Gender', ylab= 'log favorite (mean)')
+barCenters = barplot(agged_favs$x, names.arg=c('Women Neutral', 'Women Confident', 'Men Neutral', 'Men Confindent'), main = 'Favorites vs. Confidence and Gender', ylab= 'log log favorite (mean)')
 barCenters
 se_favs
 #segments(barCenters, barCenters - se_favs$x * 2, barCenters,
