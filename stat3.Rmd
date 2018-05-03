@@ -13,7 +13,7 @@ congress0
 ## Data cleaning
 ```{r}
 congress = read.csv('more-data/all_w_IBM_50.csv')
-# clean data
+# clean data - convert to numeric
 congress[is.na(congress)] = 0
 congress$gender = as.numeric(congress$gender)
 congress$type = as.numeric(congress$type)
@@ -96,7 +96,7 @@ agged_favs
 se_favs
 plot(agged_favs$Group.1, agged_favs$Group.2, col=agged_favs$x) # only men favored more when confident.
 plot(agged_favs$x, ylab = 'mean favorites')
-barCenters = barplot(agged_favs$x, names.arg=c('Women Neutral', 'Women Confident', 'Men Neutral', 'Men Confindent'), main = 'Favorites vs. Confidence and Gender', ylab= 'log log favorite (mean)')
+barCenters = barplot(agged_favs$x, names.arg=c('Women Neutral', 'Women Confident', 'Men Neutral', 'Men Confident'), main = 'Favorites vs. Confidence and Gender', ylab= 'log log favorite (mean)')
 barCenters
 se_favs
 #segments(barCenters, barCenters - se_favs$x * 2, barCenters,
@@ -119,9 +119,17 @@ four = men$`1` # conf men
 ```
 
 ```{r}
+barplot(c(mean(one$tweet_favorite_count), mean(two$tweet_favorite_count)))
+```
+
+```{r}
 f = function(dat){
-  log(1+dat$tweet_favorite_count)
+  log(1+log(1+dat$tweet_favorite_count[dat$tweet_favorite_count>0]))
 }
+#congress$tweet_favorite_count>0
+hist(f(congress))
+barplot(c(mean(f(one)), mean(f(two)), mean(f(three)), mean(f(four))), names.arg=c('Women Neutral', 'Women Confident', 'Men Neutral', 'Men Confident'), main = 'Favorites vs. Confidence and Gender', ylab= 'log log favorite (mean)')
+
 boxplot(f(one), f(two), f(three), f(four), ylab='log favorites', names = c('Women not conf', 'Women conf', 'Men not conf', 'Men conf'), main='Men more rewarded for confidence')
 ```
 
@@ -130,14 +138,23 @@ boxplot(f(one), f(two), f(three), f(four), ylab='log favorites', names = c('Wome
 * all are more favorited when confident
 * men more so than women
 ```{r}
-dep = log(1+congress$tweet_favorite_count)
-mfav0 = lm(dep ~ congress$Confident) # not significant
-mfav1 = lm(dep ~ congress$Confident + congress$gender)
-mfavint = lm(dep ~ congress$Confident * congress$gender)
+#dep = log(1+congress$tweet_favorite_count)
+fact = congress$tweet_favorite_count > 0
+
+dep = f(congress)
+mfav0 = lm(dep ~ congress$Confident[fact]) # positive, significant
+mfav1 = lm(dep ~ congress$Confident[fact] + congress$gender[fact]) # both effects significant, women are favorited more
+mfavint = lm(dep ~ congress$Confident[fact] * congress$gender[fact])
 summary(mfav0)
 summary(mfav1)
 summary(mfavint)
-anova(mfav1, mfavint) # reject mfav1 at p~.05, means there is an interaction
+anova(mfav1, mfavint) # reject mfav1 at p~.05, means there is an interaction. NOT IF WE REMOVE ZERO-valued tweets!
+```
+
+### Are the zero-favorited tweets outliers?
+```{r}
+
+four$IBM_text[four$tweet_favorite_count==0]
 ```
 
 
@@ -240,7 +257,7 @@ msad111 = lm(agged$Sadness ~ agged$age)
 
 summary(msad1)
 # model involving party:
-msad2 = lm(agged$Sadness ~ agged$gender * agged$party)
+msad2 = lm(agged$Sadness ~ agged$gender + agged$party)
 summary(msad2)
 anova(msad1, msad2)
 ```
@@ -287,6 +304,7 @@ anova(mConfident1, mConfident2)
 # interactions not needed.
 anova(mConfident2, mConfident3)
 anova(mConfident2, mConfident4)
+# HELLO, SAVE!
 ```
 
 
