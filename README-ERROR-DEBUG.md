@@ -9,3 +9,5 @@ virtualenv needs same `pwd` as before.
 ~/.virtualenvs/finance works
 
 $ . keys.sh to get twitter api key, secret in environment
+
+hi
