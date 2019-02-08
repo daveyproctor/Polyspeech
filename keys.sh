@@ -1,2 +1,0 @@
-export API_KEY=qAqfBJ5eMD1NmPASVWitg7kad
-export API_SECRET=qmcXrpxweCMxOnuOi0OtsFPnIJtT9Q7EwSFc9rxrn200G3FrJT
