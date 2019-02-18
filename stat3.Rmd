@@ -103,6 +103,7 @@ f = function(dat){
 fact = congress$tweet_favorite_count > 0
 
 dep = f(congress)
+head(congress)
 mfav0 = lm(dep ~ congress$Confident[fact]) # positive, significant
 mfav1 = lm(dep ~ congress$Confident[fact] + congress$gender[fact]) # both effects significant, women are favorited more
 mfavint = lm(dep ~ congress$Confident[fact] * congress$gender[fact])
@@ -111,6 +112,17 @@ summary(mfav1)
 summary(mfavint)
 anova(mfav1, mfavint) # reject mfav1 at p~.05, means there is an interaction. NOT IF WE REMOVE ZERO-valued tweets!
 ```
+* new new: mixed effect model
+confidence not sig at all; everything is just individual variance.
+```{r}
+library(nlme)
+colnames(congress)
+head(congress)
+m <- lme(tweet_retweet_count ~ Confident,
+          random = ~1 | twitter, data=congress)
+summary(m)
+```
+
 
 ### Are the zero-favorited tweets outliers?
 ```{r}
