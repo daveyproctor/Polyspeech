@@ -1,0 +1,92 @@
+---
+title: "Emotion in Tweets of Selected Politicians"
+output: pdf_document
+author: Davey Proctor
+---
+
+# I. Introduction
+The question in this report is the effect of emotion in the tweets collected from a sample of US politicians. I regress the tagged emotions on various metadata characteristics of individuals, including gender and party. I find that party affiliation has an intuitive impact on the tagged emotions, validating that the emotions are being tagged by-and-large correctly. As of yet, effects due to gender are ambiguous.
+
+# II. Method
+
+## Individuals
+I randomly subsetted $100$ random US politicians from our set of all politicians, subject to number of women = number of men = $50$. Not all of the sample had collected tweets, the ones who did are shown in the appendix. For each individual, a maximum and mode of $100$ tweets were selected. See this [code](https://github.com/daveyproctor/Polyspeech/blob/master/extractTweets.ipynb) for details.
+
+## IBM tagged response
+I used [IBM Watson Natural Language Understanding](https://www.ibm.com/watson/services/natural-language-understanding/) to tag the keywords and related emotions of the selected tweets. For now, I simply aggregated all emotions over individuals, not focusing on which keywords received the emotion. See this [code](https://github.com/daveyproctor/Polyspeech/blob/master/IBM-feed.ipynb) for more details.
+
+# III. Data exploration
+Below, I plot the emotion based on gender and party affiliation for each of the tagged emotions by IBM. Intuitively, in today's state of affairs Democrats are expressing more anger and disgust, whereas Republicans more joy. Effects due to gender are ambiguous on this small dataset.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, results='hide', message=FALSE, tidy.opts=list(width.cutoff=80),tidy=TRUE)
+```
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+df <- read.csv("data/groupedTweetsWithEmotions.csv")
+df$twitter_account <- as.character(df$twitter_account)
+df
+```
+
+```{r}
+metaDF = read.csv("data/metaDatMin.csv", as.is = T)
+metaDF$twitter_account <- as.character(metaDF$twitter_account)
+metaDF <- metaDF[metaDF$twitter_account != "",]
+metaDF
+```
+```{r}
+metaWTagsDF <- metaDF %>% inner_join(df, by.x="twitter_account")
+df
+```
+
+```{r}
+metaWTagsDF %>% select(twitter_account, gender, anger)
+nrow(metaWTagsDF)
+```
+
+```{r}
+plotEmotion <- function(emotion)
+{
+  ggplot(metaWTagsDF%>%filter(party %in% c("D","R")), aes(x=gender,y=get(emotion),fill=party)) + geom_boxplot() + theme(plot.title = element_text(hjust = 0.5)) + xlab("Gender") + ylab(emotion) + ggtitle(paste(emotion, "by party, gender"))
+}
+plotEmotion("anger")
+plotEmotion("disgust")
+plotEmotion("joy")
+plotEmotion("fear")
+plotEmotion("sadness")
+```
+
+# Analysis
+As one example, the effect of anger due to gender was not significant.
+```{r, results='show'}
+t.test(anger ~ gender, metaWTagsDF)
+```
+
+# Discussion: going forward
+Tagging concatenated tweets is by far the most efficient way to use IBM Watson. Methodologically, it's less than ideal in that we don't get tweet-level granularity. However, the keywords and emotions found in the concatenated tweets are probably just as reliable. Price wise, I used just $1.7$% of my $\textit{lite}$ quota to tag as much as I did. I think I can get a fair amount tagged completely for free, and the paid portion is probably managable as well. More pricing information [here](https://www.ibm.com/watson/services/natural-language-understanding/) towards the bottom.
+
+## IBM: verifying the tool
+This will be a key step in the research process. I'm encouraged that the tagged emotions are already interpretable at the level of party affiliation, which IBM is given no prior knowledge of. Future work would be to subset IBM responses and ask users to opine on which of these two key-phrases receive more angry emotion from the user, etc.
+
+## Topic models
+I spiked a topic model for this subset of tweets, available [here](https://github.com/daveyproctor/Polyspeech/blob/master/topicModels.ipynb). The results weren't particularly interprettable, likely due to my small subset of the data that I used. Using tagged keywords from IBM as documents into the topic model might be a promising direction.
+
+# Appendix
+
+## Details: Individuals
+```{r, results="show"}
+metaWTagsDF %>% select(first_name, last_name, gender, party)
+```
+
+## Detials: Code
+```{r ref.label=knitr::all_labels(), echo=T, eval=F}
+
+```
+
+
