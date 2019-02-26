@@ -2,6 +2,7 @@
 title: "Emotion in Tweets of Selected Politicians"
 output: pdf_document
 author: Davey Proctor
+urlcolor: blue
 ---
 
 # I. Introduction
@@ -10,7 +11,7 @@ The question in this report is the effect of emotion in the tweets collected fro
 # II. Method
 
 ## Individuals
-I randomly subsetted $100$ random US politicians from our set of all politicians, subject to number of women = number of men = $50$. Not all of the sample had collected tweets, the ones who did are shown in the appendix. For each individual, a maximum and mode of $100$ tweets were selected. See this [code](https://github.com/daveyproctor/Polyspeech/blob/master/extractTweets.ipynb) for details.
+I randomly subsetted $100$ US politicians from our set of all politicians, subject to number of women = number of men = $50$. Not all of the sample had collected tweets, the ones who did are shown in the appendix. For each individual, a maximum and mode of $100$ tweets were selected. See this [code](https://github.com/daveyproctor/Polyspeech/blob/master/extractTweets.ipynb) for details.
 
 ## IBM tagged response
 I used [IBM Watson Natural Language Understanding](https://www.ibm.com/watson/services/natural-language-understanding/) to tag the keywords and related emotions of the selected tweets. For now, I simply aggregated all emotions over individuals, not focusing on which keywords received the emotion. See this [code](https://github.com/daveyproctor/Polyspeech/blob/master/IBM-feed.ipynb) for more details.
@@ -38,35 +39,86 @@ df
 metaDF = read.csv("data/metaDatMin.csv", as.is = T)
 metaDF$twitter_account <- as.character(metaDF$twitter_account)
 metaDF <- metaDF[metaDF$twitter_account != "",]
-metaDF
+
+# calculate ages from date of birth
+library(lubridate)
+age <- function(dob, age.day = today(), units = "years", floor = TRUE) {
+    calc.age = interval(dob, age.day) / duration(num = 1, units = units)
+    if (floor) return(as.integer(floor(calc.age)))
+    return(calc.age)
+}
+my.dob <- as.Date('1983-10-20')
+
+metaDF$age = age(metaDF$date_of_birth)
 ```
+
+
 ```{r}
+# Merge metadata with data
 metaWTagsDF <- metaDF %>% inner_join(df, by.x="twitter_account")
 df
 ```
 
 ```{r}
 metaWTagsDF %>% select(twitter_account, gender, anger)
-nrow(metaWTagsDF)
 ```
 
 ```{r}
 plotEmotion <- function(emotion)
 {
-  ggplot(metaWTagsDF%>%filter(party %in% c("D","R")), aes(x=gender,y=get(emotion),fill=party)) + geom_boxplot() + theme(plot.title = element_text(hjust = 0.5)) + xlab("Gender") + ylab(emotion) + ggtitle(paste(emotion, "by party, gender"))
+  p <- ggplot(metaWTagsDF%>%filter(party %in% c("D","R")), aes(x=gender,y=get(emotion),fill=party)) + geom_boxplot() + theme(plot.title = element_text(hjust = 0.5)) + xlab("Gender") + ylab(emotion) + ggtitle(paste(emotion, "by party, gender"))
+  print(p)
 }
-plotEmotion("anger")
-plotEmotion("disgust")
-plotEmotion("joy")
-plotEmotion("fear")
-plotEmotion("sadness")
+emotions <- colnames(df)[3:7]
+for (emotion in emotions){
+  plotEmotion(emotion)
+}
 ```
 
-# Analysis
-As one example, the effect of anger due to gender was not significant.
-```{r, results='show'}
-t.test(anger ~ gender, metaWTagsDF)
+Interestingly, it looks like women need to wait to be more senior before expressing anger, below.
+
+```{r}
+metaWTagsDF %>% ggplot(aes(x=seniority, y=anger, color=gender)) + geom_smooth()
 ```
+
+```{r, eval=F}
+metaWTagsDF %>% ggplot(aes(x=age, y=anger, color=gender)) + geom_smooth()
+```
+
+
+```{r, eval=F}
+# More polarized means more angry
+metaWTagsDF %>% ggplot(aes(x=votes_with_party_pct, y=anger, color=party)) + geom_smooth()
+summary(lm(anger ~ votes_with_party_pct, metaWTagsDF))
+```
+
+
+# Analysis
+From Frances, "It's striking that Republican women are not supposed to show anger, which suggests perhaps a subculture expectation of femininity."
+
+```{r, results="show"}
+t.test(anger ~ gender, metaWTagsDF[metaWTagsDF$party=="R",])
+```
+
+Similarly for disgust and fear.
+```{r}
+for (party in c("R", "D")){
+  for (emotion in emotions) {
+    print(emotion)
+    print(party)
+    print(t.test(get(emotion) ~ gender, metaWTagsDF[metaWTagsDF$party==party,]))
+  }
+}
+```
+
+```{r, eval=F}
+df %>% ggplot(aes(joy)) + geom_histogram()
+```
+
+```{r}
+cor(df[,emotions], use="complete.obs", method="kendall") 
+```
+
 
 # Discussion: going forward
 Tagging concatenated tweets is by far the most efficient way to use IBM Watson. Methodologically, it's less than ideal in that we don't get tweet-level granularity. However, the keywords and emotions found in the concatenated tweets are probably just as reliable. Price wise, I used just $1.7$% of my $\textit{lite}$ quota to tag as much as I did. I think I can get a fair amount tagged completely for free, and the paid portion is probably managable as well. More pricing information [here](https://www.ibm.com/watson/services/natural-language-understanding/) towards the bottom.
