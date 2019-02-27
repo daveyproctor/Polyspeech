@@ -30,7 +30,7 @@ library(ggplot2)
 ```
 
 ```{r}
-df <- read.csv("data/groupedTweetsWithEmotions.csv")
+df <- read.csv("data/groupedTweetsWithIBMemotionsSpike.csv")
 df$twitter_account <- as.character(df$twitter_account)
 df
 ```
@@ -78,7 +78,7 @@ for (emotion in emotions){
 Interestingly, it looks like women need to wait to be more senior before expressing anger, below.
 
 ```{r}
-metaWTagsDF %>% ggplot(aes(x=seniority, y=anger, color=gender)) + geom_smooth()
+metaWTagsDF %>% ggplot(aes(x=seniority, y=anger, color=gender)) + geom_smooth() + ggtitle("Women need seniority before expressing anger")
 ```
 
 ```{r, eval=F}
