@@ -1,0 +1,104 @@
+```{r}
+library(dplyr)
+```
+
+[Source](https://electionlab.mit.edu/data)
+```{r}
+UsSenateElections <- read.csv("elections/UsSenate/1976-2016-senate.csv")
+UsHouseElections <- read.csv("elections/UsHouse/1976-2016-house.csv")
+StateOfficeElections <- read.csv("elections/StateOffice/stateoffices2016.csv")
+```
+
+```{r}
+USPoliticians <- read.csv("metadata/Copy of US politicians_md.csv", as.is = T)
+USPoliticians
+```
+
+```{r}
+colnames(UsSenateElections)
+UsSenateElections$candidate <- trimws(UsSenateElections$candidate)
+UsSenateElections <- UsSenateElections[UsSenateElections$candidate != "",]
+head(UsSenateElections$candidate)
+```
+
+```{r}
+table(UsSenateElections$stage)
+table(UsHouseElections$stage)
+table(StateOfficeElections$stage)
+```
+
+
+```{r}
+UsSenateElections$first_name <- gsub("((^ )*) .*", "\\1", UsSenateElections$candidate)
+head(UsSenateElections$first_name)
+
+UsSenateElections$last_name <- gsub(".* ((^ )*)", "\\1", UsSenateElections$candidate)
+head(UsSenateElections$last_name)
+
+UsSenateElections[1:6, c("first_name", "last_name")]
+```
+
+```{r}
+?intersect
+UsSenateElections %>% intersect(USPoliticians, by())
+```
+
+
+```{r}
+SenateWElections <- UsSenateElections %>% inner_join(USPoliticians, by=c("first_name", "last_name"))
+minSenateElections <- SenateWElections %>% select(year, first_name, last_name, state.x, state.y, stage) %>% arrange(first_name, last_name, year) 
+minSenateElections
+countSenateElections <- minSenateElections %>% group_by(first_name, last_name) %>% summarise(n = n())
+countSenateElections
+sum(countSenateElections$n)
+```
+
+## Now for house - try lapply
+
+```{r}
+colnames(UsHouseElections)
+UsHouseElections$candidate <- trimws(UsHouseElections$candidate)
+UsHouseElections <- UsHouseElections[UsHouseElections$candidate != "",]
+head(UsHouseElections$candidate)
+```
+
+```{r}
+UsHouseElections$first_name <- gsub("((^ )*) .*", "\\1", UsHouseElections$candidate)
+head(UsHouseElections$first_name)
+
+UsHouseElections$last_name <- gsub(".* ((^ )*)", "\\1", UsHouseElections$candidate)
+head(UsHouseElections$last_name)
+
+UsHouseElections[1:6, c("first_name", "last_name")]
+```
+```{r}
+HouseWElections <- UsHouseElections %>% inner_join(USPoliticians, by=c("first_name", "last_name"))
+
+minHouseElections <- HouseWElections %>% select(year, first_name, last_name, state.x, state.y, stage) %>% arrange(first_name, last_name, year) 
+minHouseElections
+countHouseElections <- minHouseElections %>% group_by(first_name, last_name) %>% summarise(n = n())
+countHouseElections
+sum(countHouseElections$n)
+
+```
+
+## State officials
+```{r}
+colnames(StateOfficeElections)
+StateOfficeElections$candidate <- trimws(StateOfficeElections$candidate)
+StateOfficeElections <- StateOfficeElections[StateOfficeElections$candidate != "",]
+head(StateOfficeElections$candidate)
+
+StateOfficeElections$first_name <- gsub("((^ )*) .*", "\\1", StateOfficeElections$candidate)
+head(StateOfficeElections$first_name)
+
+StateOfficeElections$last_name <- gsub(".* ((^ )*)", "\\1", StateOfficeElections$candidate)
+head(StateOfficeElections$last_name)
+
+StateOfficeElections[1:6, c("first_name", "last_name")]
+
+StateOfficeWElections <- StateOfficeElections %>% inner_join(USPoliticians, by=c("first_name", "last_name"))
+StateOfficeWElections %>% select(year, first_name, last_name, state.x, state.y) %>% arrange(first_name, last_name, year)
+```
+
+
