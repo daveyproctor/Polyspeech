@@ -2,103 +2,156 @@
 library(dplyr)
 ```
 
+## Pull in election data
 [Source](https://electionlab.mit.edu/data)
 ```{r}
-UsSenateElections <- read.csv("elections/UsSenate/1976-2016-senate.csv")
-UsHouseElections <- read.csv("elections/UsHouse/1976-2016-house.csv")
-StateOfficeElections <- read.csv("elections/StateOffice/stateoffices2016.csv")
+UsSenateElections <- read.csv("elections/UsSenate/1976-2016-senate.csv", as.is = T)
+UsHouseElections <- read.csv("elections/UsHouse/1976-2016-house.csv", as.is = T)
+StateOfficeElections <- read.csv("elections/StateOffice/stateoffices2016.csv", as.is = T)
 ```
 
-```{r}
-USPoliticians <- read.csv("metadata/Copy of US politicians_md.csv", as.is = T)
-USPoliticians
-```
-
-```{r}
-colnames(UsSenateElections)
-UsSenateElections$candidate <- trimws(UsSenateElections$candidate)
-UsSenateElections <- UsSenateElections[UsSenateElections$candidate != "",]
-head(UsSenateElections$candidate)
-```
-
-```{r}
-table(UsSenateElections$stage)
-table(UsHouseElections$stage)
-table(StateOfficeElections$stage)
-```
-
-
-```{r}
-UsSenateElections$first_name <- gsub("((^ )*) .*", "\\1", UsSenateElections$candidate)
-head(UsSenateElections$first_name)
-
-UsSenateElections$last_name <- gsub(".* ((^ )*)", "\\1", UsSenateElections$candidate)
-head(UsSenateElections$last_name)
-
-UsSenateElections[1:6, c("first_name", "last_name")]
-```
-
-```{r}
-?intersect
-UsSenateElections %>% intersect(USPoliticians, by())
-```
-
-
-```{r}
-SenateWElections <- UsSenateElections %>% inner_join(USPoliticians, by=c("first_name", "last_name"))
-minSenateElections <- SenateWElections %>% select(year, first_name, last_name, state.x, state.y, stage) %>% arrange(first_name, last_name, year) 
-minSenateElections
-countSenateElections <- minSenateElections %>% group_by(first_name, last_name) %>% summarise(n = n())
-countSenateElections
-sum(countSenateElections$n)
-```
-
-## Now for house - try lapply
-
-```{r}
-colnames(UsHouseElections)
-UsHouseElections$candidate <- trimws(UsHouseElections$candidate)
-UsHouseElections <- UsHouseElections[UsHouseElections$candidate != "",]
-head(UsHouseElections$candidate)
-```
-
-```{r}
-UsHouseElections$first_name <- gsub("((^ )*) .*", "\\1", UsHouseElections$candidate)
-head(UsHouseElections$first_name)
-
-UsHouseElections$last_name <- gsub(".* ((^ )*)", "\\1", UsHouseElections$candidate)
-head(UsHouseElections$last_name)
-
-UsHouseElections[1:6, c("first_name", "last_name")]
-```
-```{r}
-HouseWElections <- UsHouseElections %>% inner_join(USPoliticians, by=c("first_name", "last_name"))
-
-minHouseElections <- HouseWElections %>% select(year, first_name, last_name, state.x, state.y, stage) %>% arrange(first_name, last_name, year) 
-minHouseElections
-countHouseElections <- minHouseElections %>% group_by(first_name, last_name) %>% summarise(n = n())
-countHouseElections
-sum(countHouseElections$n)
-
-```
-
-## State officials
 ```{r}
 colnames(StateOfficeElections)
-StateOfficeElections$candidate <- trimws(StateOfficeElections$candidate)
-StateOfficeElections <- StateOfficeElections[StateOfficeElections$candidate != "",]
-head(StateOfficeElections$candidate)
-
-StateOfficeElections$first_name <- gsub("((^ )*) .*", "\\1", StateOfficeElections$candidate)
-head(StateOfficeElections$first_name)
-
-StateOfficeElections$last_name <- gsub(".* ((^ )*)", "\\1", StateOfficeElections$candidate)
-head(StateOfficeElections$last_name)
-
-StateOfficeElections[1:6, c("first_name", "last_name")]
-
-StateOfficeWElections <- StateOfficeElections %>% inner_join(USPoliticians, by=c("first_name", "last_name"))
-StateOfficeWElections %>% select(year, first_name, last_name, state.x, state.y) %>% arrange(first_name, last_name, year)
+colnames(UsSenateElections) == colnames(UsHouseElections)
+colnames(StateOfficeElections)[!(colnames(StateOfficeElections) %in% colnames(UsSenateElections))]
+table(StateOfficeElections$mode)
+table(UsSenateElections$office)
 ```
+
+```{r}
+ElectionsDF <- plyr::rbind.fill(UsSenateElections, UsHouseElections, StateOfficeElections)
+nrow(ElectionsDF)
+```
+
+## Get candidate first and last name
+```{r}
+ElectionsDF$candidate <- trimws(ElectionsDF$candidate)
+length(which(ElectionsDF$candidate == ""))
+ElectionsDF <- ElectionsDF[ElectionsDF$candidate != "",]
+
+ElectionsDF$first_name <- gsub("((^ )*) .*", "\\1", ElectionsDF$candidate)
+ElectionsDF$last_name <- gsub(".* ((^ )*)", "\\1", ElectionsDF$candidate)
+
+head(ElectionsDF %>% select(first_name, last_name))
+```
+
+```{r}
+table(ElectionsDF$state)
+```
+
+## Merge with other metadata
+```{r}
+USPoliticiansMetaDF <- read.csv("metadata/Copy of US politicians_md.csv", as.is = T)
+USPoliticiansMetaDF$officeBuilding <- USPoliticiansMetaDF$office
+USPoliticiansMetaDF <- USPoliticiansMetaDF %>% select(-c(office))
+
+USPoliticiansMetaDF$stateAbb <- USPoliticiansMetaDF$state
+USPoliticiansMetaDF <- USPoliticiansMetaDF %>% select(-c(state))
+
+table(USPoliticiansMetaDF$state)
+stateConversion <- data.frame("StateName"=as.character(state.name), "abb"=as.character(state.abb), stringsAsFactors = F)
+stateConversion
+```
+
+```{r}
+USPoliticiansMetaDF <- USPoliticiansMetaDF %>% inner_join(stateConversion, by=c("stateAbb" = "abb"))
+```
+
+```{r}
+MetadataWElections <- ElectionsDF %>% inner_join(USPoliticiansMetaDF, by=c("first_name", "last_name", "state"="StateName"))
+
+countIndivsElections <- MetadataWElections %>% group_by(first_name, last_name, office) %>% dplyr::summarise(n = n())
+
+sum(countIndivsElections[countIndivsElections$office=="US Senate","n"])
+nrow(countIndivsElections[countIndivsElections$office=="US Senate",])
+
+sum(countIndivsElections[countIndivsElections$office=="US House","n"])
+nrow(countIndivsElections[countIndivsElections$office=="US House",])
+```
+
+```{r}
+table(MetadataWElections$stage)
+```
+
+```{r}
+MetadataWElections
+```
+
+## Now get social media hand-tagged data
+```{r}
+socialMediaHandTagged <- read.csv("OpenSource/political_social_media.csv")
+```
+
+```{r}
+head(socialMediaHandTagged$label)
+gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*", "\\1", head(socialMediaHandTagged$label))
+gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*", "\\3", head(socialMediaHandTagged$label))
+gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*(([a-z|A-Z])*)\\)$", "\\5", head(socialMediaHandTagged$label))
+# gsub("From: (([a-z|A-Z])*) .*", "\\1", head(socialMediaHandTagged$label))
+```
+
+```{r}
+socialMediaHandTagged$first_name <- gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*", "\\1", socialMediaHandTagged$label)
+
+socialMediaHandTagged$last_name <- gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*", "\\3", socialMediaHandTagged$label)
+```
+
+```{r}
+nrow(socialMediaHandTagged)
+```
+
+```{r}
+head(rev(sort(table(paste(USPoliticiansMetaDF$first_name, USPoliticiansMetaDF$last_name)))))
+```
+
+## WHAT THE FUCK - MUST REVIEW BEFORE PROCEEDING
+```{r}
+USPoliticiansMetaDF[USPoliticiansMetaDF$last_name=="Pelosi",]
+```
+
+
+```{r}
+metaDataWHandTaggedTweets <- socialMediaHandTagged %>% inner_join(USPoliticiansMetaDF, by=c("first_name", "last_name"))
+```
+
+```{r}
+table(metaDataWHandTaggedTweets[metaDataWHandTaggedTweets$gender=="M","audience"])
+table(metaDataWHandTaggedTweets[metaDataWHandTaggedTweets$gender=="F","audience"])
+```
+
+```{r}
+table(metaDataWHandTaggedTweets$message)
+library(ggplot2)
+metaDataWHandTaggedTweets %>% ggplot(aes(message, color=gender)) + geom_bar()
+```
+
+```{r}
+nF <- nrow(metaDataWHandTaggedTweets[metaDataWHandTaggedTweets$gender=="F",])
+nM <- nrow(metaDataWHandTaggedTweets[metaDataWHandTaggedTweets$gender=="M",])
+mesGender <-metaDataWHandTaggedTweets %>% group_by(gender, message) %>% summarise(n=n())
+```
+
+```{r}
+mesGender[mesGender$gender=="F","n"] <- mesGender[mesGender$gender=="F","n"] / nF
+mesGender[mesGender$gender=="M","n"] <- mesGender[mesGender$gender=="M","n"] / nM
+```
+
+```{r}
+mesGender %>% ggplot(aes(x=message, y=n, color=gender)) + geom_point()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
