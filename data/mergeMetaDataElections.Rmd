@@ -1,5 +1,13 @@
+Pulls in election data, politicians
+Done: regress social media on gender spike
+TODO:
+  * Regress elections on social media:gender interaction
+    * Subset to most recent elections
+    * Figure out who won who lost
+
 ```{r}
 library(dplyr)
+library(ggplot2)
 ```
 
 ## Pull in election data
@@ -10,6 +18,8 @@ UsHouseElections <- read.csv("elections/UsHouse/1976-2016-house.csv", as.is = T)
 StateOfficeElections <- read.csv("elections/StateOffice/stateoffices2016.csv", as.is = T)
 ```
 
+* Going forward, $office gives US Senate, etc.
+* $candidate gives who won, etc.
 ```{r}
 colnames(StateOfficeElections)
 colnames(UsSenateElections) == colnames(UsHouseElections)
@@ -21,6 +31,7 @@ table(UsSenateElections$office)
 ```{r}
 ElectionsDF <- plyr::rbind.fill(UsSenateElections, UsHouseElections, StateOfficeElections)
 nrow(ElectionsDF)
+head(rev(sort(table(ElectionsDF$office))))
 ```
 
 ## Get candidate first and last name
@@ -39,9 +50,16 @@ head(ElectionsDF %>% select(first_name, last_name))
 table(ElectionsDF$state)
 ```
 
-## Merge with other metadata
+## Merge with Frances' metadata
 ```{r}
 USPoliticiansMetaDF <- read.csv("metadata/Copy of US politicians_md.csv", as.is = T)
+
+# Take only unique - revisit
+USPoliticiansMetaDF <- USPoliticiansMetaDF %>%
+  group_by(first_name, last_name) %>%
+  filter(row_number()==1)
+USPoliticiansMetaDF
+
 USPoliticiansMetaDF$officeBuilding <- USPoliticiansMetaDF$office
 USPoliticiansMetaDF <- USPoliticiansMetaDF %>% select(-c(office))
 
@@ -57,6 +75,7 @@ stateConversion
 USPoliticiansMetaDF <- USPoliticiansMetaDF %>% inner_join(stateConversion, by=c("stateAbb" = "abb"))
 ```
 
+## 100 senators, 447 house members
 ```{r}
 MetadataWElections <- ElectionsDF %>% inner_join(USPoliticiansMetaDF, by=c("first_name", "last_name", "state"="StateName"))
 
@@ -70,6 +89,20 @@ nrow(countIndivsElections[countIndivsElections$office=="US House",])
 ```
 
 ```{r}
+x <- MetadataWElections %>% arrange(first_name, last_name, state) %>% select(first_name, last_name, state, in_office)
+table(x$in_office)
+```
+
+## What am I even getting from this data collected by Frances??
+* Different levels of office not as interesting as who won/lost based on social media content.
+* Just guess at their genders from their first name.
+```{r}
+colnames(USPoliticiansMetaDF)
+USPoliticiansMetaDF %>% select(gender)
+```
+
+
+```{r}
 table(MetadataWElections$stage)
 ```
 
@@ -77,73 +110,59 @@ table(MetadataWElections$stage)
 MetadataWElections
 ```
 
-## Now get social media hand-tagged data
+
+
+
+
+
+
+## Scrap
 ```{r}
-socialMediaHandTagged <- read.csv("OpenSource/political_social_media.csv")
+library(tidyr)
+metaDataWHandTaggedTweets %>% separate(audience)
 ```
 
 ```{r}
-head(socialMediaHandTagged$label)
-gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*", "\\1", head(socialMediaHandTagged$label))
-gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*", "\\3", head(socialMediaHandTagged$label))
-gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*(([a-z|A-Z])*)\\)$", "\\5", head(socialMediaHandTagged$label))
-# gsub("From: (([a-z|A-Z])*) .*", "\\1", head(socialMediaHandTagged$label))
+library(reshape2)
+dcast(metaDataWHandTaggedTweets, audience)
 ```
 
 ```{r}
-socialMediaHandTagged$first_name <- gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*", "\\1", socialMediaHandTagged$label)
-
-socialMediaHandTagged$last_name <- gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*", "\\3", socialMediaHandTagged$label)
+df <- data.frame(cbind(1:10, 2:11, 1:3))
+colnames(df) <- c("ID","DATE","SECTOR")
+df <- data.frame(df, value=TRUE)
+df
 ```
 
 ```{r}
-nrow(socialMediaHandTagged)
+reshape(df, idvar=c("ID","DATE"), timevar="SECTOR", direction="wide")
 ```
 
 ```{r}
-head(rev(sort(table(paste(USPoliticiansMetaDF$first_name, USPoliticiansMetaDF$last_name)))))
+# reshape(metaDataWHandTaggedTweets, idvar=c("id.x", "first_name", "last_name"), timevar = "audience", direction = "wide")
 ```
-
-## WHAT THE FUCK - MUST REVIEW BEFORE PROCEEDING
-```{r}
-USPoliticiansMetaDF[USPoliticiansMetaDF$last_name=="Pelosi",]
-```
-
 
 ```{r}
-metaDataWHandTaggedTweets <- socialMediaHandTagged %>% inner_join(USPoliticiansMetaDF, by=c("first_name", "last_name"))
+metaDataWHandTaggedTweets
 ```
+
+
+
+
+
+
+
+
+## SCRAP
+```{r}
+genderBreakdown <-metaDataWHandTaggedTweets %>% group_by(gender) %>% summarise(n=n())
+```
+
 
 ```{r}
 table(metaDataWHandTaggedTweets[metaDataWHandTaggedTweets$gender=="M","audience"])
 table(metaDataWHandTaggedTweets[metaDataWHandTaggedTweets$gender=="F","audience"])
 ```
-
-```{r}
-table(metaDataWHandTaggedTweets$message)
-library(ggplot2)
-metaDataWHandTaggedTweets %>% ggplot(aes(message, color=gender)) + geom_bar()
-```
-
-```{r}
-nF <- nrow(metaDataWHandTaggedTweets[metaDataWHandTaggedTweets$gender=="F",])
-nM <- nrow(metaDataWHandTaggedTweets[metaDataWHandTaggedTweets$gender=="M",])
-mesGender <-metaDataWHandTaggedTweets %>% group_by(gender, message) %>% summarise(n=n())
-```
-
-```{r}
-mesGender[mesGender$gender=="F","n"] <- mesGender[mesGender$gender=="F","n"] / nF
-mesGender[mesGender$gender=="M","n"] <- mesGender[mesGender$gender=="M","n"] / nM
-```
-
-```{r}
-mesGender %>% ggplot(aes(x=message, y=n, color=gender)) + geom_point()
-```
-
-
-
-
-
 
 
 

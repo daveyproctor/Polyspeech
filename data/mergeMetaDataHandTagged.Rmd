@@ -1,0 +1,134 @@
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+## Get social media hand-tagged data
+```{r}
+socialMediaHandTagged <- read.csv("OpenSource/political_social_media.csv")
+socialMediaHandTagged
+```
+
+### Explore social media hand-tagged
+```{r}
+table(socialMediaHandTagged$source)
+```
+```{r}
+## Policy more national; personal more constituency.
+socialMediaHandTagged %>% ggplot(aes(message, color=audience)) + geom_bar() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+## attacks and policy more partisan, yes.
+socialMediaHandTagged %>% ggplot(aes(message, color=bias)) + geom_bar() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+## A bit more partisan towards national vs. constituency
+socialMediaHandTagged %>% ggplot(aes(audience, color=bias)) + geom_bar() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+socialMediaHandTagged %>% ggplot(aes(message, color=source)) + geom_bar() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+socialMediaHandTagged
+```
+
+
+
+```{r}
+head(socialMediaHandTagged$label)
+gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*", "\\1", head(socialMediaHandTagged$label))
+gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*", "\\3", head(socialMediaHandTagged$label))
+gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*(([a-z|A-Z])*)\\)$", "\\5", head(socialMediaHandTagged$label))
+# gsub("From: (([a-z|A-Z])*) .*", "\\1", head(socialMediaHandTagged$label))
+```
+
+```{r}
+socialMediaHandTagged$first_name <- gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*", "\\1", socialMediaHandTagged$label)
+
+socialMediaHandTagged$last_name <- gsub("From: (([a-z|A-Z])*) (([a-z|A-Z])*).*", "\\3", socialMediaHandTagged$label)
+```
+
+```{r}
+nrow(socialMediaHandTagged)
+socialMediaHandTagged %>% group_by(first_name, last_name) %>% summarise(n=n())
+```
+
+## JOIN Social media
+
+```{r}
+USPoliticiansMetaDF <- read.csv("metadata/Copy of US politicians_md.csv", as.is = T)
+
+# Take only unique - revisit
+USPoliticiansMetaDF <- USPoliticiansMetaDF %>%
+  group_by(first_name, last_name) %>%
+  filter(row_number()==1)
+USPoliticiansMetaDF
+
+USPoliticiansMetaDF$officeBuilding <- USPoliticiansMetaDF$office
+USPoliticiansMetaDF <- USPoliticiansMetaDF %>% select(-c(office))
+```
+
+
+```{r}
+metaDataWHandTaggedTweets <- socialMediaHandTagged %>% inner_join(USPoliticiansMetaDF, by=c("first_name", "last_name"))
+```
+
+```{r}
+metaDataWHandTaggedTweets %>% group_by(first_name, last_name) %>% summarise(n=n())
+```
+
+### Any effects due to gender?
+```{r}
+metaDataWHandTaggedTweets %>% ggplot(aes(message, color=gender)) + geom_bar() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+metaDataWHandTaggedTweets %>% ggplot(aes(bias, color=gender)) + geom_bar() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+metaDataWHandTaggedTweets %>% ggplot(aes(audience, color=gender)) + geom_bar() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
+```{r}
+nF <- nrow(metaDataWHandTaggedTweets[metaDataWHandTaggedTweets$gender=="F",])
+nM <- nrow(metaDataWHandTaggedTweets[metaDataWHandTaggedTweets$gender=="M",])
+mesGender <- metaDataWHandTaggedTweets %>% group_by(gender, message) %>% summarise(n=n())
+mesGender[mesGender$gender=="F","n"] <- mesGender[mesGender$gender=="F","n"] / nF
+mesGender[mesGender$gender=="M","n"] <- mesGender[mesGender$gender=="M","n"] / nM
+mesGender %>% ggplot(aes(x=message, y=n, color=gender)) + geom_point()
+```
+
+```{r}
+audGender <- metaDataWHandTaggedTweets %>% group_by(gender, audience) %>% summarise(n=n())
+audGender[audGender$gender=="F","n"] <- audGender[audGender$gender=="F","n"] / nF
+audGender[audGender$gender=="M","n"] <- audGender[audGender$gender=="M","n"] / nM
+audGender %>% ggplot(aes(x=audience, y=n, color=gender)) + geom_point()
+```
+
+```{r}
+biasGender <- metaDataWHandTaggedTweets %>% group_by(gender, bias) %>% summarise(n=n())
+biasGender[biasGender$gender=="F","n"] <- biasGender[biasGender$gender=="F","n"] / nF
+biasGender[biasGender$gender=="M","n"] <- biasGender[biasGender$gender=="M","n"] / nM
+biasGender %>% ggplot(aes(x=bias, y=n, color=gender)) + geom_point()
+```
+
+Goal: first_name - last_name - message - n/how many tweets this dude did - gender
+```{r}
+x1 <- metaDataWHandTaggedTweets %>% group_by(first_name, last_name, message) %>% summarise(nMes=n(), gender=gender[[1]])
+x1
+```
+
+```{r}
+x2 <- metaDataWHandTaggedTweets %>% group_by(first_name, last_name) %>% summarise(nTot=n())
+x2
+```
+
+```{r}
+x3 <- x1 %>% inner_join(x2, by=c("first_name", "last_name"))
+x3
+```
+
+```{r}
+mesGender2 <- x3 %>% mutate(frac=nMes/nTot)
+```
+
+```{r}
+mesGender2 %>% ggplot(aes(x=message, y=frac, color=gender)) + geom_boxplot()
+```
+

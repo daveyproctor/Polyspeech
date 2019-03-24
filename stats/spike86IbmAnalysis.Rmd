@@ -16,6 +16,8 @@ I randomly subsetted $100$ US politicians from our set of all politicians, subje
 ## IBM tagged response
 I used [IBM Watson Natural Language Understanding](https://www.ibm.com/watson/services/natural-language-understanding/) to tag the keywords and related emotions of the selected tweets. For now, I simply aggregated all emotions over individuals, not focusing on which keywords received the emotion. See this [code](https://github.com/daveyproctor/Polyspeech/blob/master/scripts/language/sentiment/IBM/IBM-feed.ipynb) for more details.
 
+Were the emotion scores a sum or a mean? What if individuals had fewer than 100 tweets?
+
 # III. Data exploration
 Below, I plot the emotion based on gender and party affiliation for each of the tagged emotions by IBM. Intuitively, in today's state of affairs Democrats are expressing more anger and disgust, whereas Republicans more joy. Effects due to gender are subtle: it appears that senior Republican women fail in expressiveness of anger and disgust.
 
@@ -58,11 +60,7 @@ metaDF
 ```{r}
 # Merge metadata with data
 metaWTagsDF <- metaDF %>% inner_join(df, by.x="twitter_account")
-df
-```
-
-```{r}
-metaWTagsDF %>% select(twitter_account, gender, anger)
+metaWTagsDF %>% select(twitter_account, gender, age, votes_with_party_pct, anger)
 ```
 
 ```{r}
@@ -91,13 +89,15 @@ metaWTagsDF[metaWTagsDF$party=="D",] %>% ggplot(aes(x=seniority, y=anger, color=
 
 ```{r, eval=F}
 # Only senior republicans struggle to express themselves.
+metaWTagsDF[metaWTagsDF$party=="R",] %>% ggplot(aes(x=seniority, y=anger, color=gender)) + geom_smooth() + ggtitle("Senior Republican Women Expressing Less Anger")
 # NOTE: Ileana is the outlier!
 metaWTagsDF[metaWTagsDF$party=="R"&metaWTagsDF$first_name!="Ileana",] %>% ggplot(aes(x=seniority, y=anger, color=gender)) + geom_smooth() + ggtitle("Senior Republican Women Expressing Less Anger")
 ```
 
 ```{r}
-# Ileana!
-summary(aov(anger ~ seniority*gender*party, metaWTagsDF))#[metaWTagsDF$first_name!= "Ileana",]))
+# Ileana! - p = .08 party-gender interaction no longer significant wo Ileana.
+summary(aov(anger ~ seniority*gender*party, metaWTagsDF))
+summary(aov(anger ~ seniority*gender*party, metaWTagsDF[metaWTagsDF$first_name!= "Ileana",]))
 ```
 
 
@@ -136,12 +136,17 @@ summary(lm(anger ~ votes_with_party_pct, metaWTagsDF))
 From Frances, "It's striking that Republican women are not supposed to show anger, which suggests perhaps a subculture expectation of femininity."
 
 ```{r, results="show"}
-t.test(anger ~ gender, metaWTagsDF[metaWTagsDF$party=="R",])
+# t.test(anger ~ gender, metaWTagsDF[metaWTagsDF$party=="R",])
+# Still significant without Ileana
+t.test(anger ~ gender, metaWTagsDF[metaWTagsDF$party=="R" &metaWTagsDF$first_name!="Ileana",])
 ```
 
 Subcultural effect of anger expression among female Republican politicians
-```{r}
-summary(aov(anger ~ gender + party + gender*party, data=metaWTagsDF))
+```{r, results="show"}
+summary(aov(anger ~ gender*party, data=metaWTagsDF))
+# summary(aov(anger ~ gender*party*seniority, data=metaWTagsDF))
+# Not sig wo Ileana
+summary(aov(anger ~ gender*party, data=metaWTagsDF[metaWTagsDF$first_name!="Ileana",]))
 ```
 
 
