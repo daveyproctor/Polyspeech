@@ -1,0 +1,118 @@
+```{r}
+library(ggplot2)
+library(dplyr)
+library(rjson)
+```
+
+## Explore metadata
+
+```{r}
+metadata <- read.csv("data/metadata/Copy of US politicians_md.csv")
+```
+
+```{r}
+head(metadata)
+```
+
+```{r}
+colnames(metadata)
+```
+
+### Data cleaning
+
+## WHAT THE FUCK - MUST REVIEW BEFORE PROCEEDING
+```{r}
+x <- rev(sort(table(paste(USPoliticiansMetaDF$first_name, USPoliticiansMetaDF$last_name))))
+x[1:10]
+table(x)
+```
+
+```{r}
+metadata[metadata$last_name=="Pelosi",]
+```
+
+```{r}
+metadata[metadata$last_name=="Larsen",]
+metadata[metadata$last_name=="Demings",]
+```
+
+```{r}
+rev(sort(table(metadata$filename)))
+```
+
+* Remove duplicates
+```{r}
+metadata %>% group_by(first_name, last_name) %>% summarise(gender[[1]])
+```
+
+```{r}
+metadata[,c("first_name", "last_name")] %>% distinct()
+```
+
+## Cleaning: Key line
+```{r}
+metadata %>%
+  group_by(first_name, last_name) %>%
+  filter(row_number()==1)
+```
+
+### Most relevant metadata columns
+```{r}
+summary(metadata[, c("gender", "party")])
+```
+
+### Case study: Voting with your party based on gender, maybe party
+```{r}
+hist(metadata$votes_with_party_pct)
+```
+
+```{r}
+ggplot(metadata%>%filter(party %in% c("D","R")), aes(x=gender,y=votes_with_party_pct,fill=party)) + geom_boxplot()
+```
+
+```{r}
+metadata %>% 
+  filter(!is.na(votes_with_party_pct)) %>%
+  group_by(gender) %>%
+  summarise(mean = mean(votes_with_party_pct), n = n(), sd=sd(votes_with_party_pct))
+```
+
+```{r}
+t.test(votes_with_party_pct ~ gender, metadata)
+```
+### Seniority by gender
+
+```{r}
+hist(metadata$seniority)
+qqnorm(metadata$seniority)
+```
+
+```{r}
+ggplot(metadata, aes(x=gender,y=seniority)) + geom_boxplot()
+```
+
+```{r}
+t.test(seniority ~ gender, metadata)
+```
+
+
+## SCRAP
+
+## Moving on to tweets
+```{r}
+RepAbraham <- fromJSON(file = "data/RepAbraham.json")
+length(RepAbraham)
+```
+```{r}
+x <- RepAbraham[[3]]
+x[[1]]
+```
+
+
+
+
+
+
+
+
+
