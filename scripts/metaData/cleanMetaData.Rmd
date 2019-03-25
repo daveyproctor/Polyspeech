@@ -116,6 +116,6 @@ df <- df %>% select(
 
 
 ```{r}
-write.csv(paste0(dataDir, "US Politicians Cleaned.csv"), row.names = F)
+write.csv(df, paste0(dataDir, "US Politicians Cleaned.csv"), row.names = F)
 ```
 
