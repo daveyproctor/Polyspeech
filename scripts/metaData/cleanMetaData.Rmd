@@ -5,7 +5,8 @@ library(lubridate)
 
 ## Read in raw metadata
 ```{r}
-df <- read.csv("US politicians_md.csv", as.is = T)
+dataDir <- "/Users/daveyproctor/Documents/Polyspeech/data/metadata/"
+df <- read.csv(paste0(dataDir, "US politicians_md.csv"), as.is = T)
 ```
 
 ## Simple transformations
@@ -115,6 +116,6 @@ df <- df %>% select(
 
 
 ```{r}
-write.csv("US Politicians Cleaned.csv", row.names = F)
+write.csv(paste0(dataDir, "US Politicians Cleaned.csv"), row.names = F)
 ```
 
