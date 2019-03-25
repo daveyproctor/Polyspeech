@@ -1,0 +1,120 @@
+```{r}
+library(dplyr)
+library(lubridate)
+```
+
+## Read in raw metadata
+```{r}
+df <- read.csv("US politicians_md.csv", as.is = T)
+```
+
+## Simple transformations
+* Office building
+```{r}
+# Office building
+df <- df %>% mutate(office_building=office) %>% select(-office)
+# OR do: colnames(df)[colnames(df)=="office"] <- "office_building"
+```
+
+* State
+```{r}
+# State name
+df$stateAbb <- df$state
+df <- df %>% select(-c(state))
+stateConversion <- data.frame("StateName"=as.character(state.name), "abb"=as.character(state.abb), stringsAsFactors = F)
+df <- df %>% inner_join(stateConversion, by=c("stateAbb" = "abb")) %>% mutate(state=StateName) %>% select(-StateName)
+```
+
+```{r}
+df%>% select(state, stateAbb)
+```
+
+* Age
+```{r}
+# calculate ages from date of birth
+age <- function(dob, age.day = today(), units = "years", floor = TRUE) {
+    calc.age = interval(dob, age.day) / duration(num = 1, units = units)
+    if (floor) return(as.integer(floor(calc.age)))
+    return(calc.age)
+}
+my.dob <- as.Date('1983-10-20')
+
+df$age <- age(df$date_of_birth)
+```
+
+
+* Reelected people appear multiple times
+```{r}
+dups <- df %>% group_by(first_name, last_name, state) %>% summarise(n=n())
+sort(table(dups$n))
+dups[dups$n==3,]
+```
+
+```{r}
+# Take first of duplicates
+df <- df %>% group_by(first_name, last_name, state) %>% filter(row_number()==1)
+```
+
+* Only take Reps and Senators
+```{r}
+table(df$title)
+table(df$filename)
+# df %>% arrange()
+```
+
+```{r}
+df <- df[(df$title != "Delegate") & (df$title != "Resident Commisioner"),]
+df$is_senator <- F
+df$is_representative <- F
+df[grep("Senator*", df$title),"is_senator"] <- T
+# OR do: df %>% mutate(is_senator=(length(grep("Senator*", title))==1)) %>% select(title, is_senator)
+df[grep("Representative", df$title),"is_representative"] <- T
+```
+
+* Keep empty twitter account people for now
+```{r}
+df[df$twitter_account == "",] %>% select(title, gender, seniority)
+```
+
+```{r}
+colnames(df)
+```
+
+* Learning what columns mean lol
+```{r}
+table(df$in_office)
+df[!df$in_office,] %>% select(title)
+```
+
+```{r}
+table(df$state_rank)
+df[df$state_rank %in% c("junior", "senior"), ] %>% select(title)
+```
+
+```{r}
+# from https://en.wikipedia.org/wiki/NOMINATE_(scaling_method)#Dimensions, 1 is conservative and -1 is liberal.
+hist(df$dw_nominate)
+```
+
+```{r}
+table(df$leadership_role)
+```
+
+* Select relevant columns
+```{r}
+df <- df %>% select(
+  # id
+  cspan_id, first_name, middle_name, last_name, suffix, twitter_account,
+  # job
+  title, in_office, leadership_role, is_senator, is_representative, state, stateAbb, district, next_election,
+  # demographic. state_rank is for senators.
+  date_of_birth, age, seniority, gender, party, state_rank,
+  # Professional behavior
+  votes_with_party_pct, missed_votes, missed_votes_pct, dw_nominate)
+```
+
+
+```{r}
+write.csv("US Politicians Cleaned.csv", row.names = F)
+```
+
