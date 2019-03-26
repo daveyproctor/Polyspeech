@@ -1,0 +1,130 @@
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+## Election data
+[Source](https://electionlab.mit.edu/data)
+```{r}
+dataDir <- "/Users/daveyproctor/Documents/Polyspeech/data/elections/"
+UsSenateElections <- read.csv(paste0(dataDir, "UsSenate/1976-2016-senate.csv"), as.is = T)
+UsHouseElections <- read.csv(paste0(dataDir, "UsHouse/1976-2016-house.csv"), as.is = T)
+StateOfficeElections <- read.csv(paste0(dataDir, "StateOffice/stateoffices2016.csv"), as.is = T)
+```
+
+* Going forward, $office gives US Senate, etc.
+* $candidate gives who won, etc.
+```{r}
+colnames(StateOfficeElections)
+colnames(UsSenateElections) == colnames(UsHouseElections)
+colnames(StateOfficeElections)[!(colnames(StateOfficeElections) %in% colnames(UsSenateElections))]
+table(StateOfficeElections$mode)
+table(UsSenateElections$office)
+```
+
+```{r}
+ElectionsDF <- plyr::rbind.fill(UsSenateElections, UsHouseElections)#, StateOfficeElections)
+df.bak <- data.frame(ElectionsDF)
+nrow(ElectionsDF)
+head(rev(sort(table(ElectionsDF$office))))
+```
+
+## Get candidate first and last name
+```{r}
+ElectionsDF$candidate <- trimws(ElectionsDF$candidate)
+length(which(ElectionsDF$candidate == ""))
+ElectionsDF <- ElectionsDF[ElectionsDF$candidate != "",]
+
+ElectionsDF$first_name <- gsub("((^ )*) .*", "\\1", ElectionsDF$candidate)
+ElectionsDF$last_name <- gsub(".* ((^ )*)", "\\1", ElectionsDF$candidate)
+
+head(ElectionsDF %>% select(first_name, last_name))
+```
+
+# Explore
+```{r}
+table(ElectionsDF$state)
+```
+
+```{r}
+table(ElectionsDF$office)
+```
+
+
+```{r}
+table(ElectionsDF$special, ElectionsDF$stage)
+```
+
+```{r}
+table(ElectionsDF$writein)
+table(ElectionsDF$version)
+```
+
+# Seemingly duplicated data?
+```{r}
+ElectionsDF <- ElectionsDF[!(ElectionsDF$candidate %in% c("Other", "scatter", "Blank Vote/Scattering", "Blank Vote/Void Vote/Scattering", "no name", "Void Vote", "Blank Vote", "Over Vote")),]
+```
+
+```{r}
+dups <- ElectionsDF %>% group_by(candidate, state, year, office) %>% summarise(n=n())
+table(dups$n)
+dups <- dups[dups$n>2,]
+dups
+rev(sort(table(dups$state)))
+table(dups$office)
+```
+
+```{r}
+ElectionsDF[ElectionsDF$candidate %in% dups$candidate,] %>% arrange(candidate, year) %>% select(candidate, year, party, candidatevotes, totalvotes, everything())
+```
+```{r}
+x <- ElectionsDF %>% group_by(candidate, state, year, office, stage, special, district) %>% summarise(n=length(unique(totalvotes)))
+table(x$n)
+ElectionsDF[ElectionsDF$candidate %in% x[x$n==2,]$candidate,] %>% select(candidate, year, everything()) %>% arrange(candidate, year)
+```
+
+
+# Dedup - groups represent distinct elections
+```{r}
+# Take the party, etc., corresponding to max candidate votes. just a heuristic.
+deduped1 <- ElectionsDF %>% group_by(candidate, state, year, office, stage, special, district) %>% filter(row_number()==which.max(candidatevotes)) %>% select(-candidatevotes, -totalvotes)
+
+# Same election multiple times usually means you ran multiple parties; all votes count towards you. totalvotes, if distinct = all the votes you're competing against.
+deduped2 <- ElectionsDF %>% group_by(candidate, state, year, office, stage, special, district) %>% summarise(
+candidatevotes=sum(candidatevotes), totalvotes=sum(unique(totalvotes))) # if different totalvotes, different subelection, see ElectionsDF[ElectionsDF$candidate=="Shelley Sekula Gibbs",]
+
+deduped2
+
+ElectionsDeduped <- deduped1 %>% inner_join(deduped2, by=c("candidate", "state", "year", "office", "stage", "special", "district"))
+```
+
+```{r}
+# Checks
+# no candidate gets more than total votes
+ElectionsDeduped[which(ElectionsDeduped$candidatevotes>ElectionsDeduped$totalvotes),]
+```
+
+```{r}
+colnames(ElectionsDF)
+```
+
+
+```{r}
+nrow(ElectionsDF)
+ElectionsCut <- ElectionsDeduped %>% select(-c(state_cen, state_ic, state_po, state_fips, version, candidate)) %>% arrange(first_name, last_name, year)
+ElectionsCut
+  # id - drop "candidate"
+  # first_name, last_name, state, year, office, stage, special, district,
+  # relvant info
+  # year
+#)
+```
+```{r}
+ElectionsCut %>% group_by(candidate, year, stage) %>% filter(n()>1) %>% arrange(candidate, year)
+# row_number()==which.max(totalvotes))
+```
+
+```{r}
+write.csv(ElectionsCut, paste0(dataDir, "US Elections Cleaned.csv"), row.names = F)
+```
+

@@ -1,0 +1,98 @@
+
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+## Frances' clean metadata
+```{r}
+dataDir <- "/Users/daveyproctor/Documents/Polyspeech/data/"
+USPoliticiansMetaDF <- read.csv(paste0(dataDir, "metadata/US Politicians Cleaned.csv"), as.is = T)
+colnames(USPoliticiansMetaDF)
+```
+
+## Clean Election data
+```{r}
+ElectionsDF <- read.csv(paste0(dataDir, "elections/US Elections Cleaned.csv"), as.is = T)
+colnames(ElectionsDF)
+nrow(ElectionsDF)
+```
+
+```{r}
+ElectionsDF <- ElectionsDF %>% mutate(vote_fraction=candidatevotes/totalvotes)
+```
+
+## After and including 2012. 4120 observations.
+* Sadly, 2016 is max year.
+```{r}
+max(ElectionsDF$year)
+ElectionsDF <- ElectionsDF[ElectionsDF$year>=2012,]
+```
+
+## Merge. 
+```{r}
+MetadataWElections <- USPoliticiansMetaDF %>% inner_join(ElectionsDF, by=c("first_name", "last_name", "state")) %>% arrange(first_name, last_name, year) %>% select(first_name, last_name, year, everything()) # %>% group_by(first_name, last_name, year) %>% filter(row_number() == which.max(totalvotes))
+MetadataWElections
+# Checks
+table(MetadataWElections$party.x, MetadataWElections$party.y)
+table(MetadataWElections$is_senator, MetadataWElections$office)
+```
+
+```{r}
+library(tidyr)
+spreadVoteFraction <- MetadataWElections %>% select(first_name, last_name, year, vote_fraction) %>% spread(year, vote_fraction)
+spreadVoteFraction
+```
+
+```{r}
+# Example of gather
+spreadVoteFraction %>% gather(year, vote_percentage, 3:5)
+```
+```{r}
+colnames(spreadVoteFraction) <- gsub("(201.)", "\\1_vote_percentage", colnames(spreadVoteFraction))
+spreadVoteFraction
+```
+
+```{r}
+MetadataSpreadElections <- USPoliticiansMetaDF %>% inner_join(spreadVoteFraction, by=c("first_name", "last_name"))
+MetadataSpreadElections
+```
+
+```{r}
+write.csv(MetadataSpreadElections, paste0(dataDir, "metadata/US Politicians Cleaned W Elections.csv"), row.names = F)
+```
+
+# OTHER, OG:
+
+* 100 senators, 447 house members
+```{r}
+countIndivsElections <- MetadataWElections %>% group_by(first_name, last_name, office) %>% dplyr::summarise(n = n())
+
+sum(countIndivsElections[countIndivsElections$office=="US Senate","n"])
+nrow(countIndivsElections[countIndivsElections$office=="US Senate",])
+
+sum(countIndivsElections[countIndivsElections$office=="US House","n"])
+nrow(countIndivsElections[countIndivsElections$office=="US House",])
+```
+
+```{r}
+table(MetadataWElections$in_office)
+```
+
+## What am I even getting from this data collected by Frances??
+* Different levels of office not as interesting as who won/lost based on social media content.
+* Just guess at their genders from their first name.
+```{r}
+colnames(USPoliticiansMetaDF)
+USPoliticiansMetaDF %>% select(gender)
+```
+
+
+```{r}
+table(MetadataWElections$stage)
+```
+
+```{r}
+MetadataWElections
+```
+
