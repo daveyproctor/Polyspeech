@@ -4,18 +4,109 @@ output:
   html_notebook: default
   html_document: default
 ---
+```{r}
+library(ggplot2)
+library(dplyr)
+```
 
 ## Friday May 4, 2018 with all analysis
 ## Data cleaning
 ```{r}
-congress = read.csv('more-data/all_w_IBM_50.csv')
-# clean data - convert to numeric
-congress[is.na(congress)] = 0
-congress$gender = as.numeric(congress$gender)
-congress$type = as.numeric(congress$type)
-congress$party = as.numeric(congress$party)
+dataDir <- "/Users/daveyproctor/Documents/Polyspeech/data/tweets/analysis/IBM/"
+congress = read.csv(paste0(dataDir, 'all_w_IBM_50.csv'), as.is=T)
+emotions <- c("Sadness", "Joy", "Tentative", "Analytical", "Confident", "Fear", "Anger")
+congress[emotions][is.na(congress[emotions])] <- 0
 congress
+# clean data - convert to numeric
+# congress[is.na(congress)] = 0
+# congress$gender = as.numeric(congress$gender)
+# congress$type = as.numeric(congress$type)
+# congress$party = as.numeric(congress$party)
+# congress
 ```
+
+```{r}
+congressGrouped <- congress %>% group_by(first_name, last_name) %>% summarise(gender = gender[[1]], Sadness = mean(Sadness), Joy=mean(Joy), Tentative=mean(Tentative), Analytical=mean(Analytical), Confident=mean(Confident), Fear=mean(Fear), Anger=mean(Anger))
+congressGrouped
+```
+
+
+
+```{r}
+# Women more analytical
+congressGrouped %>% ggplot(aes(x=as.factor(gender), y=Analytical)) + geom_boxplot() + theme(axis.title.x=element_blank())
+t.test(Analytical ~ gender, data=congressGrouped)
+```
+
+```{r}
+# nothing for anger
+t.test(Anger ~ gender, data=congressGrouped)
+```
+
+```{r}
+pTent <- congressGrouped %>% ggplot(aes(x=as.factor(gender), y=Tentative)) + geom_boxplot() + theme(axis.title.x=element_blank())
+
+t.test(Tentative ~ gender, data=congressGrouped)
+```
+
+```{r}
+pConf <- congressGrouped %>% ggplot(aes(x=as.factor(gender), y=Confident)) + geom_boxplot() + theme(axis.title.x=element_blank())
+
+t.test(Confident ~ gender, data=congressGrouped)
+```
+
+```{r}
+library(gridExtra)
+grid.arrange(pTent, pConf, nrow = 1)
+```
+
+
+
+```{r}
+w <- rev(order(congress$Analytical))[1:5]
+set.seed(12)
+w2 <- sample(which(congress$Analytical==0), 5)
+congress[c(w,c("Analytical","IBM_text")]
+congress[w2,c("Analytical","IBM_text")]
+```
+
+
+```{r}
+congress2 <- data.frame(congress)
+congress2$Confident <- as.factor(congress2$Confident>0)
+```
+
+```{r}
+congress2$retweet <- log(1+congress$tweet_retweet_count)
+x <- congress2 %>% group_by(gender, Confident) %>% summarise(retweet=mean(retweet))
+x
+x %>% ggplot(aes(x=gender, y=retweet, color=Confident)) + geom_point()
+```
+
+```{r}
+congress2$retweet <- log(1+log(1+congress$tweet_retweet_count))
+# congress2$retweet <- congress$tweet_favorite_count
+congress2 %>% ggplot(aes(x=gender, y=retweet, color=Confident)) + geom_boxplot()
+```
+
+```{r}
+congress3 <- as.data.frame(congress)
+congress3$confReward <- log(1+log(1+congress3$tweet_retweet_count)) * congress3$Confident
+
+confCongress <- congress3 %>% group_by(first_name, last_name) %>% summarise(gender=gender[[1]], confReward=mean(confReward))
+#%>% mutate_each(funs(scale), confReward) 
+
+# confCongress$confReward <- scale(confCongress$confReward)
+
+confCongress %>% ggplot(aes(y=confReward, fill=gender)) + geom_boxplot()
+```
+
+```{r}
+t.test(confReward ~ gender, data=confCongress)
+```
+
+
+
 
 ### Take rates of tag
 ```{r}
