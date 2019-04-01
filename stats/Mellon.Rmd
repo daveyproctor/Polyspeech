@@ -1,0 +1,150 @@
+---
+title: "The Political Glass Ceiling Meets Twitter:"
+subtitle: "Gendered Differences in U.S. Politicians' Strategies and Rewards on Social Media"
+output: beamer_presentation
+author: Davey Proctor
+urlcolor: blue
+date: April 2, 2019
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, results='hide', message=FALSE, cache = T, tidy.opts=list(width.cutoff=80),tidy=TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+# Motivation
+## The glass ceiling in politics
+* 25% of the U.S. Senate are women, and 23% of the House are women.
+* "It seems unlikely that Hillary Clinton would be where she is in politics if she had mothered children with three different fathers. But this did not seem to pose an obstacle for Donald Trump." (Teele, Kalla, & Rosenbluth, 2015)
+
+# Research Questions
+* Do female politicians use speech in social media differently than men?
+  * Are there sub-demographic effects, such as impacts of geography, party affiliation, seniority, level of office, or age?
+* What explains these effects, or lack thereof?
+  * How might rewards such as retweets and favorites impact a politician's behavior?
+  * Are candidates more electable if they conform to stereotypical speech patterns?
+* What policy aimed at social media, campaigning, etc., can positively influence the gender disparity in U.S. politics?
+
+# Literature
+## Gendered speech
+* "If a little girl 'talks rough' like a boy, she will normally be ostracized, scolded, or made fun of." On the other hand, "If the little girl learns her lesson well, [then by adulthood she] will be accused of being unable to speak precisely or to express her- self forcefully."(Lakoff, 1973)
+
+# Method
+## IBM Watson
+![Watson Wins Jeopardy! 2011](Mellon_pics/IBM.jpg)
+
+# IBM Watson
+## Emotions
+* "Sadness", "Joy", "Tentative", "Analytical", "Confident", "Fear", "Anger"
+
+```{r}
+dataDir <- "/Users/daveyproctor/Documents/Polyspeech/data/tweets/analysis/IBM/"
+congress = read.csv(paste0(dataDir, 'all_w_IBM_50.csv'), as.is=T)
+emotions <- c("Sadness", "Joy", "Tentative", "Analytical", "Confident", "Fear", "Anger")
+congress[emotions][is.na(congress[emotions])] <- 0
+congress$tweet_id <- as.character(congress$tweet_id)
+congress
+```
+
+# Watson "Confident" Tones
+## Example Tweets
+
+* "@LisaRemillard Absolutely."
+* "Energy, passion and conviction!"
+* "We all want answers."
+```{r}
+w <- rev(order(congress$Confident))[1:10]
+set.seed(12)
+w2 <- sample(which(congress$Confident==0), 5)
+print(congress[w,c("IBM_text", "tweet_id")])
+```
+
+# Confidence: Non-Examples
+* "Exciting news for #TN03!"
+* "Happy #SmallBusinessWeek to the more than 500,000 #AZsmallbiz who employ nearly 1 million Arizonans!"
+```{r}
+print(congress[w2,"IBM_text"])#, width=.5)
+```
+
+
+# Results
+
+```{r}
+congressGrouped <- congress %>% group_by(first_name, last_name) %>% summarise(gender = gender[[1]], Sadness = mean(Sadness), Joy=mean(Joy), Tentative=mean(Tentative), Analytical=mean(Analytical), Confident=mean(Confident), Fear=mean(Fear), Anger=mean(Anger))
+congressGrouped
+```
+
+## Women More Analytical
+```{r}
+congressGrouped %>% ggplot(aes(x=as.factor(gender), y=Analytical)) + geom_boxplot() + theme(axis.title.x=element_blank())
+t.test(Analytical ~ gender, data=congressGrouped)
+```
+
+```{r}
+# nothing for anger
+t.test(Anger ~ gender, data=congressGrouped)
+```
+
+```{r}
+pTent <- congressGrouped %>% ggplot(aes(x=as.factor(gender), y=Tentative)) + geom_boxplot() + theme(axis.title.x=element_blank())
+
+t.test(Tentative ~ gender, data=congressGrouped)
+```
+
+```{r}
+pConf <- congressGrouped %>% ggplot(aes(x=as.factor(gender), y=Confident)) + geom_boxplot() + theme(axis.title.x=element_blank())
+
+t.test(Confident ~ gender, data=congressGrouped)
+```
+
+# Results
+## Equal Confidence and Tentativeness
+```{r}
+library(gridExtra)
+grid.arrange(pConf, pTent, nrow = 1)
+```
+
+# Results: Gauging "Retweet" Rewards
+```{r}
+congress2 <- data.frame(congress)
+congress2$Confident <- as.factor(congress2$Confident>0)
+```
+
+## View 1
+```{r}
+congress2$retweet <- log(1+congress$tweet_retweet_count)
+x <- congress2 %>% group_by(gender, Confident) %>% summarise(retweet=mean(retweet))
+x
+x %>% ggplot(aes(x=gender, y=retweet, color=Confident)) + geom_point()
+```
+
+
+# Results: Gauging "Retweet" Rewards
+## View 2
+```{r}
+congress2$retweet <- log(1+log(1+congress$tweet_retweet_count))
+# congress2$retweet <- congress$tweet_favorite_count
+congress2 %>% ggplot(aes(x=gender, y=retweet, color=Confident)) + geom_boxplot()
+```
+
+# Results: Gauging "Retweet" Rewards
+## View 3
+```{r}
+congress3 <- as.data.frame(congress)
+congress3$confReward <- log(1+log(1+congress3$tweet_retweet_count)) * congress3$Confident
+
+confCongress <- congress3 %>% group_by(first_name, last_name) %>% summarise(gender=gender[[1]], confReward=mean(confReward))
+#%>% mutate_each(funs(scale), confReward) 
+
+# confCongress$confReward <- scale(confCongress$confReward)
+
+confCongress %>% ggplot(aes(y=confReward, fill=gender)) + geom_boxplot()
+```
+
+```{r}
+t.test(confReward ~ gender, data=confCongress)
+```
