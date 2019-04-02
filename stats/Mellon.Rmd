@@ -16,25 +16,43 @@ library(ggplot2)
 library(dplyr)
 ```
 
-# Motivation
-## The glass ceiling in politics
-* Only 25% of the U.S. Senate are women, and 23% of the House are women.
+# The glass ceiling in politics
+* In the U.S., one in five members of congress are women.
+<!-- * Only 25% of the U.S. Senate are women, and 23% of the House are women. -->
 * Never a female U.S. president
 
 # Literature
-## Glass ceiling
-* "It seems unlikely that Hillary Clinton would be where she is in politics if she had mothered children with three different fathers. But this did not seem to pose an obstacle for Donald Trump."(Teele, Kalla, & Rosenbluth, 2017)
+## Glass ceiling - causes
+* Outright voter hostility?
+    * "But she's a woman."
+* Gender norms?
+    * "It seems unlikely that Hillary Clinton would be where she is in politics if she had mothered children with three different fathers. But this did not seem to pose an obstacle for Donald Trump."(Teele, Kalla, & Rosenbluth, 2017)
 
 # Literature
-## The role of speech
+## Gendered speech
 * "If a little girl 'talks rough' like a boy, she will normally be ostracized, scolded, or made fun of." On the other hand, "If the little girl learns her lesson well, [then by adulthood she] will be accused of being unable to speak precisely or to express herself forcefully."(Lakoff, 1973)
 
+# Literature
+## Lakoff, cont'd:
+* Oh dear, you've put the peanut butter in the refrigerator again.
+* Shit, you've put the peanut butter in the refrigerator again.
+
+# Literature
+## Social media and gendered speech
+* "...among the most visible users[,] being perceived as male is strongly associated with more visibility. Our results suggest that gender presented in social media profiles likely frame interactions as well as perpetuates old inequalities online."(Nilizadeh et al., 2016)
+
 # Research Questions
-* Strategies: Do female politicians use speech in social media differently than men? Concious or internalized?
-    * Are there sub-demographic effects, such as impacts of geography, party affiliation, seniority, level of office, or age?
+
+<!-- There's been a lot of work showing that social media is increasingly important in elections; let's go to the highest level. -->
+
+* Strategies: Do female politicians use speech in social media differently than men?
+    
+    <!-- Concious or internalized? -->
+    <!-- * Are there sub-demographic effects, such as impacts of geography, party affiliation, seniority, level of office, or age? -->
 * Rewards: What explains these effects?
-    * How might rewards such as retweets and favorites impact a politician's behavior?
-    * Are candidates more electable if they conform to stereotypical speech patterns?
+
+    <!-- * How might rewards such as retweets and favorites impact a politician's behavior? -->
+    <!-- * Are candidates more electable if they conform to stereotypical speech patterns? -->
 * Policy: What policy aimed at social media, campaigning, etc., can positively influence the gender disparity in U.S. politics?
 
 # Data
@@ -102,27 +120,27 @@ t.test(Anger ~ gender, data=congressGrouped)
 ```
 
 ```{r}
-pTent <- congressGrouped %>% ggplot(aes(x=as.factor(gender), y=Tentative)) + geom_boxplot() + theme(axis.title.x=element_blank())
+pTent <- congressGrouped %>% ggplot(aes(x=as.factor(gender), y=Tentative)) + geom_boxplot() + theme(axis.title.x=element_blank()) + theme(plot.title = element_text(hjust = 0.5)) + xlab("Gender") #+ ggtitle("Tentativeness Scores by Gender")
 
 t.test(Tentative ~ gender, data=congressGrouped)
 ```
 
 ```{r}
-pConf <- congressGrouped %>% ggplot(aes(x=as.factor(gender), y=Confident)) + geom_boxplot() + theme(axis.title.x=element_blank())
+pConf <- congressGrouped %>% ggplot(aes(x=as.factor(gender), y=Confident)) + geom_boxplot() + theme(axis.title.x=element_blank()) + theme(plot.title = element_text(hjust = 0.5)) + xlab("Gender") #+ ggtitle("Confidence Scores by Gender")
 
 t.test(Confident ~ gender, data=congressGrouped)
 ```
 
-## Equal Confidence and Tentativeness
 ```{r}
+library(grid)
 library(gridExtra)
-grid.arrange(pConf, pTent, nrow = 1)
+grid.arrange(pConf, pTent, nrow = 1, top = textGrob("Confidence and Tentativeness",gp=gpar(fontsize=20,font=3)))
 ```
 
 # Tweet strategies
-## Women as or more "analytical"
 ```{r}
-congressGrouped %>% ggplot(aes(x=as.factor(gender), y=Analytical)) + geom_boxplot() + theme(axis.title.x=element_blank())
+congressGrouped %>% ggplot(aes(x=gender, y=Analytical)) + geom_boxplot() + theme(plot.title = element_text(hjust = 0.5)) + xlab("Gender") + ggtitle("Women as or more \"Analytical\"")
+#+ theme(axis.title.x=element_blank())
 t.test(Analytical ~ gender, data=congressGrouped)
 ```
 
@@ -141,36 +159,18 @@ metaWTagsDF %>% select(twitter_account, gender, votes_with_party_pct, anger)
 ## Subcultural effects
 
 ```{r}
-metaWTagsDF%>%filter(party %in% c("D","R")) %>% ggplot(aes(x=gender,y=anger,fill=party)) + geom_boxplot() + theme(plot.title = element_text(hjust = 0.5)) + xlab("Gender") + ylab("Anger") + ggtitle(paste("Anger", "by party, gender")) + scale_fill_manual(values=c("blue","red"))
+metaWTagsDF%>%filter(party %in% c("D","R")) %>% ggplot(aes(x=gender,y=anger,fill=party)) + geom_boxplot(na.rm = T) + theme(plot.title = element_text(hjust = 0.5)) + xlab("Gender") + ylab("Anger") + ggtitle(paste("Anger", "by party, gender")) + scale_fill_manual(values=c("blue","red")) + ylim(2.5,11)
 ```
 
 
-# Rewards: "Retweet" as Approval Metric
+<!-- # Rewards: "Retweet" as Approval Metric -->
 ```{r}
 congress2 <- data.frame(congress)
 congress2$Confident <- as.factor(congress2$Confident>0)
 ```
 
-## View 1
-```{r}
-congress2$retweet <- log(1+congress$tweet_retweet_count)
-x <- congress2 %>% group_by(gender, Confident) %>% summarise(retweet=mean(retweet))
-x
-x %>% ggplot(aes(x=gender, y=retweet, color=Confident)) + geom_point()
-```
-
-
-# Retweet Rewards
-## View 2
-```{r}
-congress2$retweet <- log(1+log(1+congress$tweet_retweet_count))
-# congress2$retweet <- congress$tweet_favorite_count
-congress2 %>% ggplot(aes(x=gender, y=retweet, color=Confident)) + geom_boxplot()
-```
-
-# Retweet Rewards
-## View 3
-```{r}
+<!-- ## View 1 -->
+```{r, eval=F}
 congress3 <- as.data.frame(congress)
 congress3$confReward <- log(1+log(1+congress3$tweet_retweet_count)) * congress3$Confident
 
@@ -182,6 +182,24 @@ confCongress <- congress3 %>% group_by(first_name, last_name) %>% summarise(gend
 confCongress %>% ggplot(aes(y=confReward, fill=gender)) + geom_boxplot()
 ```
 
+<!-- # Retweet Rewards -->
+# Rewards: "Retweet" as Approval Metric
+<!-- ## View 2 -->
+```{r}
+congress2$retweet <- log(1+congress$tweet_retweet_count)
+x <- congress2 %>% group_by(gender, Confident) %>% summarise(retweet=mean(retweet))
+x
+x %>% ggplot(aes(x=gender, y=retweet, color=Confident)) + geom_point(size=4) + theme(plot.title = element_text(hjust = 0.5)) + xlab("Gender") + ylab("Log retweet") + ggtitle(paste("Rewards for Confidence"))
+```
+
+<!-- # Retweet Rewards -->
+<!-- ## View 2 -->
+```{r, eval=F}
+congress2$retweet <- log(1+log(1+congress$tweet_retweet_count))
+# congress2$retweet <- congress$tweet_favorite_count
+congress2 %>% ggplot(aes(x=gender, y=retweet, color=Confident)) + geom_boxplot()
+```
+
 ```{r}
 t.test(confReward ~ gender, data=confCongress)
 ```
@@ -191,26 +209,52 @@ t.test(confReward ~ gender, data=confCongress)
 
     <!-- * Politicians at the highest level have teams of social media coordinators. -->
 * Emotion towards what?
-    * Do norms actually limit message?
-    
+
+    <!-- * Do norms actually limit message? -->
     <!-- * Are women more apt to be confident about -->
 * Positive retweet reception - by whom?
 
-# Future directions
+<!-- # Glass Ceiling: Chicken and Egg -->
+<!-- * Do men win more with better social media, or  -->
+
+# Glass Ceiling - Difficulties
+* Different speech is not necessarily less successful speech
+    * Comparison to the "male norm" can be problematic.
+<!-- * Similar speech is not necessarily similarly successful -->
+
+# Future Directions
 * Learn topics of tweets and align emotion with different topics
 * Directly align tweet behavior to election results
 * Expand number and diversity of individuals + timeframe of tweets
 
 # Policy
-* Avoid reinforcing norms
-
-    <!-- * Potentially problematic for campaigns to learn what's acceptable and tailor their message / tones. -->
-* Promoting content "fairly"
-* Addressing "toxicity" online
+<!-- * Do campaigns reinforce norms? -->
+* Social media companies:
+    * Promoting content "fairly"
+    * Addressing "toxicity" online
 
 # "Follow Me"
 * [Paper on SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3294793)
 * [Project on GitHub](https://github.com/daveyproctor/Polyspeech)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
