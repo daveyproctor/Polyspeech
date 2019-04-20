@@ -3,6 +3,11 @@ library(dplyr)
 library(ggplot2)
 ```
 
+```{r}
+# read.csv("https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/PEJ5QU#", as.is=T)
+```
+
+
 ## Election data
 [Source](https://electionlab.mit.edu/data)
 ```{r}
@@ -121,6 +126,7 @@ ElectionsCut
 ```
 ```{r}
 ElectionsCut %>% group_by(candidate, year, stage) %>% filter(n()>1) %>% arrange(candidate, year)
+ElectionsCut %>% group_by(candidate, year, state) %>% filter(n()>1) %>% arrange(candidate, year)
 # row_number()==which.max(totalvotes))
 ```
 
