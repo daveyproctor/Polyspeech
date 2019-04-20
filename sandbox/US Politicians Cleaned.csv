@@ -1,0 +1,652 @@
+"cspan_id","first_name","middle_name","last_name","suffix","twitter_account","title","in_office","leadership_role","is_senator","is_representative","state","stateAbb","district","next_election","date_of_birth","age","seniority","gender","party","state_rank","votes_with_party_pct","missed_votes","missed_votes_pct","dw_nominate"
+76236,"Ralph","","Abraham","","RepAbraham","Representative",TRUE,"",FALSE,TRUE,"Louisiana","LA","5",2018,"1954-09-16 00:00:00",64,4,"M","R","",97.11,8,0.82,0.497
+76386,"Alma","","Adams","","RepAdams","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","12",2018,"1946-05-27 00:00:00",72,6,"F","D","",95.68,26,2.66,-0.465
+45516,"Robert","B.","Aderholt","","Robert_Aderholt","Representative",TRUE,"",FALSE,TRUE,"Alabama","AL","4",2018,"1965-07-22 00:00:00",53,22,"M","R","",96.62,30,3.07,0.36
+79994,"Pete","","Aguilar","","reppeteaguilar","Representative",TRUE,"",FALSE,TRUE,"California","CA","31",2018,"1979-06-19 00:00:00",39,4,"M","D","",92.13,10,1.02,-0.284
+62545,"Rick","","Allen","","reprickallen","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","12",2018,"1951-11-07 00:00:00",67,4,"M","R","",97.83,8,0.82,0.626
+1033767,"Justin","","Amash","","","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","3",2018,"1980-04-18 00:00:00",38,8,"M","R","",69.95,1,0.1,0.658
+62817,"Mark","","Amodei","","MarkAmodeiNV2","Representative",TRUE,"",FALSE,TRUE,"Nevada","NV","2",2018,"1958-06-12 00:00:00",60,8,"M","R","",95.36,28,2.87,0.378
+1016482,"Jodey","","Arrington","","RepArrington","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","19",2018,"1972-03-09 00:00:00",47,2,"M","R","",98.45,10,1.02,0.555
+44883,"Brian","","Babin","","RepBrianBabin","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","36",2018,"1948-03-23 00:00:00",71,4,"M","R","",95.2,17,1.74,0.717
+103442,"Don","","Bacon","","RepDonBacon","Representative",TRUE,"",FALSE,TRUE,"Nebraska","NE","2",2018,"1963-08-16 00:00:00",55,2,"M","R","",96,1,0.1,0.442
+89806,"Jim","","Banks","","RepJimBanks","Representative",TRUE,"",FALSE,TRUE,"Indiana","IN","3",2018,"1979-07-16 00:00:00",39,2,"M","R","",96.92,2,0.2,0.668
+29618,"Lou","","Barletta","","RepLouBarletta","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","11",2018,"1956-01-28 00:00:00",63,8,"M","R","",94.81,70,7.17,0.275
+61848,"Andy","","Barr","","RepAndyBarr","Representative",TRUE,"",FALSE,TRUE,"Kentucky","KY","6",2018,"1973-07-24 00:00:00",45,6,"M","R","",96.23,20,2.05,0.486
+104730,"Nanette","","Barragán","","RepBarragan","Representative",TRUE,"",FALSE,TRUE,"California","CA","44",2018,"1976-09-15 00:00:00",42,2,"F","D","",94.08,30,3.07,-0.537
+5248,"Joe","L.","Barton","","RepJoeBarton","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","6",2018,"1949-09-15 00:00:00",69,34,"M","R","",95.57,27,2.77,0.528
+62502,"Karen","","Bass","","RepKarenBass","Representative",TRUE,"",FALSE,TRUE,"California","CA","37",2018,"1953-10-03 00:00:00",65,8,"F","D","",93.16,69,7.07,-0.57
+67294,"Joyce","","Beatty","","RepBeatty","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","3",2018,"1950-03-12 00:00:00",69,6,"F","D","",93.91,57,5.84,-0.439
+26567,"Xavier","","Becerra","","RepBecerra","Representative",FALSE,"",FALSE,TRUE,"California","CA","34",2018,"1958-01-26 00:00:00",61,26,"M","D","",89.47,42,68.85,-0.512
+1033636,"Ami","","Bera","","RepBera","Representative",TRUE,"",FALSE,TRUE,"California","CA","7",2018,"1965-03-02 00:00:00",54,6,"M","D","",90.56,1,0.1,-0.225
+1020529,"Jack","","Bergman","","RepJackBergman","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","1",2018,"1947-02-02 00:00:00",72,2,"M","R","",93.1,5,0.51,0.449
+21141,"Donald","","Beyer","","repdonbeyer","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","8",2018,"1950-06-20 00:00:00",68,4,"M","D","",93.97,48,4.92,-0.395
+105145,"Andy","","Biggs","","RepAndyBiggsAZ","Representative",TRUE,"",FALSE,TRUE,"Arizona","AZ","5",2018,"1958-11-07 00:00:00",60,2,"M","R","",88.48,4,0.41,0.929
+1022873,"Gus","","Bilirakis","","RepGusBilirakis","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","12",2018,"1963-02-08 00:00:00",56,14,"M","R","",98.16,50,5.12,0.402
+26194,"Sanford","D.","Bishop","Jr.","SanfordBishop","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","2",2018,"1947-02-04 00:00:00",72,26,"M","D","",90.53,36,3.69,-0.281
+78290,"Mike","","Bishop","","RepMikeBishop","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","8",2018,"1967-03-18 00:00:00",52,4,"M","R","",94.49,14,1.43,0.448
+1003621,"Rob","","Bishop","","RepRobBishop","Representative",TRUE,"",FALSE,TRUE,"Utah","UT","1",2018,"1951-07-13 00:00:00",67,16,"M","R","",96.63,26,2.66,0.53
+9268964,"Diane","","Black","","RepDianeBlack","Representative",TRUE,"",FALSE,TRUE,"Tennessee","TN","6",2018,"1951-01-16 00:00:00",68,8,"F","R","",97.59,146,14.96,0.581
+31226,"Marsha","","Blackburn","","MarshaBlackburn","Representative",TRUE,"",FALSE,TRUE,"Tennessee","TN","7",2018,"1952-06-06 00:00:00",66,16,"F","R","",95.82,67,6.86,0.616
+623771,"Rod","","Blum","","RepRodBlum","Representative",TRUE,"",FALSE,TRUE,"Iowa","IA","1",2018,"1955-04-26 00:00:00",63,4,"M","R","",90.17,20,2.05,0.52
+43809,"Earl","","Blumenauer","","BlumenauerMedia","Representative",TRUE,"",FALSE,TRUE,"Oregon","OR","3",2018,"1948-08-16 00:00:00",70,24,"M","D","",92.18,42,4.3,-0.429
+104772,"Lisa","","Blunt Rochester","","RepBRochester","Representative",TRUE,"",FALSE,TRUE,"Delaware","DE","At-Large",2018,"1962-02-10 00:00:00",57,2,"F","D","",94.79,17,1.74,-0.368
+63966,"Suzanne","","Bonamici","","RepBonamici","Representative",TRUE,"",FALSE,TRUE,"Oregon","OR","1",2018,"1954-10-14 00:00:00",64,8,"F","D","",93.01,3,0.31,-0.386
+76176,"Mike","","Bost","","RepBost","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","12",2018,"1960-12-30 00:00:00",58,4,"M","R","",91.56,5,0.51,0.262
+76428,"Brendan","","Boyle","","RepBrendanBoyle","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","13",2018,"1977-02-06 00:00:00",42,4,"M","D","",93.71,54,5.53,-0.384
+45749,"Kevin","","Brady","","RepKevinBrady","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","8",2018,"1955-04-11 00:00:00",63,22,"M","R","",97.86,42,4.3,0.518
+55227,"Robert","A.","Brady","","RepBrady","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","1",2018,"1945-04-07 00:00:00",74,22,"M","D","",94.52,45,4.61,-0.482
+75248,"David","A.","Brat","","RepDaveBrat","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","7",2018,"1964-07-27 00:00:00",54,6,"M","R","",95.33,12,1.23,0.843
+79705,"Jim","","Bridenstine","","RepJBridenstine","Representative",FALSE,"",FALSE,TRUE,"Oklahoma","OK","1",2018,"1975-06-15 00:00:00",43,6,"M","R","",96.61,328,38.18,0.69
+623720,"Susan","","Brooks","","SusanWBrooks","Representative",TRUE,"",FALSE,TRUE,"Indiana","IN","5",2018,"1960-08-25 00:00:00",58,6,"F","R","",96.57,13,1.33,0.376
+94888,"Mo","","Brooks","","RepMoBrooks","Representative",TRUE,"",FALSE,TRUE,"Alabama","AL","5",2018,"1954-04-29 00:00:00",64,8,"M","R","",93.11,76,7.79,0.599
+1029537,"Anthony","","Brown","","RepAnthonyBrown","Representative",TRUE,"",FALSE,TRUE,"Maryland","MD","4",2018,"1961-11-21 00:00:00",57,2,"M","D","",94.16,52,5.33,-0.354
+79783,"Julia","","Brownley","","JuliaBrownley26","Representative",TRUE,"",FALSE,TRUE,"California","CA","26",2018,"1952-08-28 00:00:00",66,6,"F","D","",93.81,23,2.36,-0.279
+1021626,"Vern","","Buchanan","","VernBuchanan","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","16",2018,"1951-05-08 00:00:00",67,12,"M","R","",95.94,64,6.56,0.36
+78285,"Ken","","Buck","","RepKenBuck","Representative",TRUE,"",FALSE,TRUE,"Colorado","CO","4",2018,"1959-02-16 00:00:00",60,4,"M","R","",91.27,25,2.56,0.728
+61837,"Larry","","Bucshon","","RepLarryBucshon","Representative",TRUE,"",FALSE,TRUE,"Indiana","IN","8",2018,"1962-05-31 00:00:00",56,8,"M","R","",95.03,11,1.13,0.388
+103513,"Ted","","Budd","","RepTedBudd","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","13",2018,"1971-10-21 00:00:00",47,2,"M","R","",95.57,5,0.51,0.814
+1003620,"Michael","C.","Burgess","","MichaelCBurgess","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","26",2018,"1950-12-23 00:00:00",68,16,"M","R","",93.51,20,2.05,0.57
+63949,"Cheri","","Bustos","","RepCheri","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","17",2018,"1961-10-17 00:00:00",57,6,"F","D","",91.31,9,0.92,-0.238
+1013540,"G.","K.","Butterfield","","GKButterfield","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","1",2018,"1947-04-27 00:00:00",71,16,"M","D","",94.17,67,6.86,-0.404
+73486,"Bradley","","Byrne","","RepByrne","Representative",TRUE,"",FALSE,TRUE,"Alabama","AL","1",2018,"1955-02-16 00:00:00",64,6,"M","R","",97.93,8,0.82,0.539
+26709,"Ken","","Calvert","","KenCalvert","Representative",TRUE,"",FALSE,TRUE,"California","CA","42",2018,"1953-06-08 00:00:00",65,26,"M","R","",96.99,12,1.23,0.348
+56760,"Michael","E.","Capuano","","RepMikeCapuano","Representative",TRUE,"",FALSE,TRUE,"Massachusetts","MA","7",2018,"1952-01-09 00:00:00",67,20,"M","D","",93.33,17,1.74,-0.579
+104728,"Salud","","Carbajal","","RepCarbajal","Representative",TRUE,"",FALSE,TRUE,"California","CA","24",2018,"1964-11-18 00:00:00",54,2,"M","D","",92.21,26,2.66,-0.32
+63934,"Tony","","CÃ¡rdenas","","RepCardenas","Representative",TRUE,"",FALSE,TRUE,"California","CA","29",2018,"1963-03-31 00:00:00",56,6,"M","D","",93.64,33,3.38,-0.375
+1027364,"AndrÃ©","","Carson","","RepAndreCarson","Representative",TRUE,"",FALSE,TRUE,"Indiana","IN","7",2018,"1974-10-16 00:00:00",44,12,"M","D","",93.33,32,3.28,-0.431
+1004257,"John","","Carter","","JudgeCarter","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","31",2018,"1941-11-06 00:00:00",77,16,"M","R","",97.35,33,3.38,0.467
+76158,"Buddy","","Carter","","RepBuddyCarter","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","1",2018,"1957-09-06 00:00:00",61,4,"M","R","",94.12,24,2.46,0.566
+79865,"Matt","","Cartwright","","RepCartwright","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","17",2018,"1961-05-01 00:00:00",57,6,"M","D","",93.18,8,0.82,-0.392
+1022874,"Kathy","","Castor","","USRepKCastor","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","14",2018,"1966-08-20 00:00:00",52,12,"F","D","",94.79,35,3.59,-0.434
+63974,"JoaquÃ­n","","Castro","","JoaquinCastrotx","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","20",2018,"1974-09-16 00:00:00",44,6,"M","D","",93.28,9,0.92,-0.395
+36705,"Steven","J.","Chabot","","RepSteveChabot","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","1",2018,"1953-01-22 00:00:00",66,8,"M","R","",97.74,3,0.31,0.584
+1031362,"Jason","","Chaffetz","","JasonInTheHouse","Representative",FALSE,"",FALSE,TRUE,"Utah","UT","3",2018,"1967-03-26 00:00:00",52,10,"M","R","",98.33,45,13.08,0.647
+86147,"Liz","","Cheney","","RepLizCheney","Representative",TRUE,"",FALSE,TRUE,"Wyoming","WY","At-Large",2018,"1966-07-28 00:00:00",52,2,"F","R","",96.25,16,1.64,0.536
+92573,"Judy","","Chu","","RepJudyChu","Representative",TRUE,"",FALSE,TRUE,"California","CA","27",2018,"1953-07-07 00:00:00",65,12,"F","D","",93.48,25,2.56,-0.498
+1033865,"David","","Cicilline","","RepCicilline","Representative",TRUE,"",FALSE,TRUE,"Rhode Island","RI","1",2018,"1961-07-15 00:00:00",57,8,"M","D","",94.47,17,1.74,-0.394
+73178,"Katherine","","Clark","","RepKClark","Representative",TRUE,"",FALSE,TRUE,"Massachusetts","MA","5",2018,"1963-07-17 00:00:00",55,6,"F","D","",95.04,29,2.97,-0.493
+1022875,"Yvette","D.","Clarke","","RepYvetteClarke","Representative",TRUE,"",FALSE,TRUE,"New York","NY","9",2018,"1964-11-21 00:00:00",54,12,"F","D","",93.4,21,2.15,-0.609
+88332,"William","Lacy","Clay","","","Representative",TRUE,"",FALSE,TRUE,"Missouri","MO","1",2018,"1956-07-27 00:00:00",62,18,"M","D","",93.43,48,4.92,-0.485
+10933,"Emanuel","","Cleaver","II","RepCleaver","Representative",TRUE,"",FALSE,TRUE,"Missouri","MO","5",2018,"1944-10-26 00:00:00",74,14,"M","D","",94.29,100,10.25,-0.451
+21607,"James","E.","Clyburn","","Clyburn","Representative",TRUE,"Assistant Leader",FALSE,TRUE,"South Carolina","SC","6",2018,"1940-07-21 00:00:00",78,26,"M","D","",94.71,88,9.02,-0.465
+1031340,"Mike","","Coffman","","RepMikeCoffman","Representative",TRUE,"",FALSE,TRUE,"Colorado","CO","6",2018,"1955-03-19 00:00:00",64,10,"M","R","",92.07,5,0.51,0.498
+1022876,"Steve","","Cohen","","RepCohen","Representative",TRUE,"",FALSE,TRUE,"Tennessee","TN","9",2018,"1949-05-24 00:00:00",69,12,"M","D","",93.81,6,0.61,-0.402
+1003609,"Tom","","Cole","","TomColeOK04","Representative",TRUE,"",FALSE,TRUE,"Oklahoma","OK","4",2018,"1949-04-28 00:00:00",69,16,"M","R","",95.07,22,2.25,0.335
+79719,"Doug","","Collins","","RepDougCollins","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","9",2018,"1966-08-16 00:00:00",52,6,"M","R","",95.61,20,2.05,0.638
+94144,"Chris","","Collins","","RepChrisCollins","Representative",TRUE,"",FALSE,TRUE,"New York","NY","27",2018,"1950-05-20 00:00:00",68,6,"M","R","",96.37,40,4.1,0.366
+76619,"James","","Comer","","","Representative",TRUE,"",FALSE,TRUE,"Kentucky","KY","1",2018,"1972-08-19 00:00:00",46,4,"M","R","",94.44,4,0.41,0.606
+57186,"Barbara","","Comstock","","RepComstock","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","10",2018,"1959-06-30 00:00:00",59,4,"F","R","",94.83,28,2.87,0.273
+1004595,"K.","Michael","Conaway","","ConawayTX11","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","11",2018,"1948-06-11 00:00:00",70,14,"M","R","",94.56,1,0.1,0.591
+1015936,"Gerald","E.","Connolly","","GerryConnolly","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","11",2018,"1950-03-30 00:00:00",69,10,"M","D","",93.81,7,0.72,-0.305
+1824,"John","","Conyers","Jr.","RepJohnConyers","Representative",FALSE,"",FALSE,TRUE,"Michigan","MI","13",2018,"1929-05-16 00:00:00",89,54,"M","D","",94.4,34,5.16,-0.658
+68278,"Paul","","Cook","","RepPaulCook","Representative",TRUE,"",FALSE,TRUE,"California","CA","8",2018,"1943-03-03 00:00:00",76,6,"M","R","",95.59,2,0.2,0.383
+1201,"Jim","","Cooper","","RepJimCooper","Representative",TRUE,"",FALSE,TRUE,"Tennessee","TN","5",2018,"1954-06-19 00:00:00",64,16,"M","D","",85.79,5,0.51,-0.161
+46310,"J.","Luis","Correa","","RepLouCorrea","Representative",TRUE,"",FALSE,TRUE,"California","CA","46",2018,"1958-01-24 00:00:00",61,2,"M","D","",88.16,5,0.51,-0.271
+19599,"Jim","","Costa","","RepJimCosta","Representative",TRUE,"",FALSE,TRUE,"California","CA","16",2018,"1952-04-13 00:00:00",66,14,"M","D","",81.35,134,13.73,-0.186
+95125,"Ryan","","Costello","","RepRyanCostello","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","6",2018,"1976-09-07 00:00:00",42,4,"M","R","",86.4,35,3.59,0.218
+1021284,"Joe","","Courtney","","RepJoeCourtney","Representative",TRUE,"",FALSE,TRUE,"Connecticut","CT","2",2018,"1953-04-06 00:00:00",66,12,"M","D","",94.17,16,1.64,-0.34
+7600,"Kevin","","Cramer","","RepKevinCramer","Representative",TRUE,"",FALSE,TRUE,"North Dakota","ND","At-Large",2018,"1961-01-21 00:00:00",58,6,"M","R","",96.88,46,4.71,0.386
+623259,"Rick","","Crawford","","RepRickCrawford","Representative",TRUE,"",FALSE,TRUE,"Arkansas","AR","1",2018,"1966-01-22 00:00:00",53,8,"M","R","",97.67,31,3.18,0.378
+7960,"Charlie","","Crist","","repcharliecrist","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","13",2018,"1956-07-24 00:00:00",62,2,"M","D","",90.25,53,5.43,-0.194
+57880,"Joseph","","Crowley","","RepJoeCrowley","Representative",TRUE,"Caucus Chair",FALSE,TRUE,"New York","NY","14",2018,"1962-03-16 00:00:00",57,20,"M","D","",94.92,32,3.28,-0.408
+1013062,"Henry","","Cuellar","","RepCuellar","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","28",2018,"1955-09-19 00:00:00",63,14,"M","D","",78.83,17,1.74,-0.227
+88078,"John","","Culberson","","CongCulberson","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","7",2018,"1956-08-24 00:00:00",62,18,"M","R","",97.41,11,1.13,0.503
+43300,"Elijah","E.","Cummings","","RepCummings","Representative",TRUE,"",FALSE,TRUE,"Maryland","MD","7",2018,"1951-01-18 00:00:00",68,24,"M","D","",94.41,386,39.55,-0.438
+70472,"Carlos","","Curbelo","","RepCurbelo","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","26",2018,"1980-03-01 00:00:00",39,4,"M","R","",86.61,80,8.2,0.206
+110801,"John","","Curtis","","RepJohnCurtis","Representative",TRUE,"",FALSE,TRUE,"Utah","UT","3",NA,"1960-05-10 00:00:00",58,2,"M","R","",96.57,1,0.28,NA
+102555,"Warren","","Davidson","","WarrenDavidson","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","8",2018,"1970-03-01 00:00:00",49,4,"M","R","",94.85,6,0.61,0.755
+68337,"Rodney","","Davis","","RodneyDavis","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","13",2018,"1970-01-05 00:00:00",49,6,"M","R","",92.52,40,4.1,0.294
+44325,"Danny","K.","Davis","","RepDannyDavis","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","7",2018,"1941-09-06 00:00:00",77,22,"M","D","",94.28,120,12.3,-0.488
+85595,"Susan","A.","Davis","","RepSusanDavis","Representative",TRUE,"",FALSE,TRUE,"California","CA","53",2018,"1944-04-13 00:00:00",74,18,"F","D","",93.76,30,3.07,-0.343
+6068,"Peter","A.","DeFazio","","RepPeterDeFazio","Representative",TRUE,"",FALSE,TRUE,"Oregon","OR","4",2018,"1947-05-27 00:00:00",71,32,"M","D","",93.09,36,3.69,-0.428
+90293,"Diana","","DeGette","","RepDianaDeGette","Representative",TRUE,"",FALSE,TRUE,"Colorado","CO","1",2018,"1957-07-29 00:00:00",61,22,"F","D","",93.85,66,6.76,-0.432
+68432,"John","","Delaney","","RepJohnDelaney","Representative",TRUE,"",FALSE,TRUE,"Maryland","MD","6",2018,"1963-04-16 00:00:00",55,6,"M","D","",92.72,28,2.87,-0.275
+19040,"Rosa","","DeLauro","","RosaDeLauro","Representative",TRUE,"",FALSE,TRUE,"Connecticut","CT","3",2018,"1943-03-02 00:00:00",76,28,"F","D","",94.55,77,7.89,-0.417
+1033929,"Suzan","K.","DelBene","","RepDelBene","Representative",TRUE,"",FALSE,TRUE,"Washington","WA","1",2018,"1962-02-17 00:00:00",57,8,"F","D","",93.33,2,0.2,-0.277
+623713,"Val","","Demings","","RepValDemings","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","10",2018,"1957-03-12 00:00:00",62,2,"F","D","",94.06,16,1.64,-0.348
+623287,"Jeffrey","","Denham","","RepJeffDenham","Representative",TRUE,"",FALSE,TRUE,"California","CA","10",2018,"1967-07-29 00:00:00",51,8,"M","R","",90.76,24,2.46,0.309
+1011395,"Charlie","","Dent","","RepCharlieDent","Representative",FALSE,"",FALSE,TRUE,"Pennsylvania","PA","15",2018,"1960-05-24 00:00:00",58,14,"M","R","",93.13,19,2.13,0.243
+79744,"Ron","","DeSantis","","RepDeSantis","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","6",2018,"1978-09-14 00:00:00",40,2,"M","R","",93.49,70,7.17,0.663
+61736,"Mark","","DeSaulnier","","RepDeSaulnier","Representative",TRUE,"",FALSE,TRUE,"California","CA","11",2018,"1952-03-31 00:00:00",67,4,"M","D","",92.62,14,1.43,-0.548
+623517,"Scott","","DesJarlais","","DesJarlaisTN04","Representative",TRUE,"",FALSE,TRUE,"Tennessee","TN","4",2018,"1964-02-21 00:00:00",55,8,"M","R","",96.78,43,4.41,0.594
+9267613,"Ted","","Deutch","","RepTedDeutch","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","22",2018,"1966-05-07 00:00:00",52,10,"M","D","",93.16,84,8.61,-0.407
+1003562,"Mario","","Diaz-Balart","","MarioDB","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","25",2018,"1961-09-25 00:00:00",57,16,"M","R","",92.47,86,8.81,0.277
+20818,"Debbie","","Dingell","","RepDebDingell","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","12",2018,"1953-11-23 00:00:00",65,4,"F","D","",95.85,11,1.13,-0.442
+36810,"Lloyd","","Doggett","","RepLloydDoggett","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","35",2018,"1946-10-06 00:00:00",72,24,"M","D","",93.84,18,1.84,-0.403
+74763,"Daniel","M.","Donovan","","RepDanDonovan","Representative",TRUE,"",FALSE,TRUE,"New York","NY","11",2018,"1956-11-06 00:00:00",62,4,"M","R","",92.49,17,1.74,0.223
+36774,"Mike","","Doyle","","USRepMikeDoyle","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","14",2018,"1953-08-05 00:00:00",65,24,"M","D","",94.76,21,2.15,-0.326
+623570,"Sean","","Duffy","","RepSeanDuffy","Representative",TRUE,"",FALSE,TRUE,"Wisconsin","WI","7",2018,"1971-10-03 00:00:00",47,8,"M","R","",94.46,37,3.79,0.505
+6114,"John","J.","Duncan","Jr.","RepJohnDuncanJr","Representative",TRUE,"",FALSE,TRUE,"Tennessee","TN","2",2018,"1947-07-21 00:00:00",71,32,"M","R","",89.53,21,2.15,0.6
+62713,"Jeffrey","","Duncan","","RepJeffDuncan","Representative",TRUE,"",FALSE,TRUE,"South Carolina","SC","3",2018,"1966-01-07 00:00:00",53,8,"M","R","",94.98,40,4.1,0.736
+104529,"Neal","","Dunn","","drnealdunnfl2","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","2",2018,"1953-02-16 00:00:00",66,2,"M","R","",97.7,21,2.15,0.529
+1022556,"Keith","","Ellison","","KeithEllison","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","5",2018,"1963-08-04 00:00:00",55,12,"M","D","",91.75,43,4.41,-0.541
+75567,"Tom","","Emmer","","RepTomEmmer","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","6",2018,"1961-03-03 00:00:00",58,4,"M","R","",93.91,8,0.82,0.431
+6109,"Eliot","L.","Engel","","RepEliotEngel","Representative",TRUE,"",FALSE,TRUE,"New York","NY","16",2018,"1947-02-18 00:00:00",72,30,"M","D","",93.53,49,5.02,-0.407
+26130,"Anna","G.","Eshoo","","RepAnnaEshoo","Representative",TRUE,"",FALSE,TRUE,"California","CA","18",2018,"1942-12-13 00:00:00",76,26,"F","D","",93.69,10,1.02,-0.382
+68413,"Adriano","","Espaillat","","RepEspaillat","Representative",TRUE,"",FALSE,TRUE,"New York","NY","13",2018,"1954-09-27 00:00:00",64,2,"M","D","",93.77,13,1.33,-0.591
+107963,"Ron","","Estes","","RepRonEstes","Representative",TRUE,"",FALSE,TRUE,"Kansas","KS","4",2018,"1956-07-19 00:00:00",62,2,"M","R","",97.85,7,0.93,NA
+1020906,"Elizabeth","","Esty","","RepEsty","Representative",TRUE,"",FALSE,TRUE,"Connecticut","CT","5",2018,"1959-08-25 00:00:00",59,6,"F","D","",94.44,4,0.41,-0.308
+56729,"Dwight","","Evans","","RepDwightEvans","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","2",2018,"1954-05-16 00:00:00",64,4,"M","D","",93.69,10,1.02,-0.499
+95180,"Blake","","Farenthold","","Farenthold","Representative",FALSE,"",FALSE,TRUE,"Texas","TX","27",2018,"1961-12-12 00:00:00",57,8,"M","R","",96.17,6,0.71,0.546
+1021406,"John","","Faso","","RepJohnFaso","Representative",TRUE,"",FALSE,TRUE,"New York","NY","19",2018,"1952-08-25 00:00:00",66,2,"M","R","",88.33,8,0.82,0.254
+104731,"A.","Drew","Ferguson","","RepDrewFerguson","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","3",2018,"1967-11-15 00:00:00",51,2,"M","R","",97.74,3,0.31,0.545
+103537,"Brian","","Fitzpatrick","","repbrianfitz","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","8",2018,"1973-12-17 00:00:00",45,2,"M","R","",80.16,3,0.31,0.228
+95146,"Chuck","","Fleischmann","","RepChuck","Representative",TRUE,"",FALSE,TRUE,"Tennessee","TN","3",2018,"1962-10-11 00:00:00",56,8,"M","R","",96.51,1,0.1,0.473
+623540,"Bill","","Flores","","RepBillFlores","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","17",2018,"1954-02-25 00:00:00",65,8,"M","R","",94.48,16,1.64,0.606
+1013049,"Jeff","","Fortenberry","","JeffFortenberry","Representative",TRUE,"",FALSE,TRUE,"Nebraska","NE","1",2018,"1960-12-27 00:00:00",58,14,"M","R","",93.35,29,2.97,0.3
+1027346,"Bill","","Foster","","RepBillFoster","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","11",2018,"1955-10-07 00:00:00",63,6,"M","D","",92.74,12,1.23,-0.223
+1013052,"Virginia","","Foxx","","VirginiaFoxx","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","5",2018,"1943-06-29 00:00:00",75,12,"F","R","",92.52,0,0,0.64
+623714,"Lois","","Frankel","","RepLoisFrankel","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","21",2018,"1948-05-16 00:00:00",70,6,"F","D","",93.81,72,7.38,-0.415
+1003550,"Trent","","Franks","","RepTrentFranks","Representative",FALSE,"",FALSE,TRUE,"Arizona","AZ","8",2018,"1957-06-19 00:00:00",61,16,"M","R","",95.06,25,3.71,0.749
+37781,"Rodney","","Frelinghuysen","","USRepRodney","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","11",2018,"1946-04-29 00:00:00",72,24,"M","R","",95.31,16,1.64,0.291
+1030928,"Marcia","L.","Fudge","","RepMarciaFudge","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","11",2018,"1952-10-29 00:00:00",66,12,"F","D","",93.92,22,2.25,-0.584
+1025291,"Tulsi","","Gabbard","","TulsiPress","Representative",TRUE,"",FALSE,TRUE,"Hawaii","HI","2",2018,"1981-04-12 00:00:00",37,6,"F","D","",91.47,50,5.12,-0.281
+104528,"Matt","","Gaetz","","RepMattGaetz","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","1",2018,"1982-05-07 00:00:00",36,2,"M","R","",89.79,26,2.66,0.69
+104067,"Mike","","Gallagher","","RepGallagher","Representative",TRUE,"",FALSE,TRUE,"Wisconsin","WI","8",2018,"1984-03-03 00:00:00",35,2,"M","R","",92.38,5,0.51,0.515
+77233,"Ruben","","Gallego","","RepRubenGallego","Representative",TRUE,"",FALSE,TRUE,"Arizona","AZ","7",2018,"1979-11-20 00:00:00",39,4,"M","D","",93.77,29,2.97,-0.449
+18413,"John","","Garamendi","","RepGaramendi","Representative",TRUE,"",FALSE,TRUE,"California","CA","3",2018,"1945-01-24 00:00:00",74,10,"M","D","",93.12,31,3.18,-0.315
+103625,"Thomas","","Garrett","","RepTomGarrett","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","5",2018,"1972-03-27 00:00:00",47,2,"M","R","",92.67,117,11.99,0.99
+104895,"Greg","","Gianforte","","","Representative",TRUE,"",FALSE,TRUE,"Montana","MT","At-Large",NA,"1961-04-17 00:00:00",57,2,"M","R","",95.61,3,0.45,NA
+1033844,"Bob","","Gibbs","","RepBobGibbs","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","7",2018,"1954-06-14 00:00:00",64,8,"M","R","",95.78,5,0.51,0.459
+1011394,"Louie","","Gohmert","","RepLouieGohmert","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","1",2018,"1953-08-18 00:00:00",65,14,"M","R","",92.09,66,6.76,0.596
+108883,"Jimmy","","Gomez","","RepJimmyGomez","Representative",TRUE,"",FALSE,TRUE,"California","CA","34",2018,"1974-11-25 00:00:00",44,2,"M","D","",93.26,21,3.34,NA
+103568,"Vicente","","Gonzalez","","RepGonzalez","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","15",2018,"1967-09-04 00:00:00",51,2,"M","D","",88.69,30,3.07,-0.364
+27025,"Robert","W.","Goodlatte","","RepGoodlatte","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","6",2018,"1952-09-22 00:00:00",66,26,"M","R","",97.31,9,0.92,0.495
+62470,"Paul","","Gosar","","RepGosar","Representative",TRUE,"",FALSE,TRUE,"Arizona","AZ","4",2018,"1958-11-22 00:00:00",60,8,"M","R","",90.3,48,4.92,0.609
+9275683,"Josh","","Gottheimer","","RepJoshG","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","5",2018,"1975-03-08 00:00:00",44,2,"M","D","",82.85,8,0.82,-0.136
+9268950,"Trey","","Gowdy","","TGowdySC","Representative",TRUE,"",FALSE,TRUE,"South Carolina","SC","4",2018,"1964-08-22 00:00:00",54,8,"M","R","",98.15,56,5.74,0.664
+45709,"Kay","","Granger","","RepKayGranger","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","12",2018,"1943-01-18 00:00:00",76,22,"F","R","",97.57,71,7.27,0.392
+9274609,"Garret","","Graves","","RepGarretGraves","Representative",TRUE,"",FALSE,TRUE,"Louisiana","LA","6",2018,"1972-01-31 00:00:00",47,4,"M","R","",93.4,22,2.25,0.499
+11519,"Tom","","Graves","","RepTomGraves","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","14",2018,"1970-02-03 00:00:00",49,10,"M","R","",93.2,5,0.51,0.751
+89873,"Sam","","Graves","","RepSamGraves","Representative",TRUE,"",FALSE,TRUE,"Missouri","MO","6",2018,"1963-11-07 00:00:00",55,18,"M","R","",93.45,75,7.68,0.433
+1012969,"Al","","Green","","RepAlGreen","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","9",2018,"1947-09-01 00:00:00",71,14,"M","D","",93.93,20,2.05,-0.43
+26156,"Gene","","Green","","RepGeneGreen","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","29",2018,"1947-10-17 00:00:00",71,26,"M","D","",90.43,36,3.69,-0.323
+62766,"Morgan","","Griffith","","RepMGriffith","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","9",2018,"1958-03-15 00:00:00",61,8,"M","R","",92.81,17,1.74,0.544
+1003551,"RaÃºl","M.","Grijalva","","RepraulGrijalva","Representative",TRUE,"",FALSE,TRUE,"Arizona","AZ","3",2018,"1948-02-19 00:00:00",71,16,"M","D","",95.15,68,6.97,-0.596
+77282,"Glenn","","Grothman","","RepGrothman","Representative",TRUE,"",FALSE,TRUE,"Wisconsin","WI","6",2018,"1955-07-03 00:00:00",63,4,"M","R","",94.11,25,2.56,0.603
+1031343,"Brett","","Guthrie","","RepGuthrie","Representative",TRUE,"",FALSE,TRUE,"Kentucky","KY","2",2018,"1964-02-18 00:00:00",55,10,"M","R","",98.04,6,0.61,0.409
+23476,"Luis","V.","GutiÃ©rrez","","LuisGutierrez","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","4",2018,"1953-12-10 00:00:00",65,26,"M","D","",92.47,179,18.34,-0.484
+61258,"Colleen","","Hanabusa","","RepHanabusa","Representative",TRUE,"",FALSE,TRUE,"Hawaii","HI","1",2018,"1951-05-04 00:00:00",67,4,"F","D","",94.15,36,3.69,-0.374
+1026745,"Karen","","Handel","","RepKHandel","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","6",2018,"1962-04-18 00:00:00",56,2,"F","R","",98.16,0,0,NA
+1031347,"Gregg","","Harper","","GreggHarper","Representative",TRUE,"",FALSE,TRUE,"Mississippi","MS","3",2018,"1956-06-01 00:00:00",62,10,"M","R","",97.18,20,2.05,0.384
+1033464,"Andy","","Harris","","RepAndyHarrisMD","Representative",TRUE,"",FALSE,TRUE,"Maryland","MD","1",2018,"1957-01-25 00:00:00",62,8,"M","R","",94.83,28,2.87,0.603
+95050,"Vicky","","Hartzler","","RepHartzler","Representative",TRUE,"",FALSE,TRUE,"Missouri","MO","4",2018,"1960-10-13 00:00:00",58,8,"F","R","",96.14,17,1.74,0.496
+1858,"Alcee","L.","Hastings","","RepHastingsFL","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","20",2018,"1936-09-05 00:00:00",82,26,"M","D","",93.33,16,1.64,-0.564
+9269006,"Denny","","Heck","","RepDennyHeck","Representative",TRUE,"",FALSE,TRUE,"Washington","WA","10",2018,"1952-07-29 00:00:00",66,6,"M","D","",92.81,3,0.31,-0.32
+1003619,"Jeb","","Hensarling","","RepHensarling","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","5",2018,"1957-05-29 00:00:00",61,16,"M","R","",97.62,11,1.13,0.703
+95198,"Jaime","","Herrera Beutler","","HerreraBeutler","Representative",TRUE,"",FALSE,TRUE,"Washington","WA","3",2018,"1978-11-03 00:00:00",40,8,"F","R","",91.09,11,1.13,0.38
+94974,"Jody","","Hice","","congressmanhice","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","10",2018,"1960-04-22 00:00:00",58,4,"M","R","",92.95,11,1.13,0.721
+106094,"Clay","","Higgins","","RepClayHiggins","Representative",TRUE,"",FALSE,TRUE,"Louisiana","LA","3",2018,"1961-08-24 00:00:00",57,2,"M","R","",98.19,38,3.89,0.524
+1013050,"Brian","","Higgins","","RepBrianHiggins","Representative",TRUE,"",FALSE,TRUE,"New York","NY","26",2018,"1959-10-06 00:00:00",59,12,"M","D","",94.88,39,4,-0.344
+9265172,"French","","Hill","","RepFrenchHill","Representative",TRUE,"",FALSE,TRUE,"Arkansas","AR","2",2018,"1956-12-05 00:00:00",62,4,"M","R","",95.02,12,1.23,0.478
+1031341,"Jim","","Himes","","JAHimes","Representative",TRUE,"",FALSE,TRUE,"Connecticut","CT","4",2018,"1966-07-05 00:00:00",52,10,"M","D","",91.54,18,1.84,-0.242
+623728,"George","","Holding","","RepHolding","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","2",2018,"1968-04-17 00:00:00",50,6,"M","R","",93.79,10,1.02,0.657
+104247,"Trey","","Hollingsworth","","reptrey","Representative",TRUE,"",FALSE,TRUE,"Indiana","IN","9",2018,"1983-09-12 00:00:00",35,2,"M","R","",95.99,29,2.97,0.47
+1919,"Steny","H.","Hoyer","","WhipHoyer","Representative",TRUE,"Minority Whip",FALSE,TRUE,"Maryland","MD","5",2018,"1939-06-14 00:00:00",79,38,"M","D","",95.44,33,3.38,-0.379
+79622,"Richard","","Hudson","","RepRichHudson","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","8",2018,"1971-11-04 00:00:00",47,6,"M","R","",93.34,60,6.15,0.672
+622431,"Jared","","Huffman","","RepHuffman","Representative",TRUE,"",FALSE,TRUE,"California","CA","2",2018,"1964-02-18 00:00:00",55,6,"M","D","",91.66,53,5.43,-0.436
+1033765,"Bill","","Huizenga","","RepHuizenga","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","2",2018,"1969-01-31 00:00:00",50,8,"M","R","",95.4,41,4.2,0.635
+62575,"Randy","","Hultgren","","RepHultgren","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","14",2018,"1966-03-01 00:00:00",53,8,"M","R","",96.89,12,1.23,0.492
+1032398,"Duncan","D.","Hunter","","Rep_Hunter","Representative",TRUE,"",FALSE,TRUE,"California","CA","50",2018,"1976-12-07 00:00:00",42,10,"M","R","",94.66,21,2.15,0.512
+95176,"Will","","Hurd","","hurdonthehill","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","23",2018,"1977-08-19 00:00:00",41,4,"M","R","",92.77,21,2.15,0.393
+90066,"Darrell","","Issa","","DarrellIssa","Representative",TRUE,"",FALSE,TRUE,"California","CA","49",2018,"1953-11-01 00:00:00",65,18,"M","R","",95.61,42,4.3,0.505
+36819,"Sheila","","Jackson Lee","","JacksonLeeTX18","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","18",2018,"1950-01-12 00:00:00",69,24,"F","D","",93.44,31,3.18,-0.457
+9267128,"Pramila","","Jayapal","","RepJayapal","Representative",TRUE,"",FALSE,TRUE,"Washington","WA","7",2018,"1965-09-21 00:00:00",53,2,"F","D","",93.21,19,1.95,-0.77
+79612,"Hakeem","","Jeffries","","RepJeffries","Representative",TRUE,"",FALSE,TRUE,"New York","NY","8",2018,"1970-08-04 00:00:00",48,6,"M","D","",93.94,36,3.69,-0.48
+76592,"Evan","","Jenkins","","RepEvanJenkins","Representative",TRUE,"",FALSE,TRUE,"West Virginia","WV","3",2018,"1960-09-12 00:00:00",58,4,"M","R","",91.47,62,6.35,0.314
+1030550,"Lynn","","Jenkins","","RepLynnJenkins","Representative",TRUE,"",FALSE,TRUE,"Kansas","KS","2",2018,"1963-06-10 00:00:00",55,10,"F","R","",93.64,32,3.28,0.524
+1020576,"Hank","","Johnson","","RepHankJohnson","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","4",2018,"1954-10-02 00:00:00",64,12,"M","D","",92.54,38,3.89,-0.47
+106095,"Mike","","Johnson","","RepMikeJohnson","Representative",TRUE,"",FALSE,TRUE,"Louisiana","LA","4",2018,"1972-01-30 00:00:00",47,2,"M","R","",97.17,21,2.15,0.559
+623472,"Bill","","Johnson","","RepBillJohnson","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","6",2018,"1954-11-10 00:00:00",64,8,"M","R","",93.13,15,1.54,0.428
+18711,"Sam","","Johnson","","SamsPressShop","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","3",2018,"1930-10-11 00:00:00",88,28,"M","R","",97.72,142,14.55,0.609
+23352,"Eddie","Bernice","Johnson","","RepEBJ","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","30",2018,"1935-12-03 00:00:00",83,26,"F","D","",93.85,81,8.3,-0.486
+36693,"Walter","B.","Jones","","RepWalterJones","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","3",2018,"1943-02-10 00:00:00",76,24,"M","R","",60.6,108,11.07,0.241
+1022879,"Jim","","Jordan","","Jim_Jordan","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","4",2018,"1964-02-17 00:00:00",55,12,"M","R","",90.57,22,2.25,0.705
+68561,"Dave","","Joyce","","RepDaveJoyce","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","14",2018,"1957-03-17 00:00:00",62,6,"M","R","",91.15,16,1.64,0.256
+1458,"Marcy","","Kaptur","","RepMarcyKaptur","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","9",2018,"1946-06-17 00:00:00",72,36,"F","D","",93.32,18,1.84,-0.35
+76367,"John","","Katko","","RepJohnKatko","Representative",TRUE,"",FALSE,TRUE,"New York","NY","24",2018,"1962-11-09 00:00:00",56,4,"M","R","",87.91,33,3.38,0.209
+61856,"Bill","","Keating","","USRepKeating","Representative",TRUE,"",FALSE,TRUE,"Massachusetts","MA","9",2018,"1952-09-06 00:00:00",66,8,"M","D","",94.36,18,1.84,-0.327
+97322,"Trent","","Kelly","","reptrentkelly","Representative",TRUE,"",FALSE,TRUE,"Mississippi","MS","1",2018,"1966-03-01 00:00:00",53,4,"M","R","",96.91,5,0.51,0.566
+70399,"Robin","","Kelly","","RepRobinKelly","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","2",2018,"1956-04-30 00:00:00",62,6,"F","D","",94.8,33,3.38,-0.458
+62696,"Mike","","Kelly","","MikeKellyPA","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","3",2018,"1948-05-10 00:00:00",70,8,"M","R","",95.39,22,2.25,0.318
+79948,"Joseph","P.","Kennedy","III","RepJoeKennedy","Representative",TRUE,"",FALSE,TRUE,"Massachusetts","MA","4",2018,"1980-10-04 00:00:00",38,6,"M","D","",94.78,94,9.63,-0.433
+31129,"Ro","","Khanna","","RepRoKhanna","Representative",TRUE,"",FALSE,TRUE,"California","CA","17",2018,"1976-09-13 00:00:00",42,2,"M","D","",94,10,1.02,-0.578
+79707,"Ruben","","Kihuen","","RepKihuen","Representative",TRUE,"",FALSE,TRUE,"Nevada","NV","4",2018,"1980-04-25 00:00:00",38,2,"M","D","",93.34,30,3.07,-0.357
+623723,"Dan","","Kildee","","RepDanKildee","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","5",2018,"1958-08-11 00:00:00",60,6,"M","D","",93.79,10,1.02,-0.411
+68310,"Derek","","Kilmer","","RepDerekKilmer","Representative",TRUE,"",FALSE,TRUE,"Washington","WA","6",2018,"1974-01-01 00:00:00",45,6,"M","D","",93.84,2,0.2,-0.304
+45870,"Ron","","Kind","","RepRonKind","Representative",TRUE,"",FALSE,TRUE,"Wisconsin","WI","3",2018,"1963-03-16 00:00:00",56,22,"M","D","",90.19,38,3.89,-0.264
+26487,"Peter","T.","King","","RepPeteKing","Representative",TRUE,"",FALSE,TRUE,"New York","NY","2",2018,"1944-04-05 00:00:00",75,26,"M","R","",92,38,3.89,0.26
+1003590,"Steve","","King","","SteveKingIA","Representative",TRUE,"",FALSE,TRUE,"Iowa","IA","4",2018,"1949-05-28 00:00:00",69,16,"M","R","",95.75,11,1.13,0.617
+62573,"Adam","","Kinzinger","","RepKinzinger","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","16",2018,"1978-02-27 00:00:00",41,8,"M","R","",90.51,7,0.72,0.271
+76118,"Steve","","Knight","","SteveKnight25","Representative",TRUE,"",FALSE,TRUE,"California","CA","25",2018,"1966-12-17 00:00:00",52,4,"M","R","",92.86,9,0.92,0.405
+103408,"Raja","","Krishnamoorthi","","congressmanraja","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","8",2018,"1973-07-19 00:00:00",45,2,"M","D","",94.25,2,0.2,-0.316
+62650,"Ann","McLane","Kuster","","RepAnnieKuster","Representative",TRUE,"",FALSE,TRUE,"New Hampshire","NH","2",2018,"1956-09-05 00:00:00",62,6,"F","D","",91.55,41,4.2,-0.257
+28903,"David","","Kustoff","","repdavidkustoff","Representative",TRUE,"",FALSE,TRUE,"Tennessee","TN","8",2018,"1966-10-08 00:00:00",52,2,"M","R","",97.81,16,1.64,0.54
+94987,"RaÃºl","","Labrador","","Raul_Labrador","Representative",TRUE,"",FALSE,TRUE,"Idaho","ID","1",2018,"1967-12-08 00:00:00",51,8,"M","R","",93.94,134,13.73,0.727
+70020,"Darin","M.","LaHood","","RepLaHood","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","18",2018,"1968-07-05 00:00:00",50,2,"M","R","",93.2,6,0.61,0.449
+68493,"Doug","","LaMalfa","","RepLaMalfa","Representative",TRUE,"",FALSE,TRUE,"California","CA","1",2018,"1960-07-02 00:00:00",58,6,"M","R","",96.64,23,2.36,0.56
+NA,"Conor","","Lamb","","","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","18",NA,"1984-06-27 00:00:00",34,2,"M","D","",88.1,0,0,NA
+1022846,"Doug","","Lamborn","","RepDLamborn","Representative",TRUE,"",FALSE,TRUE,"Colorado","CO","5",2018,"1954-05-24 00:00:00",64,12,"M","R","",96.89,12,1.23,0.69
+1031349,"Leonard","","Lance","","RepLanceNJ7","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","7",2018,"1952-06-25 00:00:00",66,10,"M","R","",85.83,2,0.2,0.335
+86608,"Jim","","Langevin","","JimLangevin","Representative",TRUE,"",FALSE,TRUE,"Rhode Island","RI","2",2018,"1964-04-22 00:00:00",54,18,"M","D","",95.11,14,1.43,-0.375
+86610,"Rick","","Larsen","","RepRickLarsen","Representative",TRUE,"",FALSE,TRUE,"Washington","WA","2",2018,"1965-06-15 00:00:00",53,18,"M","D","",94.15,36,3.69,-0.365
+36596,"John","B.","Larson","","RepJohnLarson","Representative",TRUE,"",FALSE,TRUE,"Connecticut","CT","1",2018,"1948-07-22 00:00:00",70,20,"M","D","",94.26,52,5.33,-0.4
+1028071,"Robert","E.","Latta","","BobLatta","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","5",2018,"1956-04-18 00:00:00",62,12,"M","R","",96.41,0,0,0.519
+79924,"Brenda","","Lawrence","","RepLawrence","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","14",2018,"1954-10-18 00:00:00",64,4,"F","D","",95.05,27,2.77,-0.451
+90480,"Al","","Lawson","","RepAlLawsonJr","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","5",2018,"1948-09-21 00:00:00",70,2,"M","D","",91.12,75,7.68,-0.252
+54579,"Barbara","","Lee","","RepBarbaraLee","Representative",TRUE,"",FALSE,TRUE,"California","CA","13",2018,"1946-07-16 00:00:00",72,22,"F","D","",92.57,20,2.05,-0.686
+NA,"Debbie","","Lesko","","","Representative",TRUE,"",FALSE,TRUE,"Arizona","AZ","8",NA,"1958-11-14 00:00:00",60,2,"F","R","",93.81,0,0,NA
+251,"Sander","M.","Levin","","RepSandyLevin","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","9",2018,"1931-09-06 00:00:00",87,36,"M","D","",95.59,0,0,-0.377
+155,"Jason","","Lewis","","RepJasonLewis","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","2",2018,"1955-09-23 00:00:00",63,2,"M","R","",96.31,1,0.1,0.488
+2528,"John","","Lewis","","RepJohnLewis","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","5",2018,"1940-02-21 00:00:00",79,32,"M","D","",94.4,66,6.76,-0.589
+28076,"Ted","","Lieu","","RepTedLieu","Representative",TRUE,"",FALSE,TRUE,"California","CA","33",2018,"1969-03-29 00:00:00",50,4,"M","D","",93.83,101,10.35,-0.352
+1013046,"Daniel","","Lipinski","","RepLipinski","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","3",2018,"1966-07-15 00:00:00",52,14,"M","D","",88.85,25,2.56,-0.234
+30867,"Frank","A.","LoBiondo","","RepLoBiondo","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","2",2018,"1946-05-12 00:00:00",72,24,"M","R","",83.06,8,0.82,0.211
+1022883,"Dave","","Loebsack","","DaveLoebsack","Representative",TRUE,"",FALSE,TRUE,"Iowa","IA","2",2018,"1952-12-23 00:00:00",66,12,"M","D","",91.13,18,1.84,-0.278
+36520,"Zoe","","Lofgren","","RepZoeLofgren","Representative",TRUE,"",FALSE,TRUE,"California","CA","19",2018,"1947-12-21 00:00:00",71,24,"F","D","",93.05,27,2.77,-0.401
+61880,"Billy","","Long","","USRepLong","Representative",TRUE,"",FALSE,TRUE,"Missouri","MO","7",2018,"1955-08-11 00:00:00",63,8,"M","R","",97,109,11.17,0.56
+76165,"Barry","","Loudermilk","","RepLoudermilk","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","11",2018,"1963-12-22 00:00:00",55,4,"M","R","",96.77,78,7.99,0.673
+67205,"Mia","","Love","","repmialove","Representative",TRUE,"",FALSE,TRUE,"Utah","UT","4",2018,"1975-12-06 00:00:00",43,4,"F","R","",95.67,7,0.72,0.569
+93815,"Alan","","Lowenthal","","RepLowenthal","Representative",TRUE,"",FALSE,TRUE,"California","CA","47",2018,"1941-03-08 00:00:00",78,6,"M","D","",94.3,29,2.97,-0.441
+6110,"Nita","M.","Lowey","","NitaLowey","Representative",TRUE,"",FALSE,TRUE,"New York","NY","17",2018,"1937-07-05 00:00:00",81,30,"F","D","",95.16,4,0.41,-0.388
+35692,"Frank","D.","Lucas","","RepFrankLucas","Representative",TRUE,"",FALSE,TRUE,"Oklahoma","OK","3",2018,"1960-01-06 00:00:00",59,26,"M","R","",96.69,8,0.82,0.363
+1031348,"Blaine","","Luetkemeyer","","RepBlainePress","Representative",TRUE,"",FALSE,TRUE,"Missouri","MO","3",2018,"1952-05-07 00:00:00",66,10,"M","R","",97.21,9,0.92,0.445
+1031351,"Ben","Ray","Luján","","RepBenRayLujan","Representative",TRUE,"",FALSE,TRUE,"New Mexico","NM","3",2018,"1972-06-07 00:00:00",46,10,"M","D","",94.86,3,0.31,-0.369
+94791,"Michelle","","Lujan Grisham","","RepLujanGrisham","Representative",TRUE,"",FALSE,TRUE,"New Mexico","NM","1",2018,"1959-10-24 00:00:00",59,6,"F","D","",92.28,26,2.67,-0.323
+1000222,"Stephen","F.","Lynch","","RepStephenLynch","Representative",TRUE,"",FALSE,TRUE,"Massachusetts","MA","8",2018,"1955-03-31 00:00:00",64,18,"M","D","",92.67,35,3.59,-0.352
+76315,"Tom","","MacArthur","","RepTomMacArthur","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","3",2018,"1960-10-16 00:00:00",58,4,"M","R","",88.7,11,1.13,0.209
+79760,"Sean","Patrick","Maloney","","RepSeanMaloney","Representative",TRUE,"",FALSE,TRUE,"New York","NY","18",2018,"1966-07-30 00:00:00",52,6,"M","D","",91.07,13,1.33,-0.23
+26162,"Carolyn","B.","Maloney","","RepMaloney","Representative",TRUE,"",FALSE,TRUE,"New York","NY","12",2018,"1946-02-19 00:00:00",73,26,"F","D","",94.55,41,4.2,-0.385
+1013059,"Kenny","","Marchant","","RepKenMarchant","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","24",2018,"1951-02-23 00:00:00",68,14,"M","R","",95.87,55,5.64,0.602
+95129,"Tom","","Marino","","RepTomMarino","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","10",2018,"1952-08-15 00:00:00",66,8,"M","R","",95.06,86,8.81,0.351
+103425,"Roger","","Marshall","","","Representative",TRUE,"",FALSE,TRUE,"Kansas","KS","1",2018,"1960-08-09 00:00:00",58,2,"M","R","",95.89,3,0.31,0.542
+79951,"Thomas","","Massie","","RepThomasMassie","Representative",TRUE,"",FALSE,TRUE,"Kentucky","KY","4",2018,"1971-01-13 00:00:00",48,8,"M","R","",79.61,10,1.02,0.669
+104540,"Brian","","Mast","","repbrianmast","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","18",2018,"1980-07-10 00:00:00",38,2,"M","R","",89.27,7,0.72,0.346
+26602,"Doris","","Matsui","","DorisMatsui","Representative",TRUE,"",FALSE,TRUE,"California","CA","6",2018,"1944-09-25 00:00:00",74,14,"F","D","",94.8,15,1.54,-0.436
+85231,"Kevin","","McCarthy","","GOPLeader","Representative",TRUE,"Majority Leader",FALSE,TRUE,"California","CA","23",2018,"1965-01-26 00:00:00",54,12,"M","R","",97.93,11,1.13,0.462
+1013056,"Michael","","McCaul","","RepMcCaul","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","10",2018,"1962-01-14 00:00:00",57,14,"M","R","",97.8,23,2.36,0.45
+30359,"Tom","","McClintock","","RepMcClintock","Representative",TRUE,"",FALSE,TRUE,"California","CA","4",2018,"1956-07-10 00:00:00",62,10,"M","R","",95.03,10,1.02,0.744
+86670,"Betty","","McCollum","","BettyMcCollum04","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","4",2018,"1954-07-12 00:00:00",64,18,"F","D","",93.87,14,1.43,-0.421
+103621,"A.","Donald","McEachin","","RepMcEachin","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","4",2018,"1961-10-10 00:00:00",57,2,"M","D","",94.05,35,3.59,-0.444
+45976,"Jim","","McGovern","","RepMcGovern","Representative",TRUE,"",FALSE,TRUE,"Massachusetts","MA","2",2018,"1959-11-20 00:00:00",59,22,"M","D","",93.53,17,1.74,-0.537
+1007062,"Patrick","T.","McHenry","","PatrickMcHenry","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","10",2018,"1975-10-22 00:00:00",43,14,"M","R","",98.13,14,1.43,0.582
+9269013,"David","","McKinley","","RepMcKinley","Representative",TRUE,"",FALSE,TRUE,"West Virginia","WV","1",2018,"1947-03-28 00:00:00",72,8,"M","R","",89.71,4,0.41,0.29
+1013063,"Cathy","","McMorris Rodgers","","CathyMcMorris","Representative",TRUE,"Conference Chair",FALSE,TRUE,"Washington","WA","5",2018,"1969-05-22 00:00:00",49,14,"F","R","",97.64,2,0.2,0.43
+1021667,"Jerry","","McNerney","","RepMcNerney","Representative",TRUE,"",FALSE,TRUE,"California","CA","9",2018,"1951-06-18 00:00:00",67,12,"M","D","",93.34,45,4.61,-0.258
+29126,"Martha","","McSally","","RepMcSally","Representative",TRUE,"",FALSE,TRUE,"Arizona","AZ","2",2018,"1966-03-22 00:00:00",53,4,"F","R","",91.62,21,2.15,0.337
+79621,"Mark","","Meadows","","RepMarkMeadows","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","11",2018,"1959-07-28 00:00:00",59,6,"M","R","",96.3,30,3.07,0.626
+1033856,"Pat","","Meehan","","RepMeehan","Representative",FALSE,"",FALSE,TRUE,"Pennsylvania","PA","7",2018,"1955-10-20 00:00:00",63,8,"M","R","",89.19,18,2.05,0.221
+53469,"Gregory","W.","Meeks","","RepGregoryMeeks","Representative",TRUE,"",FALSE,TRUE,"New York","NY","5",2018,"1953-09-25 00:00:00",65,22,"M","D","",92.84,54,5.53,-0.417
+68411,"Grace","","Meng","","RepGraceMeng","Representative",TRUE,"",FALSE,TRUE,"New York","NY","6",2018,"1975-10-01 00:00:00",43,6,"F","D","",93.96,33,3.38,-0.38
+11245,"Luke","","Messer","","RepLukeMesser","Representative",TRUE,"Policy Committee Chair",FALSE,TRUE,"Indiana","IN","6",2018,"1969-02-27 00:00:00",50,6,"M","R","",96.17,62,6.35,0.561
+103809,"Paul","","Mitchell","","RepPaulMitchell","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","10",2018,"1961-05-08 00:00:00",57,2,"M","R","",96.38,9,0.92,0.439
+76660,"John","","Moolenaar","","RepMoolenaar","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","4",2018,"1961-05-08 00:00:00",57,4,"M","R","",95.28,1,0.1,0.4
+76588,"Alex","","Mooney","","RepAlexMooney","Representative",TRUE,"",FALSE,TRUE,"West Virginia","WV","2",2018,"1971-06-05 00:00:00",47,4,"M","R","",93.87,13,1.33,0.567
+42548,"Gwen","","Moore","","RepGwenMoore","Representative",TRUE,"",FALSE,TRUE,"Wisconsin","WI","4",2018,"1951-04-18 00:00:00",67,14,"F","D","",92.8,59,6.05,-0.53
+78453,"Seth","","Moulton","","teammoulton","Representative",TRUE,"",FALSE,TRUE,"Massachusetts","MA","6",2018,"1978-10-24 00:00:00",40,4,"M","D","",93.07,9,0.92,-0.306
+1034045,"Markwayne","","Mullin","","RepMullin","Representative",TRUE,"",FALSE,TRUE,"Oklahoma","OK","2",2018,"1977-07-26 00:00:00",41,6,"M","R","",97.2,11,1.13,0.503
+623510,"Mick","","Mulvaney","","RepMickMulvaney","Representative",FALSE,"",FALSE,TRUE,"South Carolina","SC","5",2018,"1967-07-21 00:00:00",51,8,"M","R","",66.67,91,93.81,0.75
+103502,"Stephanie","","Murphy","","RepStephMurphy","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","7",2018,"1978-09-16 00:00:00",40,2,"F","D","",85.26,26,2.66,-0.162
+1003612,"Tim","","Murphy","","RepTimMurphy","Representative",FALSE,"",FALSE,TRUE,"Pennsylvania","PA","18",2018,"1952-09-11 00:00:00",66,16,"M","R","",91.8,9,1.58,0.258
+26159,"Jerrold","","Nadler","","RepJerryNadler","Representative",TRUE,"",FALSE,TRUE,"New York","NY","10",2018,"1947-06-13 00:00:00",71,28,"M","D","",92.86,23,2.36,-0.509
+57873,"Grace","F.","Napolitano","","GraceNapolitano","Representative",TRUE,"",FALSE,TRUE,"California","CA","32",2018,"1936-12-04 00:00:00",82,20,"F","D","",93.03,201,20.59,-0.446
+6103,"Richard","E.","Neal","","RepRichardNeal","Representative",TRUE,"",FALSE,TRUE,"Massachusetts","MA","1",2018,"1949-02-14 00:00:00",70,30,"M","D","",95.5,21,2.15,-0.416
+78315,"Dan","","Newhouse","","RepNewhouse","Representative",TRUE,"",FALSE,TRUE,"Washington","WA","4",2018,"1955-07-10 00:00:00",63,4,"M","R","",96.07,61,6.25,0.364
+62717,"Kristi","","Noem","","RepKristiNoem","Representative",TRUE,"",FALSE,TRUE,"South Dakota","SD","At-Large",2018,"1971-11-30 00:00:00",47,8,"F","R","",95.77,78,7.99,0.396
+1001760,"Rick","","Nolan","","USRepRickNolan","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","8",2018,"1943-12-17 00:00:00",75,6,"M","D","",93,47,4.82,-0.374
+76311,"Donald","W.","Norcross","","DonaldNorcross","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","1",2018,"1958-12-13 00:00:00",60,6,"M","D","",93.55,15,1.54,-0.4
+61996,"Ralph","","Norman","","RepRalphNorman","Representative",TRUE,"",FALSE,TRUE,"South Carolina","SC","5",2018,"1953-06-20 00:00:00",65,2,"M","R","",95.35,6,0.92,NA
+1003553,"Devin","","Nunes","","Rep_DevinNunes","Representative",TRUE,"",FALSE,TRUE,"California","CA","22",2018,"1973-10-01 00:00:00",45,16,"M","R","",96.77,15,1.54,0.449
+104523,"Tom","","O'Halleran","","repohalleran","Representative",TRUE,"",FALSE,TRUE,"Arizona","AZ","1",2018,"1946-01-24 00:00:00",73,2,"M","D","",85.94,9,0.92,-0.158
+79697,"Beto","","O'Rourke","","RepBetoORourke","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","16",2018,"1972-09-26 00:00:00",46,6,"M","D","",91.85,31,3.18,-0.319
+1031361,"Pete","","Olson","","RepPeteOlson","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","22",2018,"1962-12-09 00:00:00",56,10,"M","R","",98.53,25,2.56,0.54
+61886,"Steven","","Palazzo","","CongPalazzo","Representative",TRUE,"",FALSE,TRUE,"Mississippi","MS","4",2018,"1970-02-21 00:00:00",49,8,"M","R","",95.44,54,5.53,0.492
+6107,"Frank","","Pallone","","FrankPallone","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","6",2018,"1951-10-30 00:00:00",67,32,"M","D","",94.15,1,0.1,-0.4
+76094,"Gary","","Palmer","","USRepGaryPalmer","Representative",TRUE,"",FALSE,TRUE,"Alabama","AL","6",2018,"1954-05-14 00:00:00",64,4,"M","R","",95.11,15,1.54,0.778
+104727,"Jimmy","","Panetta","","RepJimmyPanetta","Representative",TRUE,"",FALSE,TRUE,"California","CA","20",2018,"1969-10-01 00:00:00",49,2,"M","D","",93.44,1,0.1,-0.314
+45543,"Bill","","Pascrell","Jr.","BillPascrell","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","9",2018,"1937-01-25 00:00:00",82,22,"M","D","",94.51,29,2.97,-0.366
+1030000,"Erik","","Paulsen","","RepErikPaulsen","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","3",2018,"1965-05-14 00:00:00",53,10,"M","R","",90.47,0,0,0.407
+65639,"Donald","M.","Payne","Jr.","RepDonaldPayne","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","10",2018,"1958-12-17 00:00:00",60,8,"M","D","",94.53,81,8.3,-0.505
+12063,"Steve","","Pearce","","RepStevePearce","Representative",TRUE,"",FALSE,TRUE,"New Mexico","NM","2",2018,"1947-08-24 00:00:00",71,8,"M","R","",91.93,71,7.27,0.47
+6153,"Nancy","","Pelosi","","NancyPelosi","Representative",TRUE,"Minority Leader",FALSE,TRUE,"California","CA","12",2018,"1940-03-26 00:00:00",79,30,"F","D","",94.17,101,10.35,-0.492
+1021382,"Ed","","Perlmutter","","RepPerlmutter","Representative",TRUE,"",FALSE,TRUE,"Colorado","CO","7",2018,"1953-05-01 00:00:00",65,12,"M","D","",92.22,38,3.89,-0.284
+79873,"Scott","","Perry","","RepScottPerry","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","4",2018,"1962-05-27 00:00:00",56,6,"M","R","",91.13,18,1.84,0.656
+79661,"Scott","","Peters","","RepScottPeters","Representative",TRUE,"",FALSE,TRUE,"California","CA","52",2018,"1958-06-17 00:00:00",60,6,"M","D","",86.17,14,1.43,-0.174
+23978,"Collin","C.","Peterson","","","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","7",2018,"1944-06-29 00:00:00",74,28,"M","D","",73.97,8,0.82,-0.146
+1002167,"Chellie","","Pingree","","ChelliePingree","Representative",TRUE,"",FALSE,TRUE,"Maine","ME","1",2018,"1955-04-02 00:00:00",64,10,"F","D","",94.34,39,4,-0.427
+9265861,"Robert","","Pittenger","","RepPittenger","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","9",2018,"1948-08-15 00:00:00",70,6,"M","R","",94.24,38,3.89,0.563
+79688,"Mark","","Pocan","","RepMarkPocan","Representative",TRUE,"",FALSE,TRUE,"Wisconsin","WI","2",2018,"1964-08-14 00:00:00",54,6,"M","D","",93.25,132,13.52,-0.552
+1011398,"Ted","","Poe","","JudgeTedPoe","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","2",2018,"1948-09-10 00:00:00",70,14,"M","R","",91.08,68,6.97,0.593
+76253,"Bruce","","Poliquin","","RepPoliquin","Representative",TRUE,"",FALSE,TRUE,"Maine","ME","2",2018,"1953-11-01 00:00:00",65,4,"M","R","",91.09,11,1.13,0.37
+1031300,"Jared","","Polis","","JaredPolis","Representative",TRUE,"",FALSE,TRUE,"Colorado","CO","2",2018,"1975-05-12 00:00:00",43,10,"M","D","",90.68,75,7.68,-0.28
+623387,"Mike","","Pompeo","","RepMikePompeo","Representative",FALSE,"",FALSE,TRUE,"Kansas","KS","4",2018,"1963-12-30 00:00:00",55,8,"M","R","",0,59,96.72,0.66
+88959,"Bill","","Posey","","CongBillPosey","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","8",2018,"1947-12-18 00:00:00",71,10,"M","R","",95.28,107,10.96,0.51
+1013044,"Tom","","Price","","RepTomPrice","Representative",FALSE,"",FALSE,TRUE,"Georgia","GA","6",2018,"1954-10-08 00:00:00",64,14,"M","R","",33.33,82,96.47,0.644
+6748,"David","E.","Price","","RepDavidEPrice","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","4",2018,"1940-08-17 00:00:00",78,30,"M","D","",95.85,11,1.13,-0.34
+9263344,"Mike","","Quigley","","RepMikeQuigley","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","5",2018,"1958-10-17 00:00:00",60,10,"M","D","",95.22,35,3.59,-0.317
+12924,"Jamie","","Raskin","","repraskin","Representative",TRUE,"",FALSE,TRUE,"Maryland","MD","8",2018,"1962-12-13 00:00:00",56,2,"M","D","",94.21,9,0.92,-0.601
+76455,"John","","Ratcliffe","","RepRatcliffe","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","4",2018,"1965-10-20 00:00:00",53,4,"M","R","",94.05,18,1.84,0.744
+623468,"Tom","","Reed","","RepTomReed","Representative",TRUE,"",FALSE,TRUE,"New York","NY","23",2018,"1971-11-18 00:00:00",47,10,"M","R","",89.9,16,1.64,0.298
+1013064,"Dave","","Reichert","","DaveReichert","Representative",TRUE,"",FALSE,TRUE,"Washington","WA","8",2018,"1950-08-29 00:00:00",68,14,"M","R","",90.15,32,3.28,0.223
+62686,"Jim","","Renacci","","RepJimRenacci","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","16",2018,"1958-12-03 00:00:00",60,8,"M","R","",92.47,113,11.58,0.385
+79473,"Tom","","Rice","","RepTomRice","Representative",TRUE,"",FALSE,TRUE,"South Carolina","SC","7",2018,"1957-08-04 00:00:00",61,6,"M","R","",94.39,14,1.43,0.576
+76332,"Kathleen","","Rice","","RepKathleenRice","Representative",TRUE,"",FALSE,TRUE,"New York","NY","4",2018,"1965-02-15 00:00:00",54,4,"F","D","",92.76,37,3.79,-0.286
+62391,"Cedric","","Richmond","","RepRichmond","Representative",TRUE,"",FALSE,TRUE,"Louisiana","LA","2",2018,"1973-09-13 00:00:00",45,8,"M","D","",92.62,95,9.73,-0.469
+61712,"Martha","","Roby","","RepMarthaRoby","Representative",TRUE,"",FALSE,TRUE,"Alabama","AL","2",2018,"1976-07-27 00:00:00",42,8,"F","R","",97,9,0.92,0.366
+1031360,"Phil","","Roe","","DrPhilRoe","Representative",TRUE,"",FALSE,TRUE,"Tennessee","TN","1",2018,"1945-07-21 00:00:00",73,10,"M","R","",96.4,5,0.51,0.494
+6739,"Harold","","Rogers","","RepHalRogers","Representative",TRUE,"",FALSE,TRUE,"Kentucky","KY","5",2018,"1937-12-31 00:00:00",81,38,"M","R","",96.21,79,8.09,0.332
+1014740,"Mike","D.","Rogers","","RepMikeRogersAL","Representative",TRUE,"",FALSE,TRUE,"Alabama","AL","3",2018,"1958-07-16 00:00:00",60,18,"M","R","",93.33,16,1.64,0.338
+5590,"Dana","","Rohrabacher","","","Representative",TRUE,"",FALSE,TRUE,"California","CA","48",2018,"1947-06-21 00:00:00",71,30,"M","R","",91.72,94,9.63,0.628
+61832,"Todd","","Rokita","","ToddRokita","Representative",TRUE,"",FALSE,TRUE,"Indiana","IN","4",2018,"1970-02-09 00:00:00",49,8,"M","R","",93.49,24,2.46,0.595
+73021,"Francis","","Rooney","","RepRooney","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","19",2018,"1953-12-04 00:00:00",65,2,"M","R","",97.27,96,9.84,0.581
+1030486,"Tom","","Rooney","","TomRooney","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","17",2018,"1970-11-21 00:00:00",48,10,"M","R","",95.5,87,8.91,0.461
+3206,"Ileana","","Ros-Lehtinen","","RosLehtinen","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","27",2018,"1952-07-15 00:00:00",66,30,"F","R","",84.79,128,13.11,0.245
+104738,"Jacky","","Rosen","","RepJackyRosen","Representative",TRUE,"",FALSE,TRUE,"Nevada","NV","3",2018,"1957-08-02 00:00:00",61,2,"F","D","",89.12,29,2.97,-0.214
+1021912,"Peter","","Roskam","","PeterRoskam","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","6",2018,"1961-09-13 00:00:00",57,12,"M","R","",92.57,34,3.48,0.434
+62532,"Dennis","","Ross","","RepDennisRoss","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","15",2018,"1959-10-18 00:00:00",59,8,"M","R","",98.28,103,10.55,0.534
+61949,"Keith","","Rothfus","","KeithRothfus","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","12",2018,"1962-04-25 00:00:00",56,6,"M","R","",96.19,4,0.41,0.491
+79710,"David","","Rouzer","","RepDavidRouzer","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","7",2018,"1972-02-16 00:00:00",47,4,"M","R","",93.89,11,1.13,0.618
+26136,"Lucille","","Roybal-Allard","","RepRoybalAllard","Representative",TRUE,"",FALSE,TRUE,"California","CA","40",2018,"1941-06-12 00:00:00",77,26,"F","D","",95.56,31,3.18,-0.47
+28461,"Edward","","Royce","","RepEdRoyce","Representative",TRUE,"",FALSE,TRUE,"California","CA","39",2018,"1951-10-12 00:00:00",67,26,"M","R","",96.69,9,0.92,0.662
+79727,"Raul","","Ruiz","","CongressmanRuiz","Representative",TRUE,"",FALSE,TRUE,"California","CA","36",2018,"1972-08-25 00:00:00",46,6,"M","D","",91.45,5,0.51,-0.234
+49155,"C.A. Dutch","","Ruppersberger","","Call_Me_Dutch","Representative",TRUE,"",FALSE,TRUE,"Maryland","MD","2",2018,"1946-01-31 00:00:00",73,16,"M","D","",91.35,17,1.74,-0.298
+26127,"Bobby","L.","Rush","","RepBobbyRush","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","1",2018,"1946-11-23 00:00:00",72,26,"M","D","",93.77,222,22.75,-0.478
+77286,"Steve","","Russell","","RepRussell","Representative",TRUE,"",FALSE,TRUE,"Oklahoma","OK","5",2018,"1963-05-25 00:00:00",55,4,"M","R","",95.47,27,2.77,0.469
+104531,"John","","Rutherford","","RepRutherfordFL","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","4",2018,"1952-09-02 00:00:00",66,2,"M","R","",95.51,63,6.45,0.355
+1003608,"Tim","","Ryan","","RepTimRyan","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","13",2018,"1973-07-16 00:00:00",45,16,"M","D","",94.72,67,6.86,-0.403
+57970,"Paul","D.","Ryan","","SpeakerRyan","Representative",TRUE,"Speaker of the House",FALSE,TRUE,"Wisconsin","WI","1",2018,"1970-01-29 00:00:00",49,20,"M","R","",84,951,97.44,0.556
+1003554,"Linda","T.","Sánchez","","RepLindaSanchez","Representative",TRUE,"",FALSE,TRUE,"California","CA","38",2018,"1969-01-28 00:00:00",50,16,"F","D","",95.46,28,2.87,-0.505
+6513,"Mark","","Sanford","","RepSanfordSC","Representative",TRUE,"",FALSE,TRUE,"South Carolina","SC","1",2018,"1960-05-28 00:00:00",58,6,"M","R","",85.88,27,2.77,0.697
+1022884,"John","","Sarbanes","","RepSarbanes","Representative",TRUE,"",FALSE,TRUE,"Maryland","MD","3",2018,"1962-05-22 00:00:00",56,12,"M","D","",95.15,6,0.61,-0.462
+1015311,"Steve","","Scalise","","SteveScalise","Representative",TRUE,"Majority Whip",FALSE,TRUE,"Louisiana","LA","1",2018,"1965-10-06 00:00:00",53,12,"M","R","",98.27,340,34.84,0.559
+57874,"Jan","","Schakowsky","","JanSchakowsky","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","9",2018,"1944-05-26 00:00:00",74,20,"F","D","",93.58,10,1.02,-0.605
+90167,"Adam","B.","Schiff","","RepAdamSchiff","Representative",TRUE,"",FALSE,TRUE,"California","CA","28",2018,"1960-06-22 00:00:00",58,18,"M","D","",95.57,6,0.61,-0.347
+63948,"Brad","","Schneider","","repschneider","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","10",2018,"1961-08-20 00:00:00",57,2,"M","D","",86.2,12,1.23,-0.18
+1031358,"Kurt","","Schrader","","RepSchrader","Representative",TRUE,"",FALSE,TRUE,"Oregon","OR","5",2018,"1951-10-19 00:00:00",67,10,"M","D","",86.78,15,1.57,-0.189
+5205,"David","","Schweikert","","RepDavid","Representative",TRUE,"",FALSE,TRUE,"Arizona","AZ","6",2018,"1962-03-03 00:00:00",57,8,"M","R","",95.77,6,0.61,0.631
+1003567,"David","","Scott","","RepDavidScott","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","13",2018,"1945-06-27 00:00:00",73,16,"M","D","",91.44,41,4.2,-0.303
+25888,"Robert","C.","Scott","","BobbyScott","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","3",2018,"1947-04-30 00:00:00",71,26,"M","D","",93.3,6,0.61,-0.453
+623344,"Austin","","Scott","","AustinScottGA08","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","8",2018,"1969-12-10 00:00:00",49,8,"M","R","",96.79,9,0.92,0.576
+1507,"F.","James","Sensenbrenner","","JimPressOffice","Representative",TRUE,"",FALSE,TRUE,"Wisconsin","WI","5",2018,"1943-06-14 00:00:00",75,40,"M","R","",94.74,6,0.61,0.647
+14306,"JosÃ©","E.","Serrano","","RepJoseSerrano","Representative",TRUE,"",FALSE,TRUE,"New York","NY","15",2018,"1943-10-24 00:00:00",75,30,"M","D","",94.24,3,0.31,-0.489
+36807,"Pete","","Sessions","","PeteSessions","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","32",2018,"1955-03-22 00:00:00",64,22,"M","R","",98.44,13,1.33,0.587
+623257,"Terri","","Sewell","","RepTerriSewell","Representative",TRUE,"",FALSE,TRUE,"Alabama","AL","7",2018,"1965-01-01 00:00:00",54,8,"F","D","",93.2,49,5.02,-0.393
+1021773,"Carol","","Shea-Porter","","repsheaporter","Representative",TRUE,"",FALSE,TRUE,"New Hampshire","NH","1",2018,"1952-12-02 00:00:00",66,8,"F","D","",92.44,37,3.79,-0.313
+45124,"Brad","","Sherman","","BradSherman","Representative",TRUE,"",FALSE,TRUE,"California","CA","30",2018,"1954-10-24 00:00:00",64,22,"M","D","",92,14,1.43,-0.343
+30623,"John","","Shimkus","","RepShimkus","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","15",2018,"1958-02-21 00:00:00",61,22,"M","R","",95.86,10,1.02,0.372
+89108,"Bill","","Shuster","","RepBillShuster","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","9",2018,"1961-01-10 00:00:00",58,18,"M","R","",95.85,61,6.25,0.375
+57889,"Mike","","Simpson","","CongMikeSimpson","Representative",TRUE,"",FALSE,TRUE,"Idaho","ID","2",2018,"1950-09-08 00:00:00",68,20,"M","R","",95.24,51,5.23,0.293
+68489,"Kyrsten","","Sinema","","RepSinema","Representative",TRUE,"",FALSE,TRUE,"Arizona","AZ","9",2018,"1976-07-12 00:00:00",42,6,"F","D","",77.46,53,5.43,-0.11
+1022293,"Albio","","Sires","","RepSires","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","8",2018,"1951-01-26 00:00:00",68,14,"M","D","",94.9,54,5.53,-0.401
+1755,"Louise","M.","Slaughter","","LouiseSlaughter","Representative",FALSE,"",FALSE,TRUE,"New York","NY","25",2018,"1929-08-14 00:00:00",89,32,"F","D","",94.68,112,13.56,-0.465
+6411,"Christopher","H.","Smith","","RepChrisSmith","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","4",2018,"1953-03-04 00:00:00",66,38,"M","R","",87.51,7,0.72,0.159
+71083,"Jason","","Smith","","RepJasonSmith","Representative",TRUE,"",FALSE,TRUE,"Missouri","MO","8",2018,"1980-06-16 00:00:00",38,6,"M","R","",94.86,22,2.25,0.611
+8884,"Lamar","","Smith","","LamarSmithTX21","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","21",2018,"1947-11-19 00:00:00",71,32,"M","R","",98.16,51,5.23,0.425
+44329,"Adam","","Smith","","RepAdamSmith","Representative",TRUE,"",FALSE,TRUE,"Washington","WA","9",2018,"1965-06-15 00:00:00",53,22,"M","D","",92.32,25,2.56,-0.282
+1022845,"Adrian","","Smith","","RepAdrianSmith","Representative",TRUE,"",FALSE,TRUE,"Nebraska","NE","3",2018,"1970-12-19 00:00:00",48,12,"M","R","",97.26,28,2.87,0.509
+103540,"Lloyd","","Smucker","","RepSmucker","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","16",2018,"1964-01-23 00:00:00",55,2,"M","R","",95.75,12,1.23,0.334
+104534,"Darren","","Soto","","RepDarrenSoto","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","9",2018,"1978-02-25 00:00:00",41,2,"M","D","",94.44,5,0.51,-0.357
+1027627,"Jackie","","Speier","","RepSpeier","Representative",TRUE,"",FALSE,TRUE,"California","CA","14",2018,"1950-05-14 00:00:00",68,12,"F","D","",93.36,72,7.38,-0.385
+76364,"Elise","","Stefanik","","RepStefanik","Representative",TRUE,"",FALSE,TRUE,"New York","NY","21",2018,"1984-07-02 00:00:00",34,4,"F","R","",91.04,5,0.51,0.217
+68466,"Chris","","Stewart","","RepChrisStewart","Representative",TRUE,"",FALSE,TRUE,"Utah","UT","2",2018,"1960-07-15 00:00:00",58,6,"M","R","",97.29,17,1.74,0.522
+62320,"Steve","","Stivers","","RepSteveStivers","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","15",2018,"1965-03-24 00:00:00",54,8,"M","R","",91.4,69,7.07,0.299
+104747,"Thomas","","Suozzi","","RepTomSuozzi","Representative",TRUE,"",FALSE,TRUE,"New York","NY","3",2018,"1962-08-31 00:00:00",56,2,"M","D","",88.19,28,2.87,-0.188
+79729,"Eric","","Swalwell","","RepSwalwell","Representative",TRUE,"",FALSE,TRUE,"California","CA","15",2018,"1980-11-16 00:00:00",38,6,"M","D","",93.76,31,3.18,-0.36
+2737,"Mark","","Takano","","RepMarkTakano","Representative",TRUE,"",FALSE,TRUE,"California","CA","41",2018,"1960-12-10 00:00:00",58,6,"M","D","",93.29,22,2.25,-0.471
+96047,"Scott","","Taylor","","RepScottTaylor","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","2",2018,"1979-06-27 00:00:00",39,2,"M","R","",96.3,31,3.18,0.478
+103481,"Claudia","","Tenney","","RepTenney","Representative",TRUE,"",FALSE,TRUE,"New York","NY","22",2018,"1961-02-04 00:00:00",58,2,"F","R","",92.47,7,0.72,0.272
+7304,"Bennie","","Thompson","","BennieGThompson","Representative",TRUE,"",FALSE,TRUE,"Mississippi","MS","2",2018,"1948-01-28 00:00:00",71,26,"M","D","",94.17,32,3.28,-0.514
+1031359,"Glenn","","Thompson","","CongressmanGT","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","5",2018,"1959-07-27 00:00:00",59,10,"M","R","",91.42,9,0.92,0.308
+57872,"Mike","","Thompson","","RepThompson","Representative",TRUE,"",FALSE,TRUE,"California","CA","5",2018,"1951-01-24 00:00:00",68,20,"M","D","",93.17,25,2.56,-0.395
+36814,"William","M.","Thornberry","","MacTXPress","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","13",2018,"1958-07-15 00:00:00",60,24,"M","R","",97.93,11,1.13,0.529
+88155,"Pat","","Tiberi","","TiberiPress","Representative",FALSE,"",FALSE,TRUE,"Ohio","OH","12",2018,"1962-10-21 00:00:00",56,18,"M","R","",94.54,88,12.07,0.386
+60384,"Scott","","Tipton","","RepTipton","Representative",TRUE,"",FALSE,TRUE,"Colorado","CO","3",2018,"1956-11-09 00:00:00",62,8,"M","R","",91.92,11,1.13,0.455
+1021622,"Dina","","Titus","","RepDinaTitus","Representative",TRUE,"",FALSE,TRUE,"Nevada","NV","1",2018,"1950-05-23 00:00:00",68,6,"F","D","",93.1,77,7.89,-0.296
+1031353,"Paul","","Tonko","","RepPaulTonko","Representative",TRUE,"",FALSE,TRUE,"New York","NY","20",2018,"1949-06-18 00:00:00",69,10,"M","D","",93.49,8,0.82,-0.423
+76129,"Norma","","Torres","","NormaJTorres","Representative",TRUE,"",FALSE,TRUE,"California","CA","35",2018,"1965-04-04 00:00:00",54,4,"F","D","",94.33,24,2.46,-0.357
+76679,"Dave","","Trott","","repdavetrott","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","11",2018,"1960-10-16 00:00:00",58,4,"M","R","",96.42,55,5.64,0.371
+21764,"Niki","","Tsongas","","NikiInTheHouse","Representative",TRUE,"",FALSE,TRUE,"Massachusetts","MA","3",2018,"1946-04-26 00:00:00",72,12,"F","D","",94.08,98,10.04,-0.398
+1003607,"Michael","R.","Turner","","RepMikeTurner","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","10",2018,"1960-01-11 00:00:00",59,16,"M","R","",91.7,24,2.46,0.267
+12127,"Fred","","Upton","","RepFredUpton","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","6",2018,"1953-04-23 00:00:00",65,32,"M","R","",89.65,10,1.02,0.339
+623702,"David","","Valadao","","RepDavidValadao","Representative",TRUE,"",FALSE,TRUE,"California","CA","21",2018,"1977-04-14 00:00:00",41,6,"M","R","",91.63,20,2.05,0.255
+8297,"Juan","","Vargas","","RepJuanVargas","Representative",TRUE,"",FALSE,TRUE,"California","CA","51",2018,"1961-03-07 00:00:00",58,6,"M","D","",94,42,4.3,-0.39
+79466,"Marc","","Veasey","","RepVeasey","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","33",2018,"1971-01-03 00:00:00",48,6,"M","D","",92.68,6,0.61,-0.415
+95434,"Filemon","","Vela","","RepFilemonVela","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","34",2018,"1963-02-13 00:00:00",56,6,"M","D","",89.16,26,2.66,-0.311
+26160,"Nydia","M.","VelÃ¡zquez","","NydiaVelazquez","Representative",TRUE,"",FALSE,TRUE,"New York","NY","7",2018,"1953-03-28 00:00:00",66,26,"F","D","",94.04,20,2.05,-0.545
+6785,"Peter","J.","Visclosky","","RepVisclosky","Representative",TRUE,"",FALSE,TRUE,"Indiana","IN","1",2018,"1949-08-13 00:00:00",69,34,"M","D","",94.53,44,4.51,-0.402
+82702,"Ann","","Wagner","","RepAnnWagner","Representative",TRUE,"",FALSE,TRUE,"Missouri","MO","2",2018,"1962-09-13 00:00:00",56,6,"F","R","",97.86,42,4.3,0.47
+1022844,"Tim","","Walberg","","RepWalberg","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","7",2018,"1951-04-12 00:00:00",67,8,"M","R","",93.94,2,0.2,0.527
+57892,"Greg","","Walden","","RepGregWalden","Representative",TRUE,"",FALSE,TRUE,"Oregon","OR","2",2018,"1957-01-10 00:00:00",62,20,"M","R","",94.32,7,0.72,0.339
+76376,"Mark","","Walker","","RepMarkWalker","Representative",TRUE,"",FALSE,TRUE,"North Carolina","NC","6",2018,"1969-05-20 00:00:00",49,4,"M","R","",96.42,25,2.56,0.603
+95005,"Jackie","","Walorski","","RepWalorski","Representative",TRUE,"",FALSE,TRUE,"Indiana","IN","2",2018,"1963-08-17 00:00:00",55,6,"F","R","",97.93,9,0.92,0.447
+76141,"Mimi","","Walters","","RepMimiWalters","Representative",TRUE,"",FALSE,TRUE,"California","CA","45",2018,"1962-05-14 00:00:00",56,4,"F","R","",98.33,20,2.05,0.425
+1018510,"Tim","","Walz","","RepTimWalz","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","1",2018,"1964-04-06 00:00:00",55,12,"M","D","",92.7,195,19.98,-0.273
+86882,"Debbie","","Wasserman Schultz","","RepDWStweets","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","23",2018,"1966-09-27 00:00:00",52,14,"F","D","",93.52,66,6.76,-0.428
+1953,"Maxine","","Waters","","MaxineWaters","Representative",TRUE,"",FALSE,TRUE,"California","CA","43",2018,"1938-08-15 00:00:00",80,28,"F","D","",93.23,46,4.71,-0.659
+79091,"Bonnie","","Watson Coleman","","RepBonnie","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","12",2018,"1945-02-06 00:00:00",74,4,"F","D","",93.01,17,1.74,-0.62
+79698,"Randy","","Weber","","TXRandy14","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","14",2018,"1953-07-02 00:00:00",65,6,"M","R","",94.06,17,1.74,0.713
+30504,"Daniel","","Webster","","RepWebster","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","11",2018,"1949-04-27 00:00:00",69,8,"M","R","",96.59,95,9.73,0.478
+1019990,"Peter","","Welch","","PeterWelch","Representative",TRUE,"",FALSE,TRUE,"Vermont","VT","At-Large",2018,"1947-05-02 00:00:00",71,12,"M","D","",93.59,25,2.56,-0.41
+1034044,"Brad","","Wenstrup","","RepBradWenstrup","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","2",2018,"1958-06-17 00:00:00",60,6,"M","R","",96.3,3,0.31,0.578
+76097,"Bruce","","Westerman","","RepWesterman","Representative",TRUE,"",FALSE,TRUE,"Arkansas","AR","4",2018,"1967-11-18 00:00:00",51,4,"M","R","",97.22,6,0.61,0.542
+623742,"Roger","","Williams","","RepRWilliams","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","25",2018,"1949-09-13 00:00:00",69,6,"M","R","",96.79,10,1.02,0.599
+87016,"Frederica","","Wilson","","RepWilson","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","24",2018,"1942-11-05 00:00:00",76,8,"F","D","",95.05,148,15.16,-0.478
+1002567,"Joe","","Wilson","","RepJoeWilson","Representative",TRUE,"",FALSE,TRUE,"South Carolina","SC","2",2018,"1947-07-31 00:00:00",71,18,"M","R","",97.83,8,0.82,0.547
+1028089,"Robert","J.","Wittman","","RobWittman","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","1",2018,"1959-02-03 00:00:00",60,12,"M","R","",94.81,12,1.23,0.421
+1033625,"Steve","","Womack","","Rep_SteveWomack","Representative",TRUE,"",FALSE,TRUE,"Arkansas","AR","3",2018,"1957-02-18 00:00:00",62,8,"M","R","",97.64,0,0,0.344
+623342,"Rob","","Woodall","","RepRobWoodall","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","7",2018,"1970-02-11 00:00:00",49,8,"M","R","",92.82,15,1.54,0.65
+1021662,"John","","Yarmuth","","RepJohnYarmuth","Representative",TRUE,"",FALSE,TRUE,"Kentucky","KY","3",2018,"1947-11-04 00:00:00",71,12,"M","D","",94.71,30,3.07,-0.38
+61843,"Kevin","","Yoder","","RepKevinYoder","Representative",TRUE,"",FALSE,TRUE,"Kansas","KS","3",2018,"1976-01-08 00:00:00",43,8,"M","R","",93.27,10,1.02,0.564
+63943,"Ted","","Yoho","","RepTedYoho","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","3",2018,"1955-04-13 00:00:00",63,6,"M","R","",94.81,31,3.18,0.702
+76211,"David","","Young","","RepDavidYoung","Representative",TRUE,"",FALSE,TRUE,"Iowa","IA","3",2018,"1968-05-11 00:00:00",50,4,"M","R","",96.31,0,0,0.448
+1897,"Don","","Young","","RepDonYoung","Representative",TRUE,"",FALSE,TRUE,"Alaska","AK","At-Large",2018,"1933-06-09 00:00:00",85,46,"M","R","",89.78,37,3.79,0.278
+61616,"Lee","","Zeldin","","RepLeeZeldin","Representative",TRUE,"",FALSE,TRUE,"New York","NY","1",2018,"1980-01-30 00:00:00",39,4,"M","R","",92.89,19,1.95,0.355
+76298,"Ryan","","Zinke","","RepRyanZinke","Representative",FALSE,"",FALSE,TRUE,"Montana","MT","At-Large",2018,"1961-11-01 00:00:00",57,4,"M","R","",89.47,89,82.41,0.412
+5,"Lamar","","Alexander","","SenAlexander","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Tennessee","TN","",2020,"1940-07-03 00:00:00",78,15,"M","R","senior",97.88,20,4.5,0.323
+57884,"Tammy","","Baldwin","","SenatorBaldwin","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Wisconsin","WI","",2018,"1962-02-11 00:00:00",57,5,"F","D","junior",95.24,3,0.68,-0.536
+1024777,"John","","Barrasso","","SenJohnBarrasso","Senator, 1st Class",TRUE,"Policy Committee Chair",TRUE,FALSE,"Wyoming","WY","",2018,"1952-07-21 00:00:00",66,11,"M","R","junior",97.97,1,0.23,0.529
+1031622,"Michael","","Bennet","","SenBennetCo","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Colorado","CO","",2022,"1964-11-28 00:00:00",54,9,"M","D","senior",90.48,3,0.68,-0.209
+21799,"Richard","","Blumenthal","","SenBlumenthal","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Connecticut","CT","",2022,"1946-02-13 00:00:00",73,7,"M","D","senior",90.93,3,0.68,-0.412
+45465,"Roy","","Blunt","","RoyBlunt","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Missouri","MO","",2022,"1950-01-10 00:00:00",69,7,"M","R","junior",98.62,10,2.25,0.431
+84679,"Cory","","Booker","","CoryBooker","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"New Jersey","NJ","",2020,"1969-04-27 00:00:00",49,5,"M","D","junior",83.53,25,5.63,-0.626
+92069,"John","","Boozman","","JohnBoozman","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Arkansas","AR","",2022,"1950-12-10 00:00:00",68,7,"M","R","senior",99.1,0,0,0.402
+5051,"Sherrod","","Brown","","SenSherrodBrown","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Ohio","OH","",2018,"1952-11-09 00:00:00",66,11,"M","D","senior",94.14,0,0,-0.438
+31054,"Richard","M.","Burr","","SenatorBurr","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"North Carolina","NC","",2022,"1955-11-30 00:00:00",63,13,"M","R","senior",99.06,17,3.83,0.453
+26137,"Maria","","Cantwell","","SenatorCantwell","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Washington","WA","",2018,"1958-10-13 00:00:00",60,17,"F","D","junior",95.25,2,0.45,-0.289
+83737,"Shelley","Moore","Capito","","SenCapito","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"West Virginia","WV","",2020,"1953-11-26 00:00:00",65,3,"F","R","junior",98.17,6,1.35,0.259
+4004,"Benjamin","L.","Cardin","","SenatorCardin","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Maryland","MD","",2018,"1943-10-05 00:00:00",75,11,"M","D","senior",95.92,3,0.68,-0.328
+663,"Thomas","R.","Carper","","SenatorCarper","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Delaware","DE","",2018,"1947-01-23 00:00:00",72,17,"M","D","senior",88.84,5,1.13,-0.174
+47036,"Bob","","Casey","","SenBobCasey","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Pennsylvania","PA","",2018,"1960-04-13 00:00:00",58,11,"M","D","senior",95.03,1,0.23,-0.295
+1030546,"Bill","","Cassidy","","","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Louisiana","LA","",2020,"1957-09-28 00:00:00",61,3,"M","R","senior",97.97,1,0.23,0.451
+1200,"Thad","","Cochran","","SenThadCochran","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Mississippi","MS","",2020,"1937-12-07 00:00:00",81,39,"M","R","senior",99.15,37,9.54,0.287
+45738,"Susan","","Collins","","SenatorCollins","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Maine","ME","",2020,"1952-12-07 00:00:00",66,21,"F","R","senior",90.54,0,0,0.108
+9269028,"Christopher","A.","Coons","","SenCoonsOffice","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Delaware","DE","",2020,"1963-09-09 00:00:00",55,9,"M","D","junior",89.81,22,4.95,-0.262
+1021114,"Bob","","Corker","","SenBobCorker","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Tennessee","TN","",2018,"1952-08-24 00:00:00",66,11,"M","R","junior",95.13,13,2.93,0.393
+93131,"John","","Cornyn","","JohnCornyn","Senator, 2nd Class",TRUE,"Assistant Leader",TRUE,FALSE,"Texas","TX","",2020,"1952-02-02 00:00:00",67,15,"M","R","senior",98.87,0,0,0.496
+105698,"Catherine","","Cortez Masto","","sencortezmasto","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Nevada","NV","",2022,"1964-03-29 00:00:00",55,1,"F","D","junior",89.68,8,1.8,-0.342
+63928,"Tom","","Cotton","","SenTomCotton","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Arkansas","AR","",2020,"1977-05-13 00:00:00",41,3,"M","R","junior",97.74,2,0.45,0.616
+26440,"Michael","D.","Crapo","","MikeCrapo","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Idaho","ID","",2022,"1951-05-20 00:00:00",67,19,"M","R","senior",96.84,1,0.23,0.508
+1019953,"Ted","","Cruz","","SenTedCruz","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Texas","TX","",2018,"1970-12-22 00:00:00",48,5,"M","R","junior",95.78,17,3.83,0.842
+1034037,"Steve","","Daines","","SteveDaines","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Montana","MT","",2020,"1962-08-20 00:00:00",56,3,"M","R","junior",95.95,0,0,0.537
+1012000,"Joe","","Donnelly","","SenDonnelly","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Indiana","IN","",2018,"1955-09-28 00:00:00",63,5,"M","D","senior",76.38,8,1.8,-0.119
+94484,"Tammy","","Duckworth","","SenDuckworth","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Illinois","IL","",2022,"1968-03-12 00:00:00",51,1,"F","D","junior",92.05,54,12.16,-0.31
+6741,"Richard","J.","Durbin","","SenatorDurbin","Senator, 2nd Class",TRUE,"Minority Whip",TRUE,FALSE,"Illinois","IL","",2020,"1944-11-21 00:00:00",74,21,"M","D","senior",93.3,11,2.48,-0.362
+45824,"Michael","B.","Enzi","","SenatorEnzi","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Wyoming","WY","",2020,"1944-02-01 00:00:00",75,21,"M","R","senior",96.39,1,0.23,0.538
+75342,"Joni","","Ernst","","SenJoniErnst","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Iowa","IA","",2020,"1970-07-01 00:00:00",48,3,"F","R","junior",97.52,1,0.23,0.515
+13061,"Dianne","","Feinstein","","SenFeinstein","Senator, 1st Class",TRUE,"",TRUE,FALSE,"California","CA","",2018,"1933-06-22 00:00:00",85,25,"F","D","senior",92.09,27,6.08,-0.264
+1034067,"Deb","","Fischer","","SenatorFischer","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Nebraska","NE","",2018,"1951-03-01 00:00:00",68,5,"F","R","senior",97.75,0,0,0.469
+87582,"Jeff","","Flake","","JeffFlake","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Arizona","AZ","",2018,"1962-12-31 00:00:00",56,5,"M","R","junior",94.54,23,5.18,0.855
+23334,"Al","","Franken","","SenFranken","Senator, 2nd Class",FALSE,"",TRUE,FALSE,"Minnesota","MN","",2020,"1951-05-21 00:00:00",67,9,"M","D","junior",97.44,13,4,-0.397
+623308,"Cory","","Gardner","","SenCoryGardner","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Colorado","CO","",2020,"1974-08-22 00:00:00",44,3,"M","R","junior",96.83,2,0.45,0.454
+1022862,"Kirsten","E.","Gillibrand","","SenGillibrand","Senator, 1st Class",TRUE,"",TRUE,FALSE,"New York","NY","",2018,"1966-12-09 00:00:00",52,9,"F","D","junior",79.96,0,0,-0.375
+36782,"Lindsey","","Graham","","GrahamBlog","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"South Carolina","SC","",2020,"1955-07-09 00:00:00",63,15,"M","R","senior",97.15,23,5.18,0.409
+1167,"Charles","E.","Grassley","","ChuckGrassley","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Iowa","IA","",2022,"1933-09-17 00:00:00",85,37,"M","R","senior",97.3,0,0,0.342
+1018696,"Kamala","","Harris","","SenKamalaHarris","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"California","CA","",2022,"1964-10-20 00:00:00",54,1,"F","D","junior",83.97,1,0.23,-0.669
+67481,"Margaret","","Hassan","","Senatorhassan","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"New Hampshire","NH","",2022,"1958-02-27 00:00:00",61,1,"F","D","junior",93.65,3,0.68,-0.293
+189,"Orrin","G.","Hatch","","SenOrrinHatch","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Utah","UT","",2018,"1934-03-22 00:00:00",85,41,"M","R","senior",98.87,2,0.45,0.382
+1030686,"Martin","","Heinrich","","MartinHeinrich","Senator, 1st Class",TRUE,"",TRUE,FALSE,"New Mexico","NM","",2018,"1971-10-17 00:00:00",47,5,"M","D","junior",92.51,17,3.83,-0.29
+95414,"Heidi","","Heitkamp","","SenatorHeitkamp","Senator, 1st Class",TRUE,"",TRUE,FALSE,"North Dakota","ND","",2018,"1955-10-30 00:00:00",63,5,"F","D","junior",74.43,2,0.45,-0.125
+1012368,"Dean","","Heller","","SenDeanHeller","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Nevada","NV","",2018,"1960-05-10 00:00:00",58,7,"M","R","senior",93.62,21,4.73,0.464
+91216,"Mazie","K.","Hirono","","MazieHirono","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Hawaii","HI","",2018,"1947-11-03 00:00:00",71,5,"F","D","junior",88.33,7,1.58,-0.49
+85233,"John","","Hoeven","","SenJohnHoeven","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"North Dakota","ND","",2022,"1957-03-13 00:00:00",62,7,"M","R","senior",99.32,5,1.13,0.34
+NA,"Cindy","","Hyde-Smith","","","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Mississippi","MS","",NA,"1959-05-10 00:00:00",59,1,"F","R","",100,0,0,NA
+5619,"James","M.","Inhofe","","InhofePress","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Oklahoma","OK","",2020,"1934-11-17 00:00:00",84,25,"M","R","senior",98.18,4,0.9,0.552
+59135,"Johnny","","Isakson","","SenatorIsakson","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Georgia","GA","",2022,"1944-12-28 00:00:00",74,13,"M","R","senior",98.45,57,12.84,0.403
+62835,"Ron","","Johnson","","SenRonJohnson","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Wisconsin","WI","",2022,"1955-04-08 00:00:00",64,7,"M","R","senior",97.52,1,0.23,0.597
+1024592,"Doug","","Jones","","SenDougJones","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Alabama","AL","",2020,"1954-05-04 00:00:00",64,1,"M","D","",74.14,3,2.52,NA
+49219,"Tim","","Kaine","","SenKaineOffice","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Virginia","VA","",2018,"1958-02-26 00:00:00",61,5,"M","D","junior",92.06,3,0.68,-0.235
+1011723,"John","","Kennedy","","SenJohnKennedy","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Louisiana","LA","",2022,"1951-11-21 00:00:00",67,1,"M","R","junior",95.5,0,0,0.426
+37413,"Angus","","King","","SenAngusKing","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Maine","ME","",2018,"1944-03-31 00:00:00",75,5,"M","I","junior",84.23,0,0,-0.152
+83701,"Amy","","Klobuchar","","","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Minnesota","MN","",2018,"1960-05-25 00:00:00",58,11,"F","D","senior",95.03,1,0.23,-0.243
+1033847,"James","","Lankford","","SenatorLankford","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Oklahoma","OK","",2022,"1968-03-04 00:00:00",51,3,"M","R","junior",96.83,2,0.45,0.57
+1552,"Patrick","J.","Leahy","","SenatorLeahy","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Vermont","VT","",2022,"1940-03-31 00:00:00",79,43,"M","D","senior",94.51,7,1.58,-0.374
+9267977,"Mike","","Lee","","SenMikeLee","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Utah","UT","",2022,"1971-06-04 00:00:00",47,7,"M","R","junior",89.32,4,0.9,0.919
+62864,"Joe","","Manchin","III","Sen_JoeManchin","Senator, 1st Class",TRUE,"",TRUE,FALSE,"West Virginia","WV","",2018,"1947-08-24 00:00:00",71,9,"M","D","senior",70.07,3,0.68,-0.061
+260,"Edward","J.","Markey","","SenMarkey","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Massachusetts","MA","",2020,"1946-07-11 00:00:00",72,5,"M","D","junior",86.2,2,0.45,-0.501
+7476,"John","","McCain","","SenJohnMcCain","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Arizona","AZ","",2022,"1936-08-29 00:00:00",82,31,"M","R","senior",92.2,162,36.49,0.381
+1012014,"Claire","","McCaskill","","McCaskillOffice","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Missouri","MO","",2018,"1953-07-24 00:00:00",65,11,"F","D","senior",82.79,14,3.15,-0.145
+2351,"Mitch","","McConnell","","McConnellPress","Senator, 2nd Class",TRUE,"Majority Leader",TRUE,FALSE,"Kentucky","KY","",2020,"1942-02-20 00:00:00",77,33,"M","R","senior",98.2,0,0,0.404
+29608,"Robert","","Menendez","","SenatorMenendez","Senator, 1st Class",TRUE,"",TRUE,FALSE,"New Jersey","NJ","",2018,"1954-01-01 00:00:00",65,12,"M","D","senior",91.39,84,18.92,-0.36
+1029842,"Jeff","","Merkley","","SenJeffMerkley","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Oregon","OR","",2020,"1956-10-24 00:00:00",62,9,"M","D","junior",84.02,6,1.35,-0.463
+45469,"Jerry","","Moran","","JerryMoran","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Kansas","KS","",2022,"1954-05-29 00:00:00",64,7,"M","R","junior",96.73,16,3.6,0.414
+1004138,"Lisa","","Murkowski","","LisaMurkowski","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Alaska","AK","",2022,"1957-05-22 00:00:00",61,17,"F","R","senior",93.76,11,2.48,0.208
+1021270,"Christopher","S.","Murphy","","ChrisMurphyCT","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Connecticut","CT","",2018,"1973-08-03 00:00:00",45,5,"M","D","junior",93.89,2,0.45,-0.311
+25277,"Patty","","Murray","","PattyMurray","Senator, 3rd Class",TRUE,"Assistant Leader",TRUE,FALSE,"Washington","WA","",2022,"1950-10-11 00:00:00",68,25,"F","D","senior",95.01,3,0.68,-0.341
+1931,"Bill","","Nelson","","SenBillNelson","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Florida","FL","",2018,"1942-09-29 00:00:00",76,17,"M","D","senior",87.01,13,2.93,-0.194
+9265241,"Rand","","Paul","","","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Kentucky","KY","",2022,"1963-01-07 00:00:00",56,7,"M","R","junior",84.85,15,3.38,0.872
+75920,"David","","Perdue","","sendavidperdue","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Georgia","GA","",2020,"1949-12-10 00:00:00",69,3,"M","R","junior",97.72,5,1.13,0.647
+50199,"Gary","","Peters","","SenGaryPeters","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Michigan","MI","",2020,"1958-12-01 00:00:00",60,3,"M","D","junior",90,4,0.9,-0.233
+31819,"Rob","","Portman","","SenRobPortman","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Ohio","OH","",2022,"1955-12-19 00:00:00",63,7,"M","R","junior",97.96,3,0.68,0.375
+24239,"Jack","","Reed","","SenJackReed","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Rhode Island","RI","",2020,"1949-11-12 00:00:00",69,21,"M","D","senior",93.24,0,0,-0.385
+1020034,"Jim","","Risch","","SenatorRisch","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Idaho","ID","",2020,"1943-05-03 00:00:00",75,9,"M","R","junior",96.15,3,0.68,0.633
+16354,"Pat","","Roberts","","SenPatRoberts","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Kansas","KS","",2020,"1936-04-20 00:00:00",82,21,"M","R","senior",99.08,7,1.58,0.415
+78317,"Mike","","Rounds","","SenatorRounds","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"South Dakota","SD","",2020,"1954-10-24 00:00:00",64,3,"M","R","junior",98.16,9,2.03,0.384
+87599,"Marco","","Rubio","","SenRubioPress","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Florida","FL","",2022,"1971-05-28 00:00:00",47,7,"M","R","junior",98.12,19,4.28,0.586
+994,"Bernard","","Sanders","","SenSanders","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Vermont","VT","",2018,"1941-09-08 00:00:00",77,11,"M","I","junior",79.58,13,2.93,-0.515
+77429,"Ben","","Sasse","","SenSasse","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Nebraska","NE","",2020,"1972-02-22 00:00:00",47,3,"M","R","junior",95,4,0.9,0.821
+87784,"Brian","","Schatz","","SenBrianSchatz","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Hawaii","HI","",2022,"1972-10-20 00:00:00",46,5,"M","D","senior",92.27,4,0.9,-0.402
+5929,"Charles","E.","Schumer","","SenSchumer","Senator, 3rd Class",TRUE,"Minority Leader",TRUE,FALSE,"New York","NY","",2022,"1950-11-23 00:00:00",68,19,"M","D","senior",93.69,0,0,-0.351
+623506,"Tim","","Scott","","SenatorTimScott","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"South Carolina","SC","",2022,"1965-09-19 00:00:00",53,5,"M","R","junior",98.63,5,1.13,0.661
+44441,"Jeff","","Sessions","","SenatorSessions","Senator, 2nd Class",FALSE,"",TRUE,FALSE,"Alabama","AL","",2020,"1946-12-24 00:00:00",72,21,"M","R","",90.48,39,65,0.549
+22850,"Jeanne","","Shaheen","","SenatorShaheen","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"New Hampshire","NH","",2020,"1947-01-28 00:00:00",72,9,"F","D","senior",92.52,3,0.68,-0.269
+1859,"Richard","C.","Shelby","","SenShelby","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Alabama","AL","",2022,"1934-05-06 00:00:00",84,31,"M","R","senior",98.19,3,0.68,0.434
+111313,"Tina","","Smith","","SenTinaSmith","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Minnesota","MN","",2018,"1958-03-04 00:00:00",61,1,"F","D","2",94.96,0,0,NA
+45451,"Debbie","","Stabenow","","SenStabenow","Senator, 1st Class",TRUE,"Policy Committee Chair",TRUE,FALSE,"Michigan","MI","",2018,"1950-04-29 00:00:00",68,17,"F","D","senior",90.68,4,0.9,-0.327
+9278255,"Luther","","Strange","","SenatorStrange","Senator, 2nd Class",FALSE,"",TRUE,FALSE,"Alabama","AL","",2020,"1953-03-01 00:00:00",66,1,"M","R","junior",96.88,9,3.4,NA
+1023262,"Dan","","Sullivan","","SenDanSullivan","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Alaska","AK","",2020,"1964-11-13 00:00:00",54,3,"M","R","junior",98.36,16,3.6,0.464
+1020176,"Jon","","Tester","","SenatorTester","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Montana","MT","",2018,"1956-08-21 00:00:00",62,11,"M","D","senior",86.99,6,1.35,-0.215
+45552,"John","","Thune","","SenJohnThune","Senator, 3rd Class",TRUE,"Conference Chair",TRUE,FALSE,"South Dakota","SD","",2022,"1961-01-07 00:00:00",58,13,"M","R","senior",98.87,0,0,0.409
+77055,"Thom","","Tillis","","senthomtillis","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"North Carolina","NC","",2020,"1960-08-30 00:00:00",58,3,"M","R","junior",99.3,14,3.15,0.428
+7958,"Patrick","J.","Toomey","","SenToomey","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Pennsylvania","PA","",2022,"1961-11-17 00:00:00",57,7,"M","R","junior",96.71,19,4.28,0.631
+10075,"Tom","","Udall","","SenatorTomUdall","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"New Mexico","NM","",2020,"1948-05-18 00:00:00",70,10,"M","D","senior",91.36,4,0.9,-0.454
+20756,"Chris","","Van Hollen","","ChrisVanHollen","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Maryland","MD","",2022,"1959-01-10 00:00:00",60,1,"M","D","junior",94.77,4,0.9,-0.399
+7630,"Mark","","Warner","","MarkWarner","Senator, 2nd Class",TRUE,"",TRUE,FALSE,"Virginia","VA","",2020,"1954-12-15 00:00:00",64,9,"M","D","senior",85.81,7,1.58,-0.195
+1023023,"Elizabeth","","Warren","","SenWarren","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Massachusetts","MA","",2018,"1949-06-22 00:00:00",69,5,"F","D","senior",81.53,0,0,-0.761
+92235,"Sheldon","","Whitehouse","","SenWhitehouse","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Rhode Island","RI","",2018,"1955-10-20 00:00:00",63,11,"M","D","junior",94.33,3,0.68,-0.415
+18203,"Roger","","Wicker","","SenatorWicker","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Mississippi","MS","",2018,"1951-07-05 00:00:00",67,11,"M","R","junior",98.65,1,0.23,0.377
+1962,"Ron","","Wyden","","RonWyden","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Oregon","OR","",2022,"1949-05-03 00:00:00",69,22,"M","D","senior",88.49,1,0.23,-0.316
+1033743,"Todd","","Young","","RepToddYoung","Senator, 3rd Class",TRUE,"",TRUE,FALSE,"Indiana","IN","",2022,"1972-08-24 00:00:00",46,1,"M","R","junior",98.86,4,0.9,0.487
+NA,"Colin","","Allred","","RepColinAllred","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","32",2020,"1983-04-15 00:00:00",35,2,"M","D","",83.33,0,0,NA
+NA,"Kelly","","Armstrong","","RepArmstrongND","Representative",TRUE,"",FALSE,TRUE,"North Dakota","ND","At-Large",2020,"1976-10-08 00:00:00",42,2,"M","R","",83.33,0,0,NA
+NA,"Cynthia","","Axne","","RepCindyAxne","Representative",TRUE,"",FALSE,TRUE,"Iowa","IA","3",2020,"1965-04-20 00:00:00",53,2,"F","D","",83.33,0,0,NA
+NA,"James","","Baird","","","Representative",TRUE,"",FALSE,TRUE,"Indiana","IN","4",2020,"1945-06-04 00:00:00",73,2,"M","R","",83.33,0,0,NA
+NA,"Troy","","Balderson","","RepBalderson","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","12",2020,"1962-01-16 00:00:00",57,4,"M","R","",83.33,0,0,NA
+NA,"Anthony","","Brindisi","","","Representative",TRUE,"",FALSE,TRUE,"New York","NY","22",2020,"1978-11-22 00:00:00",40,2,"M","D","",81.82,1,8.33,NA
+NA,"Tim","","Burchett","","RepTimBurchett","Representative",TRUE,"",FALSE,TRUE,"Tennessee","TN","2",2020,"1964-08-25 00:00:00",54,2,"M","R","",83.33,0,0,NA
+63934,"Tony","","Cárdenas","","RepCardenas","Representative",TRUE,"",FALSE,TRUE,"California","CA","29",2020,"1963-03-31 00:00:00",56,8,"M","D","",81.82,1,8.33,NA
+1027364,"André","","Carson","","RepAndreCarson","Representative",TRUE,"",FALSE,TRUE,"Indiana","IN","7",2020,"1974-10-16 00:00:00",44,14,"M","D","",83.33,0,0,NA
+NA,"Ed","","Case","","","Representative",TRUE,"",FALSE,TRUE,"Hawaii","HI","1",2020,"1952-09-27 00:00:00",66,2,"M","D","",83.33,0,0,NA
+NA,"Sean","","Casten","","","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","6",2020,"1971-11-23 00:00:00",47,2,"M","D","",83.33,0,0,NA
+63974,"Joaquín","","Castro","","JoaquinCastrotx","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","20",2020,"1974-09-16 00:00:00",44,8,"M","D","",83.33,0,0,NA
+NA,"Gilbert","","Cisneros","","","Representative",TRUE,"",FALSE,TRUE,"California","CA","39",2020,"",NA,2,"M","D","",83.33,0,0,NA
+NA,"Ben","","Cline","","RepBenCline","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","6",2020,"1972-02-29 00:00:00",47,2,"M","R","",83.33,0,0,NA
+10322,"Michael","","Cloud","","RepCloudTX","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","27",2020,"1975-05-13 00:00:00",43,4,"M","R","",83.33,0,0,NA
+NA,"TJ","","Cox","","RepTjCox","Representative",TRUE,"",FALSE,TRUE,"California","CA","21",2020,"1963-07-18 00:00:00",55,2,"M","D","",83.33,0,0,NA
+NA,"Angie","","Craig","","RepAngieCraig","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","2",2020,"1972-02-14 00:00:00",47,2,"F","D","",83.33,0,0,NA
+NA,"Dan","","Crenshaw","","RepDanCrenshaw","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","2",2020,"1984-03-14 00:00:00",35,2,"M","R","",83.33,0,0,NA
+NA,"Jason","","Crow","","RepJasonCrow","Representative",TRUE,"",FALSE,TRUE,"Colorado","CO","6",2020,"1979-03-15 00:00:00",40,2,"M","D","",83.33,0,0,NA
+NA,"Joe","","Cunningham","","RepCunningham","Representative",TRUE,"",FALSE,TRUE,"South Carolina","SC","1",2020,"1982-05-26 00:00:00",36,2,"M","D","",83.33,0,0,NA
+NA,"Sharice","","Davids","","RepDavids","Representative",TRUE,"",FALSE,TRUE,"Kansas","KS","3",2020,"1980-05-22 00:00:00",38,2,"F","D","",83.33,0,0,NA
+NA,"Madeleine","","Dean","","","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","4",2020,"1959-06-06 00:00:00",59,2,"F","D","",83.33,0,0,NA
+NA,"Antonio","","Delgado","","repdelgado","Representative",TRUE,"",FALSE,TRUE,"New York","NY","19",2020,"1977-01-19 00:00:00",42,2,"M","D","",83.33,0,0,NA
+NA,"Veronica","","Escobar","","RepEscobar","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","16",2020,"1969-09-15 00:00:00",49,2,"F","D","",83.33,0,0,NA
+NA,"Abby","","Finkenauer","","","Representative",TRUE,"",FALSE,TRUE,"Iowa","IA","1",2020,"1988-12-27 00:00:00",30,2,"F","D","",83.33,0,0,NA
+NA,"Lizzie","","Fletcher","","RepFletcher","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","7",2020,"1975-02-13 00:00:00",44,2,"F","D","",83.33,0,0,NA
+NA,"Russ","","Fulcher","","RepRussFulcher","Representative",TRUE,"",FALSE,TRUE,"Idaho","ID","1",2020,"1973-07-19 00:00:00",45,2,"M","R","",81.82,1,8.33,NA
+NA,"Jesús","","García","","","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","4",2020,"1956-04-12 00:00:00",62,2,"M","D","",83.33,0,0,NA
+NA,"Sylvia","","Garcia","","RepSylviaGarcia","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","29",2020,"1950-09-06 00:00:00",68,2,"F","D","",83.33,0,0,NA
+NA,"Jared","","Golden","","RepGolden","Representative",TRUE,"",FALSE,TRUE,"Maine","ME","2",2020,"1982-07-25 00:00:00",36,2,"M","D","",83.33,0,0,NA
+NA,"Anthony","","Gonzalez","","","Representative",TRUE,"",FALSE,TRUE,"Ohio","OH","16",2020,"1984-09-19 00:00:00",34,2,"M","R","",83.33,0,0,NA
+NA,"Lance","","Gooden","","","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","5",2020,"1982-12-01 00:00:00",36,2,"M","R","",83.33,0,0,NA
+NA,"Mark","","Green","","RepMarkGreen","Representative",TRUE,"",FALSE,TRUE,"Tennessee","TN","7",2020,"1964-11-08 00:00:00",54,2,"M","R","",83.33,0,0,NA
+1003551,"Raúl","M.","Grijalva","","RepraulGrijalva","Representative",TRUE,"",FALSE,TRUE,"Arizona","AZ","3",2020,"1948-02-19 00:00:00",71,18,"M","D","",83.33,0,0,NA
+NA,"Michael","","Guest","","","Representative",TRUE,"",FALSE,TRUE,"Mississippi","MS","3",2020,"1970-02-04 00:00:00",49,2,"M","R","",83.33,0,0,NA
+NA,"Debra","","Haaland","","RepDebHaaland","Representative",TRUE,"",FALSE,TRUE,"New Mexico","NM","1",2020,"1960-12-02 00:00:00",58,2,"F","D","",83.33,0,0,NA
+NA,"Jim","","Hagedorn","","","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","1",2020,"1962-08-04 00:00:00",56,2,"M","R","",83.33,0,0,NA
+NA,"Josh","","Harder","","RepJoshHarder","Representative",TRUE,"",FALSE,TRUE,"California","CA","10",2020,"1986-08-01 00:00:00",32,2,"M","D","",83.33,0,0,NA
+NA,"Jahana","","Hayes","","","Representative",TRUE,"",FALSE,TRUE,"Connecticut","CT","5",2020,"1973-03-08 00:00:00",46,2,"F","D","",83.33,0,0,NA
+NA,"Kevin","","Hern","","","Representative",TRUE,"",FALSE,TRUE,"Oklahoma","OK","1",2020,"1961-12-04 00:00:00",57,4,"M","R","",83.33,0,0,NA
+NA,"Katie","","Hill","","RepKatieHill","Representative",TRUE,"",FALSE,TRUE,"California","CA","25",2020,"1987-08-25 00:00:00",31,2,"F","D","",83.33,0,0,NA
+NA,"Kendra","","Horn","","","Representative",TRUE,"",FALSE,TRUE,"Oklahoma","OK","5",2020,"1976-06-09 00:00:00",42,2,"F","D","",83.33,0,0,NA
+79614,"Steven","","Horsford","","RepHorsford","Representative",TRUE,"",FALSE,TRUE,"Nevada","NV","4",2020,"1973-04-29 00:00:00",45,2,"M","D","",83.33,0,0,NA
+NA,"Chrissy","","Houlahan","","RepHoulahan","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","6",2020,"1967-06-05 00:00:00",51,2,"F","D","",83.33,0,0,NA
+NA,"Dusty","","Johnson","","RepJohnson","Representative",TRUE,"",FALSE,TRUE,"South Dakota","SD","At-Large",2020,"1976-09-30 00:00:00",42,2,"M","R","",83.33,0,0,NA
+NA,"John","","Joyce","","","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","13",2020,"1957-02-08 00:00:00",62,2,"M","R","",83.33,0,0,NA
+NA,"Andy","","Kim","","","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","3",2020,"1982-07-12 00:00:00",36,2,"M","D","",83.33,0,0,NA
+1031338,"Ann","","Kirkpatrick","","RepKirkpatrick","Representative",TRUE,"",FALSE,TRUE,"Arizona","AZ","2",2020,"1950-03-24 00:00:00",69,2,"F","D","",83.33,0,0,NA
+NA,"Susie","","Lee","","RepSusieLee","Representative",TRUE,"",FALSE,TRUE,"Nevada","NV","3",2020,"1966-11-07 00:00:00",52,2,"F","D","",83.33,0,0,NA
+NA,"Andy","","Levin","","RepAndyLevin","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","9",2020,"1960-08-01 00:00:00",58,2,"M","D","",83.33,0,0,NA
+NA,"Mike","","Levin","","RepMikeLevin","Representative",TRUE,"",FALSE,TRUE,"California","CA","49",2020,"1978-10-28 00:00:00",40,2,"M","D","",83.33,0,0,NA
+NA,"Elaine","","Luria","","RepElaineLuria","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","2",2020,"1975-08-15 00:00:00",43,2,"F","D","",83.33,0,0,NA
+NA,"Tom","","Malinowski","","","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","7",2020,"1965-09-23 00:00:00",53,2,"M","D","",83.33,0,0,NA
+NA,"Ben","","McAdams","","RepBenMcAdams","Representative",TRUE,"",FALSE,TRUE,"Utah","UT","4",2020,"1974-12-05 00:00:00",44,2,"M","D","",83.33,0,0,NA
+NA,"Lucy","","McBath","","","Representative",TRUE,"",FALSE,TRUE,"Georgia","GA","6",2020,"1960-06-01 00:00:00",58,2,"F","D","",83.33,0,0,NA
+NA,"Daniel","","Meuser","","RepMeuser","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","9",2020,"1964-02-10 00:00:00",55,2,"M","R","",83.33,0,0,NA
+NA,"Carol","","Miller","","","Representative",TRUE,"",FALSE,TRUE,"West Virginia","WV","3",2020,"1950-11-04 00:00:00",68,2,"F","R","",83.33,0,0,NA
+NA,"Joe","","Morelle","","","Representative",TRUE,"",FALSE,TRUE,"New York","NY","25",2020,"1957-04-29 00:00:00",61,4,"M","D","",83.33,0,0,NA
+NA,"Debbie","","Mucarsel-Powell","","","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","26",2020,"1971-01-18 00:00:00",48,2,"F","D","",83.33,0,0,NA
+NA,"Joe","","Neguse","","RepJoeNeguse","Representative",TRUE,"",FALSE,TRUE,"Colorado","CO","2",2020,"1984-05-13 00:00:00",34,2,"M","D","",83.33,0,0,NA
+NA,"Alexandria","","Ocasio-Cortez","","","Representative",TRUE,"",FALSE,TRUE,"New York","NY","14",2020,"1989-10-13 00:00:00",29,2,"F","D","",75,0,0,NA
+NA,"Ilhan","","Omar","","","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","5",2020,"1981-10-04 00:00:00",37,2,"F","D","",81.82,1,8.33,NA
+NA,"Chris","","Pappas","","","Representative",TRUE,"",FALSE,TRUE,"New Hampshire","NH","1",2020,"1980-06-04 00:00:00",38,2,"M","D","",83.33,0,0,NA
+NA,"Greg","","Pence","","","Representative",TRUE,"",FALSE,TRUE,"Indiana","IN","6",2020,"1956-11-14 00:00:00",62,2,"M","R","",83.33,0,0,NA
+NA,"Dean","","Phillips","","RepDeanPhillips","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","3",2020,"1969-01-20 00:00:00",50,2,"M","D","",83.33,0,0,NA
+NA,"Katie","","Porter","","","Representative",TRUE,"",FALSE,TRUE,"California","CA","45",2020,"1974-01-03 00:00:00",45,2,"F","D","",83.33,0,0,NA
+NA,"Ayanna","","Pressley","","RepPressley","Representative",TRUE,"",FALSE,TRUE,"Massachusetts","MA","7",2020,"1974-02-03 00:00:00",45,2,"F","D","",83.33,0,0,NA
+NA,"Guy","","Reschenthaler","","","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","14",2020,"1983-04-17 00:00:00",35,2,"M","R","",83.33,0,0,NA
+NA,"Denver","","Riggleman","","RepRiggleman","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","5",2020,"1970-03-01 00:00:00",49,2,"M","R","",83.33,0,0,NA
+NA,"Max","","Rose","","RepMaxRose","Representative",TRUE,"",FALSE,TRUE,"New York","NY","11",2020,"1986-11-28 00:00:00",32,2,"M","D","",83.33,0,0,NA
+NA,"John","","Rose","","","Representative",TRUE,"",FALSE,TRUE,"Tennessee","TN","6",2020,"1965-02-23 00:00:00",54,2,"M","R","",83.33,0,0,NA
+NA,"Harley","","Rouda","","","Representative",TRUE,"",FALSE,TRUE,"California","CA","48",2020,"1961-12-10 00:00:00",57,2,"M","D","",83.33,0,0,NA
+NA,"Chip","","Roy","","","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","21",2020,"1972-08-07 00:00:00",46,2,"M","R","",75,0,0,NA
+NA,"Mary","Gay","Scanlon","","","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","5",2020,"1959-08-30 00:00:00",59,4,"F","D","",83.33,0,0,NA
+NA,"Kim","","Schrier","","RepKimSchrier","Representative",TRUE,"",FALSE,TRUE,"Washington","WA","8",2020,"1968-08-23 00:00:00",50,2,"F","D","",83.33,0,0,NA
+14306,"José","E.","Serrano","","RepJoseSerrano","Representative",TRUE,"",FALSE,TRUE,"New York","NY","15",2020,"1943-10-24 00:00:00",75,32,"M","D","",83.33,0,0,NA
+NA,"Donna","","Shalala","","RepShalala","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","27",2020,"1941-02-14 00:00:00",78,2,"F","D","",83.33,0,0,NA
+NA,"Mikie","","Sherrill","","RepSherrill","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","11",2020,"1972-01-19 00:00:00",47,2,"F","D","",83.33,0,0,NA
+NA,"Elissa","","Slotkin","","RepSlotkin","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","8",2020,"1976-07-10 00:00:00",42,2,"F","D","",83.33,0,0,NA
+NA,"Abigail","","Spanberger","","RepSpanberger","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","7",2020,"1979-08-07 00:00:00",39,2,"F","D","",83.33,0,0,NA
+NA,"Ross","","Spano","","","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","15",2020,"1966-07-16 00:00:00",52,2,"M","R","",83.33,0,0,NA
+NA,"Greg","","Stanton","","RepGregStanton","Representative",TRUE,"",FALSE,TRUE,"Arizona","AZ","9",2020,"1970-03-08 00:00:00",49,2,"M","D","",83.33,0,0,NA
+NA,"Pete","","Stauber","","RepPeteStauber","Representative",TRUE,"",FALSE,TRUE,"Minnesota","MN","8",2020,"1966-05-10 00:00:00",52,2,"M","R","",83.33,0,0,NA
+NA,"Bryan","","Steil","","RepBryanSteil","Representative",TRUE,"",FALSE,TRUE,"Wisconsin","WI","1",2020,"1981-03-30 00:00:00",38,2,"M","R","",83.33,0,0,NA
+NA,"William","","Steube","","","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","17",2020,"1978-05-19 00:00:00",40,2,"M","R","",83.33,0,0,NA
+NA,"Haley","","Stevens","","RepHaleyStevens","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","11",2020,"1983-06-01 00:00:00",35,2,"F","D","",83.33,0,0,NA
+NA,"Van","","Taylor","","RepVanTaylor","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","3",2020,"1972-08-01 00:00:00",46,2,"M","R","",83.33,0,0,NA
+NA,"William","","Timmons","","RepTimmons","Representative",TRUE,"",FALSE,TRUE,"South Carolina","SC","4",2020,"1984-04-30 00:00:00",34,2,"M","R","",83.33,0,0,NA
+NA,"Rashida","","Tlaib","","RepRashida","Representative",TRUE,"",FALSE,TRUE,"Michigan","MI","13",2020,"1976-07-24 00:00:00",42,2,"F","D","",83.33,0,0,NA
+NA,"Xochitl","","Torres Small","","RepTorresSmall","Representative",TRUE,"",FALSE,TRUE,"New Mexico","NM","2",2020,"1984-11-15 00:00:00",34,2,"F","D","",83.33,0,0,NA
+NA,"Lori","","Trahan","","RepLoriTrahan","Representative",TRUE,"",FALSE,TRUE,"Massachusetts","MA","3",2020,"1973-10-27 00:00:00",45,2,"F","D","",83.33,0,0,NA
+NA,"David","","Trone","","RepDavidTrone","Representative",TRUE,"",FALSE,TRUE,"Maryland","MD","6",2020,"1955-09-21 00:00:00",63,2,"M","D","",83.33,0,0,NA
+NA,"Lauren","","Underwood","","RepUnderwood","Representative",TRUE,"",FALSE,TRUE,"Illinois","IL","14",2020,"1986-10-04 00:00:00",32,2,"F","D","",83.33,0,0,NA
+NA,"Jefferson","","Van Drew","","","Representative",TRUE,"",FALSE,TRUE,"New Jersey","NJ","2",2020,"1953-02-23 00:00:00",66,2,"M","D","",83.33,0,0,NA
+26160,"Nydia","M.","Velázquez","","NydiaVelazquez","Representative",TRUE,"",FALSE,TRUE,"New York","NY","7",2020,"1953-03-28 00:00:00",66,28,"F","D","",83.33,0,0,NA
+NA,"Michael","","Waltz","","","Representative",TRUE,"",FALSE,TRUE,"Florida","FL","6",2020,"1974-01-31 00:00:00",45,2,"M","R","",83.33,0,0,NA
+NA,"Steven","","Watkins","","","Representative",TRUE,"",FALSE,TRUE,"Kansas","KS","2",2020,"1976-09-18 00:00:00",42,2,"M","R","",83.33,0,0,NA
+NA,"Jennifer","","Wexton","","RepWexton","Representative",TRUE,"",FALSE,TRUE,"Virginia","VA","10",2020,"1968-05-27 00:00:00",50,2,"F","D","",83.33,0,0,NA
+NA,"Susan","","Wild","","","Representative",TRUE,"",FALSE,TRUE,"Pennsylvania","PA","7",2020,"1957-06-07 00:00:00",61,4,"F","D","",81.82,1,8.33,NA
+NA,"Ron","","Wright","","RepRonWright","Representative",TRUE,"",FALSE,TRUE,"Texas","TX","6",2020,"1953-04-08 00:00:00",66,2,"M","R","",83.33,0,0,NA
+NA,"Mike","","Braun","","","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Indiana","IN","",2024,"1954-03-24 00:00:00",65,1,"M","R","junior",NA,NA,NA,NA
+NA,"Joshua","","Hawley","","","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Missouri","MO","",2024,"1979-12-31 00:00:00",39,1,"M","R","junior",NA,NA,NA,NA
+NA,"Mitt","","Romney","","","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Utah","UT","",2024,"1947-03-12 00:00:00",72,1,"M","R","junior",NA,NA,NA,NA
+NA,"Rick","","Scott","","","Senator, 1st Class",TRUE,"",TRUE,FALSE,"Florida","FL","",2024,"1952-12-01 00:00:00",66,1,"M","R","junior",NA,NA,NA,NA
