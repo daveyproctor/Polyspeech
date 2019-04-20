@@ -1,0 +1,322 @@
+---
+title: "Politicians' Tweeting Behavior by Gender and Election Success"
+output: pdf_document
+number_sections: true
+author: Davey Proctor
+urlcolor: blue
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, results='hide', message=F, warning=F, cache=T, tidy.opts=list(width.cutoff=80),tidy=T)
+```
+
+```{r}
+# Dependencies
+# The usual
+library(dplyr)
+library(ggplot2)
+th <- theme(plot.title = element_text(hjust = 0.5))
+library(tidyr)
+library(lubridate)
+library(stringi)
+# Word cloud
+library(tm)
+library(SnowballC)
+library(wordcloud)
+library(RColorBrewer)
+# Topic models
+library(topicmodels)
+library(tidytext)
+library(tidyr)
+library(tm)
+# Structured topic models
+library(stm)
+```
+
+# I. Introduction
+
+We've seen a huge increase in the use of social media; on Twitter an estimated 500 million tweets are sent every day. Politicians use Twitter to mobilize support, attack opponents, share news that endorses their policy, and more. @Stieglitz present a "methodological framework for social media analytics in political context," which includes content analysis, opinion mining, and social network analysis to ask questions such as who are the political opinion leaders and what are the emerging political topics. @Hellweg found that social media use, particularly if personal rather than professional in tone, can significanly enhance the perception followers have of a candidate.
+
+Following @Proctor, who found that strategies in the form of tones of messages in Twitter did not differ by gender, I expand the analysis to ask how different strategies achieve different payoffs come election day. I look for relationships between tweet behavior such as tweet frequency over time, word count, and topic versus election day success. I'm further interesting in aligning these payoffs to metadata characteristics such as gender, party affiliation, age, and polarization level.
+
+# II. Data
+
+## Metadata
+
+```{r}
+metaDF <- read.csv("US Politicians Cleaned.csv", as.is = T) %>% 
+  mutate(fullname=paste(first_name, last_name)) %>%
+  mutate(date_of_birth=ymd_hms(date_of_birth))
+colnames(metaDF)
+```
+
+The metadata has been aggregated by individuals working in Frances Rosenbluth's lab at Yale. They used sources such as [GovTrack](https://www.govtrack.us/), [Vote Smart](https://votesmart.org/),  and others to determine metadata characteristics of the 115th (2016 election) and 116th (2018 election) members of the U.S. congress (U.S. House and U.S. Senate). Columns include age, party, gender, senator or representative, polarization level via the [dw nominate metric](https://en.wikipedia.org/wiki/NOMINATE_(scaling_method)), and professional action characteristics such as the percentage of time they vote with their party.
+
+## Election data
+
+```{r}
+ElectionsDF <- read.csv("US Elections Cleaned.csv", as.is = T)
+ElectionsDF <- ElectionsDF %>% filter(year >= 2010) %>%
+  mutate(vote_fraction=candidatevotes/totalvotes) %>%
+  select(first_name, last_name, state, year, vote_fraction) %>%
+  arrange(first_name, last_name, state, year)
+
+nElec <- nrow(metaDF %>% inner_join(ElectionsDF, by=c("first_name", "last_name", "state")))
+nInd <- nrow(metaDF %>% inner_join(ElectionsDF, by=c("first_name", "last_name", "state")) %>% count(first_name, last_name, state))
+```
+
+For this metadata, I pull in information on their elections from 2010 to 2016 from the [MIT Election Data Science Lab](https://electionlab.mit.edu/data). Over these four elections we have a total of `r nElec` elections from `r nInd` individuals.
+
+```{r}
+spreadVoteFraction <- metaDF %>% select(first_name, last_name, state) %>%
+  inner_join(ElectionsDF, by=c("first_name", "last_name", "state")) %>%
+  spread(year, vote_fraction)
+colnames(spreadVoteFraction) <- gsub("(201.)", "frac_votes_received_\\1", colnames(spreadVoteFraction))
+# library(reshape2)
+# spreadVoteFraction %>% melt(id=c("first_name", "last_name", "state")) # How to melt
+
+metaDF <- metaDF %>% left_join(spreadVoteFraction, by=c("first_name", "last_name", "state"))
+metaDF
+```
+
+## Tweets
+
+```{r}
+# New metadata
+tweetsMetaDF <- read.csv("pol_accounts.csv", as.is = T, sep=";")
+# tweetsMetaDF <- read.csv("https://query.data.world/s/e7375jdc22jydnegcou4hsurtyezsf", as.is=T, sep=";")
+tweetsMetaDF <- tweetsMetaDF %>% mutate(created_at=ymd_hms(created_at)) %>%
+  mutate(id=as.character(id))
+nrow(tweetsMetaDF)
+# about 200 in the pol_accounts are not in my metadata, and about 190 are in my metadata but not in pol_accounts.
+metaDF <- metaDF %>% inner_join(tweetsMetaDF, by=c("twitter_account"="screen_name")) %>%
+  mutate(user_id=id) %>%
+  select(-id)
+
+# Tweets
+tweetsDF <- read.csv("pol_tweets.csv", as.is=T, sep=";")
+# readRDS("tweetsDF.RDS")
+# tweetsDF <- read.csv("https://query.data.world/s/dpgkibmlikucyt4kxchxzdgpriivzf", as.is=T, sep=";");
+tweetsDF <- tweetsDF %>% mutate(created_at=ymd_hms(created_at)) %>%
+  mutate(user_id=as.character(user_id)) %>%
+  arrange(user_id, created_at) %>% 
+  select(user_id, created_at, everything())
+
+nTweets <- nrow(tweetsDF %>% select(user_id) %>% inner_join(metaDF %>% select(id), by=c("user_id"="id")))
+nIndiv <- nrow(tweetsDF %>% select(user_id) %>% inner_join(metaDF %>% select(id), by=c("user_id"="id")) %>% count(user_id))
+firstTweetTime <- tweetsDF[which.min(tweetsDF$created_at),]$created_at
+```
+
+Tweets from this [data.world dataset](https://data.world/bkey/politician-tweets). We have `r nTweets` tweets from `r nIndiv` individuals in our metadata. In addition to the text of the tweet and when it was created (the earliest is `r firstTweetTime`), they've pulled out hashtag entities, favorite counts, retweets, and urls.
+
+# III. Analysis
+
+# Understanding Recent Elections
+In this section I will try to understand election success without looking at tweets. The following plot shows no significant effect of gender on recent election success.
+
+```{r}
+metaDF %>% inner_join(ElectionsDF, by=c("first_name", "last_name", "state")) %>% 
+  filter(party %in% c("D", "R")) %>%
+  ggplot(aes(x=as.factor(year), y=vote_fraction, color=gender)) + geom_boxplot()
+```
+
+# Electability vs. Social Media Use
+Supplementing the prior section, and the ultimate thrust of the report, here I will analyze different tweeting strategies and ultimately align them with election success.
+
+## Tweet frequency over time
+
+```{r}
+metaDFWTweets <- metaDF %>% select(gender, user_id) %>% 
+  inner_join(tweetsDF %>% select(created_at, user_id))
+
+# It seems that, while everyone is tweeting more than before, women are perhaps slightly outpacing men recently in tweet frequency.
+metaDFWTweets %>%
+  group_by(gender, month=floor_date(created_at, "month")) %>%
+  summarise(n=n()) %>%
+  ggplot(aes(x=month, y=n, color=gender)) + geom_point() + geom_smooth() + 
+  ggtitle("Tweet Counts in Recent Years") + th
+
+metaDFWTweets %>% group_by(gender, day=floor_date(created_at, "day")) %>%
+  filter(day>ymd("2012-1-1")) %>%
+  summarise(n=n()) %>%
+  ggplot(aes(x=day, y=n, color=gender)) + geom_smooth() +
+  ggtitle("Tweet Counts in Recent Years") + th
+
+metaDFWTweets %>%
+  group_by(month=floor_date(created_at, "month")) %>%
+  summarize(nMen=length(which(gender=="M")), nWomen=length(which(gender=="F"))) %>%
+  mutate(frac=nWomen/nMen) %>%
+  ggplot(aes(x=month, y=frac)) + geom_point()
+
+# However, tweeting more does not correspond to greater election success for either gender.
+metaDF %>% select(user_id, frac_votes_received_2016, gender) %>% 
+  inner_join(tweetsDF %>% select(created_at, user_id)) %>%
+  filter(created_at>ymd("2014-1-1")) %>%
+  group_by(user_id) %>%
+  summarise(n=n(), frac_votes_received_2016=frac_votes_received_2016[[1]], gender=gender[[1]]) %>%
+  ggplot(aes(x=n, y=frac_votes_received_2016, color=gender)) + geom_smooth() + 
+  xlab("Tweets Since 2014") + ggtitle("2016 Election Success vs. Tweet Frequency") + th
+```
+
+## Tweet Hashtags
+Hashtags are a way for users to self-identify topics that relate to their tweets, so it's a good place to start when doing any content analysis.
+
+### Word frequencies
+The simplest analysis just looks at freqencies of hashtags.
+<!-- This is a frequency chart of hashtag entities of all our politicians: -->
+
+```{r, fig.show = 'hide'}
+hashtags_per_user <- tweetsDF %>% select(user_id, hashtag_entities) %>%
+  mutate(hashtag_entities=gsub(",", " ", gsub("\\{(.*)\\}", "\\1", hashtag_entities), ","))  %>%
+  unnest_tokens(hashtag, hashtag_entities)
+# annoying id field drop
+hashtags_per_user <- data.frame(user_id=hashtags_per_user$user_id, hashtag=hashtags_per_user$hashtag, stringsAsFactors = F)
+x <- hashtags_per_user %>% count(hashtag)
+set.seed(1234)
+wordcloud(words = x$hashtag, freq = x$n, min.freq = 500,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+```
+
+This is a word cloud of hashtag entities of female politicians:
+
+```{r}
+x <- hashtags_per_user %>% inner_join(metaDF) %>%
+  count(gender, hashtag)
+w <- x %>% filter(gender=="F")
+m <- x %>% filter(gender=="M")
+set.seed(1234)
+wordcloud(words = w$hashtag, freq = w$n, min.freq = 500,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+```
+
+We can compare with the men's hashtags:
+
+```{r}
+wordcloud(words = m$hashtag, freq = m$n, min.freq = 500,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+```
+
+Comparing between the two, there are clear "women's" topics that appear among the women, such as BringBackOurGirls, Zika, and EqualPay that weren't among the men.
+
+## Topic models
+
+I will run topic models on on the tweets directly, but to start I just focused on the hashtags.
+
+```{r}
+x <- hashtags_per_user %>% count(user_id, hashtag) %>%
+  cast_dtm(user_id, hashtag, n)
+x %>% tidy() %>% arrange(document)
+```
+
+```{r}
+hash_lda <- LDA(x, k=6, control = list(seed = 1234))
+```
+
+The most common words in a six-topic model are shown:
+
+```{r}
+hash_topics <- tidy(hash_lda, matrix = "beta")
+hash_topics
+
+hash_top_terms <- hash_topics %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+hash_top_terms %>%
+  mutate(term = reorder(term, beta)) %>%
+  ggplot(aes(term, beta, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  coord_flip()
+```
+
+Breaking this down by gender, we find that women are tweeting more on the second topic.
+
+```{r}
+hash_documents <- tidy(hash_lda, matrix = "gamma")
+hash_documents %>% arrange(document, topic)
+hash_documents %>% inner_join(metaDF %>% select(id, gender), by=c("document"="id")) %>%
+  group_by(topic, gender) %>%
+  summarise(meanGam=mean(gamma)) %>%
+  ggplot(aes(x=as.factor(topic), y=meanGam, color=gender)) + geom_point()
+```
+
+### Structured topic models
+In the above analysis, it's hard to determine p-values of any differences by metadata category. We turn to structured topic models, which directly model the influence of a document's metadata.
+
+```{r}
+# https://cran.r-project.org/web/packages/stm/vignettes/stmVignette.pdf
+```
+
+```{r}
+metaDF_min <- metaDF %>% select(user_id, gender, party) %>% 
+  filter(party %in% c("D","R"))
+
+hashtags_per_user_min <- hashtags_per_user %>% group_by(user_id) %>%
+  summarise(hashtag_entities_all=paste(hashtag, collapse=" ")) %>%
+  inner_join(metaDF_min)
+  
+hash_processed <- textProcessor(hashtags_per_user_min$hashtag_entities_all, metadata = hashtags_per_user_min)
+```
+
+```{r}
+hash_out <- prepDocuments(hash_processed$documents, hash_processed$vocab, hash_processed$meta, lower.thresh = 15)
+```
+
+```{r}
+length(hash_out$documents)
+hashFit <- stm(documents = hash_out$documents, vocab = hash_out$vocab, K = 6, prevalence =~ gender + party, max.em.its = 75, data = hash_out$meta, init.type = "Spectral")
+```
+
+Topics 3 and 5 are shown:
+```{r, results="show"}
+labelTopics(hashFit, c(3,5))
+```
+
+```{r, fig.show="hide"}
+shortdocs <- hashtags_per_user_min %>% 
+  filter(!(row_number() %in% hash_out$docs.removed)) %>%
+  mutate(hashtag_entities_all=substr(hashtag_entities_all, 1, 200))
+
+thoughts3 <- findThoughts(hashFit, texts = shortdocs$hashtag_entities_all, n = 2, topics = 3)$docs[[1]]
+thoughts5 <- findThoughts(hashFit, texts = shortdocs$hashtag_entities_all, n = 2, topics = 5)$docs[[1]]
+
+par(mfrow = c(1, 2),mar = c(.5, .5, 1, .5))
+plotQuote(thoughts3, width = 30, main = "Topic 3")
+plotQuote(thoughts5, width = 30, main = "Topic 5")
+```
+
+There is a statistically significant effect of gender on topic 5, with women engaged with that topic more. That aligns with the word cloud analysis, given hashtags like "raisethewage" and "disarmhate."
+
+```{r}
+#, results="show"}
+set.seed(12345)
+hash_prep <- estimateEffect(1:6 ~ gender+party, hashFit, meta = hash_out$meta, uncertainty = "Global")
+summary(hash_prep)
+```
+
+```{r}
+#, results="show"}
+set.seed(12345)
+summary(hash_prep, topics=5)
+```
+
+# Still Todo:
+Include more metadata characteristics in the structured topic models, including election success. See if there is some interpretable interaction between tweeting about certain topics and success in the elections. Think about documents over time, and model changes in topics over time.
+
+# References
+
+<!-- # Appendix -->
+<!-- ## Detials: Code -->
+<!-- ```{r ref.label=knitr::all_labels(), echo=T, eval=F} -->
+
+<!-- ``` -->
+
+
+
