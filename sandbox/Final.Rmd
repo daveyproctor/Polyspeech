@@ -17,9 +17,10 @@ knitr::opts_chunk$set(echo = F, results='hide', message=F, warning=F, cache=T, t
 library(dplyr)
 library(ggplot2)
 th <- theme(plot.title = element_text(hjust = 0.5))
-library(tidyr)
 library(lubridate)
+library(reshape2)
 library(stringi)
+library(tidyr)
 # Word cloud
 library(tm)
 library(SnowballC)
@@ -69,8 +70,9 @@ nInd <- nrow(metaDF %>% inner_join(ElectionsDF, by=c("first_name", "last_name", 
 For this metadata, I pull in information on their elections from 2010 to 2016 from the [MIT Election Data Science Lab](https://electionlab.mit.edu/data). Over these four elections we have a total of `r nElec` elections from `r nInd` individuals.
 
 ```{r}
-spreadVoteFraction <- metaDF %>% select(first_name, last_name, state) %>%
-  inner_join(ElectionsDF, by=c("first_name", "last_name", "state")) %>%
+metaDFWElections <- metaDF %>% select(first_name, last_name, state) %>%
+  inner_join(ElectionsDF, by=c("first_name", "last_name", "state"))
+spreadVoteFraction <- metaDFWElections %>%
   spread(year, vote_fraction)
 colnames(spreadVoteFraction) <- gsub("(201.)", "frac_votes_received_\\1", colnames(spreadVoteFraction))
 # library(reshape2)
@@ -99,16 +101,18 @@ tweetsDF <- read.csv("pol_tweets.csv", as.is=T, sep=";")
 # readRDS("tweetsDF.RDS")
 # tweetsDF <- read.csv("https://query.data.world/s/dpgkibmlikucyt4kxchxzdgpriivzf", as.is=T, sep=";");
 tweetsDF <- tweetsDF %>% mutate(created_at=ymd_hms(created_at)) %>%
+  mutate(id=as.character(id)) %>%
   mutate(user_id=as.character(user_id)) %>%
   arrange(user_id, created_at) %>% 
   select(user_id, created_at, everything())
 
-nTweets <- nrow(tweetsDF %>% select(user_id) %>% inner_join(metaDF %>% select(id), by=c("user_id"="id")))
-nIndiv <- nrow(tweetsDF %>% select(user_id) %>% inner_join(metaDF %>% select(id), by=c("user_id"="id")) %>% count(user_id))
+nTweets <- nrow(tweetsDF %>% select(user_id) %>% inner_join(metaDF %>% select(user_id)))
+nIndiv <- nrow(tweetsDF %>% select(user_id) %>% inner_join(metaDF %>% select(user_id)) %>% count(user_id))
 firstTweetTime <- tweetsDF[which.min(tweetsDF$created_at),]$created_at
+latestTweetTime <- tweetsDF[which.max(tweetsDF$created_at),]$created_at
 ```
 
-Tweets from this [data.world dataset](https://data.world/bkey/politician-tweets). We have `r nTweets` tweets from `r nIndiv` individuals in our metadata. In addition to the text of the tweet and when it was created (the earliest is `r firstTweetTime`), they've pulled out hashtag entities, favorite counts, retweets, and urls.
+Tweets from this [data.world dataset](https://data.world/bkey/politician-tweets). We have `r nTweets` tweets from `r nIndiv` individuals in our metadata. In addition to the text of the tweet and when it was created (ranging from `r firstTweetTime` to `r latestTweetTime`), they've pulled out hashtag entities, favorite counts, retweets, and urls.
 
 # III. Analysis
 
@@ -158,6 +162,64 @@ metaDF %>% select(user_id, frac_votes_received_2016, gender) %>%
   ggplot(aes(x=n, y=frac_votes_received_2016, color=gender)) + geom_smooth() + 
   xlab("Tweets Since 2014") + ggtitle("2016 Election Success vs. Tweet Frequency") + th
 ```
+
+```{r}
+metaDFWElections
+```
+
+```{r}
+# Compute next election
+electionDays <- c(ymd("2010-11-2"), ymd("2012-11-6"), ymd("2014-11-4"), ymd("2016-11-8"))
+electionDaysLeadup <- c(ymd("2010-9-2"), ymd("2012-9-6"), ymd("2014-9-4"), ymd("2016-9-8"))
+
+tweetsNearElections <- tweetsDF %>% select(id, created_at) %>% 
+  filter(created_at < max(electionDays)) %>%
+  mutate(nextElectionIs2010_1=(created_at>electionDaysLeadup[1] & created_at<electionDays[1]),
+         nextElectionIs2012_2=(created_at>electionDaysLeadup[2] & created_at<electionDays[2]),
+         nextElectionIs2014_3=(created_at>electionDaysLeadup[3] & created_at<electionDays[3]),
+         nextElectionIs2016_4=(created_at>electionDaysLeadup[4] & created_at<electionDays[4])) %>%
+  melt(id=c("id","created_at")) %>%
+  filter(value) %>% select(-value) %>%
+  mutate(nextElection=as.numeric(gsub(".*201._(.)", "\\1", variable))) %>% select(-variable) %>%
+  mutate(nextElectionDate=electionDays[nextElection]) %>% 
+  select(id, nextElection, nextElectionDate) %>%
+  inner_join(tweetsDF)
+
+table(tweetsNearElections$nextElection)
+
+tweetsNearElections %>% count(user_id, nextElection) %>%
+  ggplot(aes(x=n)) + geom_histogram()
+
+tweetsNearElections %>% group_by(user_id, nextElection) %>%
+  summarise(n=n()) %>%
+  ggplot(aes(x=as.factor(nextElection), y=n)) + geom_boxplot()
+```
+
+```{r}
+set.seed(123)
+
+tweetsNearElections50 <- tweetsNearElections %>% group_by(user_id, nextElection) %>%
+  filter(n()>30) %>%
+  filter(row_number() %in% sample(seq(1,n()), min(50, n()))) %>%
+  ungroup() 
+
+table(tweetsNearElections$nextElection)
+table(tweetsNearElections50$nextElection)
+
+tweetsNearElections50 %>% count(user_id, nextElection) %>%
+  ggplot(aes(x=n)) + geom_histogram()
+```
+
+```{r}
+tweetsNearElections50 <- tweetsNearElections50 %>% arrange(user_id, created_at) %>% select(id, user_id, created_at, everything())
+```
+
+```{r}
+# 1039 docs
+tweetsNearElections50 %>% group_by(user_id, nextElection) %>%
+  summarise(doc=stringr::str_c(tweet_text, collapse = " -- "))
+```
+
 
 ## Tweet Hashtags
 Hashtags are a way for users to self-identify topics that relate to their tweets, so it's a good place to start when doing any content analysis.
