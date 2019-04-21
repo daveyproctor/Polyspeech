@@ -216,8 +216,12 @@ tweetsNearElections50 <- tweetsNearElections50 %>% arrange(user_id, created_at) 
 
 ```{r}
 # 1039 docs
-tweetsNearElections50 %>% group_by(user_id, nextElection) %>%
-  summarise(doc=stringr::str_c(tweet_text, collapse = " -- "))
+docsNearElections <- tweetsNearElections50 %>% group_by(user_id, nextElection) %>%
+  summarise(doc=stringr::str_c(tweet_text, collapse = " -- ")) %>%
+  ungroup() %>%
+  mutate(doc_id=seq(length(doc)))
+head(docsNearElections)
+write.csv(docsNearElections %>% select(doc_id, doc), "tweetDocsNearElections.csv", row.names = F)
 ```
 
 
