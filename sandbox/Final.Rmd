@@ -17,6 +17,7 @@ knitr::opts_chunk$set(echo = F, results='hide', message=F, warning=F, cache=T, t
 library(dplyr)
 library(ggplot2)
 th <- theme(plot.title = element_text(hjust = 0.5))
+ax <- theme(axis.text.x = element_text(angle = 45, hjust = 1))
 library(lubridate)
 library(reshape2)
 library(stringi)
@@ -95,6 +96,9 @@ nrow(tweetsMetaDF)
 metaDF <- metaDF %>% inner_join(tweetsMetaDF, by=c("twitter_account"="screen_name")) %>%
   mutate(user_id=id) %>%
   select(-id)
+# Easier for unspread elections
+UserIDElections <- metaDFWElections %>% inner_join(metaDF %>% select(first_name, last_name, state, user_id)) %>%
+  select(user_id, year, vote_fraction)
 
 # Tweets
 tweetsDF <- read.csv("pol_tweets.csv", as.is=T, sep=";")
@@ -164,13 +168,17 @@ metaDF %>% select(user_id, frac_votes_received_2016, gender) %>%
 ```
 
 ```{r}
+metaDF
 metaDFWElections
 ```
 
 ```{r}
 # Compute next election
+electionYears <- c(2010, 2012, 2014, 2016)
 electionDays <- c(ymd("2010-11-2"), ymd("2012-11-6"), ymd("2014-11-4"), ymd("2016-11-8"))
 electionDaysLeadup <- c(ymd("2010-9-2"), ymd("2012-9-6"), ymd("2014-9-4"), ymd("2016-9-8"))
+electionIndices <- c(1,2,3,4)
+electionDateConversion <- data.frame(electionYears, electionDays, electionDaysLeadup, electionIndices)
 
 tweetsNearElections <- tweetsDF %>% select(id, created_at) %>% 
   filter(created_at < max(electionDays)) %>%
@@ -221,9 +229,64 @@ docsNearElections <- tweetsNearElections50 %>% group_by(user_id, nextElection) %
   ungroup() %>%
   mutate(doc_id=seq(length(doc)))
 head(docsNearElections)
-write.csv(docsNearElections %>% select(doc_id, doc), "tweetDocsNearElections.csv", row.names = F)
+# For IBM
+# write.csv(docsNearElections %>% select(doc_id, doc), "tweetDocsNearElections.csv", row.names = F)
+# write.csv(docsNearElections, "tweetDocsNearElectionsWMeta.csv", row.names = F)
 ```
 
+```{r}
+# Received from IBM
+ibmDF <- read.csv("tweetDocsNearElectionsIBM.csv", as.is=T)
+ibmDF <- ibmDF %>% group_by(tone_name) %>%
+  mutate(standardizedScore=ecdf(score)(score), isHighScore=score>median(score)) %>%
+  ungroup()
+ibmDF %>% distinct(doc_id)
+```
+
+```{r}
+# A lot of people are tweeting before elections without actually having an election then. 1039 docs before elections -> 508 actually having an elections (and being in our dataset of elections)
+# Also not everyone is in our twitterset. 1128 elections -> 508 with tweets
+nrow(UserIDElections)
+docsNearElectionsWPayoff <- UserIDElections %>% inner_join(electionDateConversion, by=c("year"="electionYears")) %>%
+  select(user_id, electionDays, electionIndices, vote_fraction) %>%
+  inner_join(docsNearElections, by=c("user_id", "electionIndices"="nextElection"))
+```
+
+
+```{r}
+metaDocsNearElections <- tweetsNearElections50 %>% group_by(user_id, nextElection) %>%
+  summarise(fav_all=sum(favorites_count), ret_all=sum(retweet_count)) %>%
+  inner_join(docsNearElections, by=c("user_id", "nextElection")) %>%
+  inner_join(metaDF %>% select(user_id, first_name, last_name, gender)) # Causes cut bc not all docs are in my metadata
+nrow(metaDocsNearElections)
+  
+metaDocsNearElectionsWPayoff <- tweetsNearElections50 %>% group_by(user_id, nextElection) %>%
+  summarise(fav_all=sum(favorites_count), ret_all=sum(retweet_count)) %>%
+  inner_join(docsNearElectionsWPayoff, by=c("user_id", "nextElection"="electionIndices")) %>%
+  inner_join(metaDF %>% select(user_id, first_name, last_name, gender)) # No additional cut bc WPayoff required metadata on elections, already had joined w metadata
+nrow(metaDocsNearElectionsWPayoff)
+
+# slight payoff for being retweeted more before elections
+metaDocsNearElectionsWPayoff %>% ggplot(aes(x=log(ret_all), y=vote_fraction, color=gender)) + geom_smooth() + geom_point()
+```
+
+
+```{r}
+metaDocsNearElections %>% select(user_id, nextElection, doc_id, fav_all, ret_all, gender) %>%
+  inner_join(ibmDF) %>% # 9386 rows
+  ggplot(aes(x=tone_name, y=standardizedScore, color=gender)) + geom_boxplot() + ax
+```
+
+```{r}
+
+```
+
+```{r}
+metaDocsNearElections %>% inner_join(ibmDF) %>% 
+  #filter(tone_name %in% sort(unique(ibmDF$tone_name))[1:7]) %>%
+  filter(tone_name %in% sort(unique(ibmDF$tone_name))[8:13]) %>%
+  ggplot(aes(x=tone_name, y=log(ret_all), color=gender, fill=isHighScore)) + geom_boxplot() + ax
+```
 
 ## Tweet Hashtags
 Hashtags are a way for users to self-identify topics that relate to their tweets, so it's a good place to start when doing any content analysis.
