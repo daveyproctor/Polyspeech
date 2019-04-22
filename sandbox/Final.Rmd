@@ -138,18 +138,25 @@ Supplementing the prior section, and the ultimate thrust of the report, here I w
 metaDFWTweets <- metaDF %>% select(gender, user_id) %>% 
   inner_join(tweetsDF %>% select(created_at, user_id))
 
-# It seems that, while everyone is tweeting more than before, women are perhaps slightly outpacing men recently in tweet frequency.
 metaDFWTweets %>%
   group_by(gender, month=floor_date(created_at, "month")) %>%
   summarise(n=n()) %>%
   ggplot(aes(x=month, y=n, color=gender)) + geom_point() + geom_smooth() + 
   ggtitle("Tweet Counts in Recent Years") + th
 
-metaDFWTweets %>% group_by(gender, day=floor_date(created_at, "day")) %>%
-  filter(day>ymd("2012-1-1")) %>%
-  summarise(n=n()) %>%
-  ggplot(aes(x=day, y=n, color=gender)) + geom_smooth() +
-  ggtitle("Tweet Counts in Recent Years") + th
+# It seems that, while everyone is tweeting more than before, women are perhaps slightly outpacing men recently in tweet frequency, only recently
+metaDFWTweets %>%
+  group_by(user_id, month=floor_date(created_at, "month")) %>%
+  summarise(n=n(), gender=gender[[1]]) %>%
+  ggplot(aes(x=month, y=n, color=gender)) + geom_smooth() #+ geom_point() #+ geom_smooth() + 
+  #ggtitle("Tweet Counts in Recent Years") + th
+
+# Only run if needed; takes a while
+# metaDFWTweets %>% group_by(gender, day=floor_date(created_at, "day")) %>%
+#   filter(day>ymd("2012-1-1")) %>%
+#   summarise(n=n()) %>%
+#   ggplot(aes(x=day, y=n, color=gender)) + geom_smooth() +
+#   ggtitle("Tweet Counts in Recent Years") + th
 
 metaDFWTweets %>%
   group_by(month=floor_date(created_at, "month")) %>%
@@ -168,9 +175,17 @@ metaDF %>% select(user_id, frac_votes_received_2016, gender) %>%
 ```
 
 ```{r}
-metaDF
-metaDFWElections
+# Men attaching to this tweet technology faster than women
+# Useless because diff num men and women
+#summary(lm(n ~ day*gender, data=metaDFWTweets %>% group_by(gender, day=floor_date(created_at, "day")) %>%
+#             filter(day>ymd("2012-1-1")) %>%
+#             summarise(n=n())))
+
+# Women actually availing themselves of Twitter faster than men
+summary(lm(n ~ day*gender, data=metaDFWTweets %>% group_by(user_id, day=floor_date(created_at, "day")) %>%
+  summarise(n=n(), gender=gender[[1]])))
 ```
+
 
 ```{r}
 # Compute next election
@@ -196,11 +211,11 @@ tweetsNearElections <- tweetsDF %>% select(id, created_at) %>%
 table(tweetsNearElections$nextElection)
 
 tweetsNearElections %>% count(user_id, nextElection) %>%
-  ggplot(aes(x=n)) + geom_histogram()
+  ggplot(aes(x=n, color=as.factor(nextElection))) + geom_histogram()
 
-tweetsNearElections %>% group_by(user_id, nextElection) %>%
-  summarise(n=n()) %>%
-  ggplot(aes(x=as.factor(nextElection), y=n)) + geom_boxplot()
+#tweetsNearElections %>% group_by(user_id, nextElection) %>%
+#  summarise(n=n()) %>%
+#  ggplot(aes(x=as.factor(nextElection), y=n)) + geom_boxplot()
 ```
 
 ```{r}
@@ -214,11 +229,9 @@ tweetsNearElections50 <- tweetsNearElections %>% group_by(user_id, nextElection)
 table(tweetsNearElections$nextElection)
 table(tweetsNearElections50$nextElection)
 
-tweetsNearElections50 %>% count(user_id, nextElection) %>%
-  ggplot(aes(x=n)) + geom_histogram()
-```
+# tweetsNearElections50 %>% count(user_id, nextElection) %>%
+#  ggplot(aes(x=n)) + geom_histogram()
 
-```{r}
 tweetsNearElections50 <- tweetsNearElections50 %>% arrange(user_id, created_at) %>% select(id, user_id, created_at, everything())
 ```
 
@@ -240,7 +253,6 @@ ibmDF <- read.csv("tweetDocsNearElectionsIBM.csv", as.is=T)
 ibmDF <- ibmDF %>% group_by(tone_name) %>%
   mutate(standardizedScore=ecdf(score)(score), isHighScore=score>median(score)) %>%
   ungroup()
-ibmDF %>% distinct(doc_id)
 ```
 
 ```{r}
@@ -252,7 +264,6 @@ docsNearElectionsWPayoff <- UserIDElections %>% inner_join(electionDateConversio
   inner_join(docsNearElections, by=c("user_id", "electionIndices"="nextElection"))
 ```
 
-
 ```{r}
 metaDocsNearElections <- tweetsNearElections50 %>% group_by(user_id, nextElection) %>%
   summarise(fav_all=sum(favorites_count), ret_all=sum(retweet_count)) %>%
@@ -262,12 +273,16 @@ nrow(metaDocsNearElections)
   
 metaDocsNearElectionsWPayoff <- tweetsNearElections50 %>% group_by(user_id, nextElection) %>%
   summarise(fav_all=sum(favorites_count), ret_all=sum(retweet_count)) %>%
+             # Uses docs near elect w payoff
   inner_join(docsNearElectionsWPayoff, by=c("user_id", "nextElection"="electionIndices")) %>%
   inner_join(metaDF %>% select(user_id, first_name, last_name, gender)) # No additional cut bc WPayoff required metadata on elections, already had joined w metadata
 nrow(metaDocsNearElectionsWPayoff)
+```
 
+```{r}
 # slight payoff for being retweeted more before elections
-metaDocsNearElectionsWPayoff %>% ggplot(aes(x=log(ret_all), y=vote_fraction, color=gender)) + geom_smooth() + geom_point()
+metaDocsNearElectionsWPayoff %>% #filter(ecdf(ret_all)(ret_all)<.80) %>%
+  ggplot(aes(x=log(ret_all), y=vote_fraction, color=gender)) + geom_smooth() + geom_point() #+ xlim(3,7.5)
 ```
 
 
@@ -278,14 +293,30 @@ metaDocsNearElections %>% select(user_id, nextElection, doc_id, fav_all, ret_all
 ```
 
 ```{r}
+metaDocsNearElections %>% inner_join(ibmDF) %>% 
+  filter(tone_name %in% sort(unique(ibmDF$tone_name))[8:13]) %>%
+  ggplot(aes(x=tone_name, y=log(ret_all), color=gender, fill=isHighScore)) + geom_boxplot() + ax + scale_color_manual(values=c("black", "white"))
 
+metaDocsNearElections %>% inner_join(ibmDF) %>% 
+  filter(tone_name %in% sort(unique(ibmDF$tone_name))[1:7]) %>%
+  ggplot(aes(x=tone_name, y=log(ret_all), color=gender, fill=isHighScore)) + geom_boxplot() + ax + scale_color_manual(values=c("black", "white"))
+```
+
+* We see men get helped if they are open, women helped if NOT open.
+
+```{r}
+metaDocsNearElections %>% inner_join(ibmDF) %>%
+  filter(tone_name=="Openness") %>%
+  ggplot(aes(x=gender, y=log(ret_all), fill=isHighScore)) + geom_boxplot()
 ```
 
 ```{r}
-metaDocsNearElections %>% inner_join(ibmDF) %>% 
-  #filter(tone_name %in% sort(unique(ibmDF$tone_name))[1:7]) %>%
-  filter(tone_name %in% sort(unique(ibmDF$tone_name))[8:13]) %>%
-  ggplot(aes(x=tone_name, y=log(ret_all), color=gender, fill=isHighScore)) + geom_boxplot() + ax
+summary(aov(log(ret_all)~gender*isHighScore, data=metaDocsNearElections %>% inner_join(ibmDF) %>%
+  filter(tone_name=="Openness")))
+summary(aov(log(ret_all)~gender*isHighScore, data=metaDocsNearElections %>% inner_join(ibmDF) %>%
+  filter(tone_name=="Fear"))) # *
+summary(aov(log(ret_all)~gender*isHighScore, data=metaDocsNearElections %>% inner_join(ibmDF) %>%
+  filter(tone_name=="Joy"))) # *
 ```
 
 ## Tweet Hashtags
@@ -296,12 +327,42 @@ The simplest analysis just looks at freqencies of hashtags.
 <!-- This is a frequency chart of hashtag entities of all our politicians: -->
 
 ```{r, fig.show = 'hide'}
-hashtags_per_user <- tweetsDF %>% select(user_id, hashtag_entities) %>%
+hashtags_per_user <- tweetsDF %>% select(user_id, hashtag_entities, created_at) %>%
   mutate(hashtag_entities=gsub(",", " ", gsub("\\{(.*)\\}", "\\1", hashtag_entities), ","))  %>%
   unnest_tokens(hashtag, hashtag_entities)
 # annoying id field drop
-hashtags_per_user <- data.frame(user_id=hashtags_per_user$user_id, hashtag=hashtags_per_user$hashtag, stringsAsFactors = F)
+# hashtags_per_user <- data.frame(user_id=hashtags_per_user$user_id, hashtag=hashtags_per_user$hashtag, date=hashtags_per_user$ stringsAsFactors = F)
 x <- hashtags_per_user %>% count(hashtag)
+set.seed(1234)
+wordcloud(words = x$hashtag, freq = x$n, min.freq = 500,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+```
+
+Connects with plot of big spike we saw in the tweet frequency chart
+
+```{r}
+metaDFWTweets %>%
+  group_by(user_id, month=floor_date(created_at, "month")) %>%
+  summarise(n=n(), gender=gender[[1]]) %>%
+  ggplot(aes(x=month, y=n, color=gender)) + geom_smooth()
+```
+
+```{r}
+# How much is Obamacare alone causing it?
+hashtags_per_user %>%
+  group_by(month=floor_date(created_at, "month")) %>%
+  summarise(Obamacount=length(which(hashtag=="obamacare"))) %>%
+  ggplot(aes(x=month, y=Obamacount)) + geom_point() #+ geom_smooth()
+```
+
+```{r}
+rev(sort(table(hashtags_per_user$hashtag)))
+```
+
+
+```{r}
+x <- hashtags_per_user %>% filter(created_at>ymd("2012-01-01") & created_at<ymd("2014-01-01")) %>% count(hashtag)
 set.seed(1234)
 wordcloud(words = x$hashtag, freq = x$n, min.freq = 500,
           max.words=200, random.order=FALSE, rot.per=0.35, 
@@ -311,7 +372,13 @@ wordcloud(words = x$hashtag, freq = x$n, min.freq = 500,
 This is a word cloud of hashtag entities of female politicians:
 
 ```{r}
-x <- hashtags_per_user %>% inner_join(metaDF) %>%
+metaDF
+hashtags_per_user
+```
+
+
+```{r}
+x <- hashtags_per_user %>% inner_join(metaDF, by=c("user_id")) %>%
   count(gender, hashtag)
 w <- x %>% filter(gender=="F")
 m <- x %>% filter(gender=="M")
@@ -340,6 +407,17 @@ x <- hashtags_per_user %>% count(user_id, hashtag) %>%
   cast_dtm(user_id, hashtag, n)
 x %>% tidy() %>% arrange(document)
 ```
+
+```{r}
+# all tweet text
+metaDocsNearElections
+```
+
+```{r}
+#tm::removeWords(metaDocsNearElections$doc, stopwords("en"))
+#tweetsNearElections50
+```
+
 
 ```{r}
 hash_lda <- LDA(x, k=6, control = list(seed = 1234))
