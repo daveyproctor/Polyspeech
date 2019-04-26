@@ -32,6 +32,9 @@ library(topicmodels)
 library(tidytext)
 library(tidyr)
 library(tm)
+library(textstem)
+library(readr)
+library(stringr)
 # Structured topic models
 library(stm)
 ```
@@ -138,31 +141,11 @@ Supplementing the prior section, and the ultimate thrust of the report, here I w
 metaDFWTweets <- metaDF %>% select(gender, user_id) %>% 
   inner_join(tweetsDF %>% select(created_at, user_id))
 
-metaDFWTweets %>%
-  group_by(gender, month=floor_date(created_at, "month")) %>%
-  summarise(n=n()) %>%
-  ggplot(aes(x=month, y=n, color=gender)) + geom_point() + geom_smooth() + 
-  ggtitle("Tweet Counts in Recent Years") + th
-
 # It seems that, while everyone is tweeting more than before, women are perhaps slightly outpacing men recently in tweet frequency, only recently
 metaDFWTweets %>%
   group_by(user_id, month=floor_date(created_at, "month")) %>%
   summarise(n=n(), gender=gender[[1]]) %>%
-  ggplot(aes(x=month, y=n, color=gender)) + geom_smooth() #+ geom_point() #+ geom_smooth() + 
-  #ggtitle("Tweet Counts in Recent Years") + th
-
-# Only run if needed; takes a while
-# metaDFWTweets %>% group_by(gender, day=floor_date(created_at, "day")) %>%
-#   filter(day>ymd("2012-1-1")) %>%
-#   summarise(n=n()) %>%
-#   ggplot(aes(x=day, y=n, color=gender)) + geom_smooth() +
-#   ggtitle("Tweet Counts in Recent Years") + th
-
-metaDFWTweets %>%
-  group_by(month=floor_date(created_at, "month")) %>%
-  summarize(nMen=length(which(gender=="M")), nWomen=length(which(gender=="F"))) %>%
-  mutate(frac=nWomen/nMen) %>%
-  ggplot(aes(x=month, y=frac)) + geom_point()
+  ggplot(aes(x=month, y=n, color=gender)) + geom_smooth() + ggtitle("Individual's Tweet Counts in Recent Years") + th
 
 # However, tweeting more does not correspond to greater election success for either gender.
 metaDF %>% select(user_id, frac_votes_received_2016, gender) %>% 
@@ -175,15 +158,11 @@ metaDF %>% select(user_id, frac_votes_received_2016, gender) %>%
 ```
 
 ```{r}
-# Men attaching to this tweet technology faster than women
-# Useless because diff num men and women
-#summary(lm(n ~ day*gender, data=metaDFWTweets %>% group_by(gender, day=floor_date(created_at, "day")) %>%
-#             filter(day>ymd("2012-1-1")) %>%
-#             summarise(n=n())))
-
 # Women actually availing themselves of Twitter faster than men
-summary(lm(n ~ day*gender, data=metaDFWTweets %>% group_by(user_id, day=floor_date(created_at, "day")) %>%
-  summarise(n=n(), gender=gender[[1]])))
+m <- lm(n ~ day*gender, data=metaDFWTweets %>% group_by(user_id, day=floor_date(created_at, "day")) %>%
+  summarise(n=n(), gender=gender[[1]]))
+summary(m)
+# summary(aov(m))
 ```
 
 
@@ -229,8 +208,9 @@ tweetsNearElections50 <- tweetsNearElections %>% group_by(user_id, nextElection)
 table(tweetsNearElections$nextElection)
 table(tweetsNearElections50$nextElection)
 
+# Most have full 50.
 # tweetsNearElections50 %>% count(user_id, nextElection) %>%
-#  ggplot(aes(x=n)) + geom_histogram()
+#   ggplot(aes(x=n)) + geom_histogram()
 
 tweetsNearElections50 <- tweetsNearElections50 %>% arrange(user_id, created_at) %>% select(id, user_id, created_at, everything())
 ```
@@ -240,7 +220,7 @@ tweetsNearElections50 <- tweetsNearElections50 %>% arrange(user_id, created_at) 
 docsNearElections <- tweetsNearElections50 %>% group_by(user_id, nextElection) %>%
   summarise(doc=stringr::str_c(tweet_text, collapse = " -- ")) %>%
   ungroup() %>%
-  mutate(doc_id=seq(length(doc)))
+  mutate(doc_id=as.character(seq(length(doc))))
 head(docsNearElections)
 # For IBM
 # write.csv(docsNearElections %>% select(doc_id, doc), "tweetDocsNearElections.csv", row.names = F)
@@ -250,7 +230,8 @@ head(docsNearElections)
 ```{r}
 # Received from IBM
 ibmDF <- read.csv("tweetDocsNearElectionsIBM.csv", as.is=T)
-ibmDF <- ibmDF %>% group_by(tone_name) %>%
+ibmDF <- ibmDF %>% mutate(doc_id=as.character(doc_id)) %>%
+  group_by(tone_name) %>%
   mutate(standardizedScore=ecdf(score)(score), isHighScore=score>median(score)) %>%
   ungroup()
 ```
@@ -268,14 +249,16 @@ docsNearElectionsWPayoff <- UserIDElections %>% inner_join(electionDateConversio
 metaDocsNearElections <- tweetsNearElections50 %>% group_by(user_id, nextElection) %>%
   summarise(fav_all=sum(favorites_count), ret_all=sum(retweet_count)) %>%
   inner_join(docsNearElections, by=c("user_id", "nextElection")) %>%
-  inner_join(metaDF %>% select(user_id, first_name, last_name, gender)) # Causes cut bc not all docs are in my metadata
+  inner_join(metaDF %>% select(user_id, first_name, last_name, gender)) %>% # Causes cut bc not all docs are in my metadata
+  ungroup()
 nrow(metaDocsNearElections)
   
 metaDocsNearElectionsWPayoff <- tweetsNearElections50 %>% group_by(user_id, nextElection) %>%
   summarise(fav_all=sum(favorites_count), ret_all=sum(retweet_count)) %>%
              # Uses docs near elect w payoff
   inner_join(docsNearElectionsWPayoff, by=c("user_id", "nextElection"="electionIndices")) %>%
-  inner_join(metaDF %>% select(user_id, first_name, last_name, gender)) # No additional cut bc WPayoff required metadata on elections, already had joined w metadata
+  inner_join(metaDF %>% select(user_id, first_name, last_name, gender)) %>% # No additional cut bc WPayoff required metadata on elections, already had joined w metadata
+  ungroup()
 nrow(metaDocsNearElectionsWPayoff)
 ```
 
@@ -308,16 +291,70 @@ metaDocsNearElections %>% inner_join(ibmDF) %>%
 metaDocsNearElections %>% inner_join(ibmDF) %>%
   filter(tone_name=="Openness") %>%
   ggplot(aes(x=gender, y=log(ret_all), fill=isHighScore)) + geom_boxplot()
+metaDocsNearElections %>% inner_join(ibmDF) %>%
+  filter(tone_name=="Confident") %>%
+  ggplot(aes(x=gender, y=log(ret_all), fill=isHighScore)) + geom_boxplot()
+metaDocsNearElections %>% inner_join(ibmDF) %>%
+  filter(tone_name=="Fear") %>%
+  ggplot(aes(x=gender, y=log(ret_all), fill=isHighScore)) + geom_boxplot()
+metaDocsNearElections %>% inner_join(ibmDF) %>%
+  filter(tone_name=="Joy") %>%
+  ggplot(aes(x=gender, y=log(ret_all), fill=isHighScore)) + geom_boxplot()
 ```
 
 ```{r}
-summary(aov(log(ret_all)~gender*isHighScore, data=metaDocsNearElections %>% inner_join(ibmDF) %>%
-  filter(tone_name=="Openness")))
-summary(aov(log(ret_all)~gender*isHighScore, data=metaDocsNearElections %>% inner_join(ibmDF) %>%
-  filter(tone_name=="Fear"))) # *
-summary(aov(log(ret_all)~gender*isHighScore, data=metaDocsNearElections %>% inner_join(ibmDF) %>%
-  filter(tone_name=="Joy"))) # *
+summary(lm(log(ret_all)~gender*isHighScore*tone_name, data=metaDocsNearElections %>% inner_join(ibmDF)))
+# summary(lm(log(ret_all)~gender*isHighScore, data=metaDocsNearElections %>% inner_join(ibmDF) %>%
+#   filter(tone_name=="Fear"))) # *
+# summary(lm(log(ret_all)~gender*isHighScore, data=metaDocsNearElections %>% inner_join(ibmDF) %>%
+#   filter(tone_name=="Joy"))) # *
+# summary(lm(log(ret_all)~gender*isHighScore, data=metaDocsNearElections %>% inner_join(ibmDF) %>%
+#   filter(tone_name=="Confident"))) # *
 ```
+
+```{r}
+# Overall, no effect. good.
+# metaDocsNearElectionsWPayoff %>% select(doc_id, gender, vote_fraction) %>%
+#   inner_join(ibmDF) %>%
+#   ggplot(aes(x=standardizedScore, y=vote_fraction)) + geom_smooth() + geom_point()
+
+# Nothing for openness.
+# Women maybe hurt a little for tentative
+# metaDocsNearElectionsWPayoff %>% select(doc_id, gender, vote_fraction) %>%
+#   inner_join(ibmDF) %>%
+#   filter(tone_name=="Tentative") %>%
+#   ggplot(aes(x=standardizedScore, y=vote_fraction, color=gender)) + geom_smooth()
+
+# Women helpfed for Fear, just like retweet more
+metaDocsNearElectionsWPayoff %>% select(doc_id, gender, vote_fraction) %>%
+  inner_join(ibmDF) %>%
+  filter(tone_name=="Fear") %>%
+  ggplot(aes(x=standardizedScore, y=vote_fraction, color=gender)) + geom_smooth()
+
+# Also helped for disgust
+metaDocsNearElectionsWPayoff %>% select(doc_id, gender, vote_fraction) %>%
+  inner_join(ibmDF) %>%
+  filter(tone_name=="Disgust") %>%
+  ggplot(aes(x=standardizedScore, y=vote_fraction, color=gender)) + geom_smooth()
+
+# Both hurt for joy
+metaDocsNearElectionsWPayoff %>% select(doc_id, gender, vote_fraction) %>%
+  inner_join(ibmDF) %>%
+  filter(tone_name=="Joy") %>%
+  ggplot(aes(x=standardizedScore, y=vote_fraction, color=gender)) + geom_smooth()
+
+# A little for Anger, confident helps if SUPER confident
+metaDocsNearElectionsWPayoff %>% select(doc_id, gender, vote_fraction) %>%
+  inner_join(ibmDF) %>%
+  filter(tone_name=="Confident") %>%
+  ggplot(aes(x=standardizedScore, y=vote_fraction, color=gender)) + geom_smooth()
+```
+
+```{r}
+summary(lm(vote_fraction~standardizedScore*tone_name*gender, data=metaDocsNearElectionsWPayoff %>% select(doc_id, gender, vote_fraction) %>%
+  inner_join(ibmDF)))
+```
+
 
 ## Tweet Hashtags
 Hashtags are a way for users to self-identify topics that relate to their tweets, so it's a good place to start when doing any content analysis.
@@ -357,7 +394,7 @@ hashtags_per_user %>%
 ```
 
 ```{r}
-rev(sort(table(hashtags_per_user$hashtag)))
+rev(sort(table(hashtags_per_user$hashtag)))[1:10]
 ```
 
 
@@ -370,12 +407,6 @@ wordcloud(words = x$hashtag, freq = x$n, min.freq = 500,
 ```
 
 This is a word cloud of hashtag entities of female politicians:
-
-```{r}
-metaDF
-hashtags_per_user
-```
-
 
 ```{r}
 x <- hashtags_per_user %>% inner_join(metaDF, by=c("user_id")) %>%
@@ -408,19 +439,46 @@ x <- hashtags_per_user %>% count(user_id, hashtag) %>%
 x %>% tidy() %>% arrange(document)
 ```
 
+Running directly on tweets:
+
 ```{r}
-# all tweet text
-metaDocsNearElections
+# https://piazza.com/class/jl26r45x64v60r?cid=251
+stack <- metaDocsNearElectionsWPayoff %>% select(doc_id, doc) %>% # rename columns
+  unnest_tokens(output = word, 
+                input = doc,
+                to_lower = TRUE,
+                drop = TRUE,
+                strip_punct = TRUE,
+                strip_numeric = TRUE) %>% # tokenizes
+  anti_join(stop_words, by = "word") %>% # removes stopwords (for example, removes 'what', 'is', and 'about')
+  mutate(word = lemmatize_words(word)) %>% # lemmatizes words (for example, combines 'test', 'tests', and 'testing'
+  group_by(doc_id, word) %>%
+  summarize(n = n()) # count word frequency per word per document
+
+wordFreq <- stack %>%
+  group_by(word) %>%
+  summarize(n = n())
+
+vocabulary <- wordFreq %>%
+  filter(n >= 20) %>%
+  filter(!str_detect(word, "\\d")) %>% # keep words that have no digits
+  filter(!str_detect(word, "\\.")) %>% # keep words that have no periods
+  filter(!(word %in% c("https", "http", "rt", "amp")))
+  # add additional statements here to trim vocabulary
+
+stackTrimmed <- semi_join(stack, vocabulary, by = "word")
+# the semi-join takes the stack dataframe and remove all rows where the value of the "word" column cannot be found in the vocabulary dataframe's "word" column
+
+stackTrimmed
+
+stackDTM <- cast_dtm(stackTrimmed, term = word, document = doc_id, value = n)
 ```
 
 ```{r}
-#tm::removeWords(metaDocsNearElections$doc, stopwords("en"))
-#tweetsNearElections50
-```
+hash_lda <- LDA(stackDTM, k=6, control = list(seed = 1234))
 
-
-```{r}
-hash_lda <- LDA(x, k=6, control = list(seed = 1234))
+# Hashtags
+# hash_lda <- LDA(x, k=6, control = list(seed = 1234))
 ```
 
 The most common words in a six-topic model are shown:
@@ -448,70 +506,12 @@ Breaking this down by gender, we find that women are tweeting more on the second
 ```{r}
 hash_documents <- tidy(hash_lda, matrix = "gamma")
 hash_documents %>% arrange(document, topic)
-hash_documents %>% inner_join(metaDF %>% select(id, gender), by=c("document"="id")) %>%
+hash_documents %>% inner_join(metaDocsNearElectionsWPayoff %>% select(doc_id, gender), by=c("document"="doc_id")) %>%
+# hashtags
+#hash_documents %>% inner_join(metaDF %>% select(user_id, gender), by=c("document"="user_id")) %>%
   group_by(topic, gender) %>%
   summarise(meanGam=mean(gamma)) %>%
   ggplot(aes(x=as.factor(topic), y=meanGam, color=gender)) + geom_point()
-```
-
-### Structured topic models
-In the above analysis, it's hard to determine p-values of any differences by metadata category. We turn to structured topic models, which directly model the influence of a document's metadata.
-
-```{r}
-# https://cran.r-project.org/web/packages/stm/vignettes/stmVignette.pdf
-```
-
-```{r}
-metaDF_min <- metaDF %>% select(user_id, gender, party) %>% 
-  filter(party %in% c("D","R"))
-
-hashtags_per_user_min <- hashtags_per_user %>% group_by(user_id) %>%
-  summarise(hashtag_entities_all=paste(hashtag, collapse=" ")) %>%
-  inner_join(metaDF_min)
-  
-hash_processed <- textProcessor(hashtags_per_user_min$hashtag_entities_all, metadata = hashtags_per_user_min)
-```
-
-```{r}
-hash_out <- prepDocuments(hash_processed$documents, hash_processed$vocab, hash_processed$meta, lower.thresh = 15)
-```
-
-```{r}
-length(hash_out$documents)
-hashFit <- stm(documents = hash_out$documents, vocab = hash_out$vocab, K = 6, prevalence =~ gender + party, max.em.its = 75, data = hash_out$meta, init.type = "Spectral")
-```
-
-Topics 3 and 5 are shown:
-```{r, results="show"}
-labelTopics(hashFit, c(3,5))
-```
-
-```{r, fig.show="hide"}
-shortdocs <- hashtags_per_user_min %>% 
-  filter(!(row_number() %in% hash_out$docs.removed)) %>%
-  mutate(hashtag_entities_all=substr(hashtag_entities_all, 1, 200))
-
-thoughts3 <- findThoughts(hashFit, texts = shortdocs$hashtag_entities_all, n = 2, topics = 3)$docs[[1]]
-thoughts5 <- findThoughts(hashFit, texts = shortdocs$hashtag_entities_all, n = 2, topics = 5)$docs[[1]]
-
-par(mfrow = c(1, 2),mar = c(.5, .5, 1, .5))
-plotQuote(thoughts3, width = 30, main = "Topic 3")
-plotQuote(thoughts5, width = 30, main = "Topic 5")
-```
-
-There is a statistically significant effect of gender on topic 5, with women engaged with that topic more. That aligns with the word cloud analysis, given hashtags like "raisethewage" and "disarmhate."
-
-```{r}
-#, results="show"}
-set.seed(12345)
-hash_prep <- estimateEffect(1:6 ~ gender+party, hashFit, meta = hash_out$meta, uncertainty = "Global")
-summary(hash_prep)
-```
-
-```{r}
-#, results="show"}
-set.seed(12345)
-summary(hash_prep, topics=5)
 ```
 
 # Still Todo:
