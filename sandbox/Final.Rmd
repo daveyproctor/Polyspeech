@@ -13,7 +13,9 @@ urlcolor: blue
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = F, results='hide', message=F, warning=F, cache=T, tidy.opts=list(width.cutoff=80),tidy=T)
+knitr::opts_chunk$set(echo = F, results='hide', message=F, warning=F, cache=T, 
+                      tidy.opts=list(width.cutoff=80), tidy=T, 
+                      fig.width=12, fig.height=4)
 ```
 
 
@@ -281,11 +283,20 @@ grid.arrange(p1, p2, nrow=1)
 Next we turn to our election data. The dataset is unbalanced in that most individuals have won their elections. However, vote fraction received is still interesting; we see the between gender and party there is relative balance over the recent elections.
 
 ```{r voteFractionBalance}
-metaDF %>% inner_join(ElectionsDF, by=c("first_name", "last_name", "state")) %>% 
+p1 <- metaDF %>% inner_join(ElectionsDF, by=c("first_name", "last_name", "state")) %>% 
   filter(party %in% c("D", "R")) %>%
-  ggplot(aes(x=as.factor(year), y=vote_fraction, color=gender)) + 
-  geom_boxplot() + ggtitle("Vote Fraction vs. Gender and Party Over Time") +
+  ggplot(aes(x=as.factor(year), y=vote_fraction, fill=gender)) + 
+  geom_boxplot() + ggtitle("Vote Fraction vs. Gender Over Time") +
   th + xlab("Year") + ylab("Vote Fraction")
+
+p2 <- metaDF %>% inner_join(ElectionsDF, by=c("first_name", "last_name", "state")) %>% 
+  filter(party %in% c("D", "R")) %>%
+  ggplot(aes(x=as.factor(year), y=vote_fraction, fill=party)) + 
+  geom_boxplot() + ggtitle("Vote Fraction vs. Party Over Time") +
+  th + xlab("Year") + ylab("Vote Fraction") + 
+  scale_fill_manual(values=c("blue", "red"))
+
+grid.arrange(p1, p2, nrow=1)
 ```
 
 Another way the dataset is unbalanced is when it comes to tweet frequencies over time: there are many more in recent years. This is due to the increased popularity in the medium. Standardized to individual, when we brek tweet frequency down by gender, we see that women only recently have started outpacing men.
@@ -293,18 +304,36 @@ Another way the dataset is unbalanced is when it comes to tweet frequencies over
 ```{r womenOutpaceMen}
 # It seems that, while everyone is tweeting more than before, 
 # women are perhaps slightly outpacing men recently in tweet frequency, only recently
-metaDF %>% select(gender, user_id) %>% 
+metaDF %>% select(gender, party, user_id) %>% 
+  filter(party %in% c("D", "R")) %>%
+  inner_join(tweetsDF %>% select(created_at, user_id, retweet_count)) %>%
+  group_by(user_id, month=floor_date(created_at, "month")) %>%
+  summarise(n=n(), 
+            ret_all=sum(retweet_count),
+            ret_efficiency=sum(retweet_count/n()),
+            gender=gender[[1]], 
+            party=party[[1]]) %>%
+  #ggplot(aes(x=month, y=n, color=paste(party, gender))) + geom_smooth() +
+  #ggplot(aes(x=month, y=log(ret_all), color=paste(party, gender))) + geom_smooth() +
+  ggplot(aes(x=month, y=ret_efficiency, color=paste(party, gender))) + geom_smooth() +
+  #ggtitle("Individual's Tweet Counts in Recent Years") + th
+```
+
+```{r}
+summary(lm(n~gender*party*month,
+  data=metaDF %>% select(gender, party, user_id) %>% 
+  filter(party %in% c("D", "R")) %>%
   inner_join(tweetsDF %>% select(created_at, user_id)) %>%
   group_by(user_id, month=floor_date(created_at, "month")) %>%
-  summarise(n=n(), gender=gender[[1]]) %>%
-  ggplot(aes(x=month, y=n, color=gender)) + geom_smooth() +
-  ggtitle("Individual's Tweet Counts in Recent Years") + th
+  summarise(n=n(), gender=gender[[1]], party=party[[1]])))
 ```
+
 
 <!-- We can predict that bumps along the way might be caused by topics coming to the forefront. For instance, #Obamacare seems to be a major contributor to the spike near 2013. -->
 
 ```{r obamaCount, eval=F}
 # How much is Obamacare alone causing it?
+# NOTE: need hashtags_per_user in "hashtags" chunk
 hashtags_per_user %>%
   group_by(month=floor_date(created_at, "month")) %>%
   #summarise(Obamacount=length(which(hashtag=="betterway"))) %>%
