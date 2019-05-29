@@ -217,6 +217,17 @@ head(docsNearElections)
 # write.csv(docsNearElections, "tweetDocsNearElectionsWMeta.csv", row.names = F)
 ```
 
+```{r}
+# To nikhil Wed May 29, 2019
+to_nikhil <- metaDF %>% select(fullname, twitter_account, title, state, age, seniority, 
+                  gender, party, dw_nominate, latest_followers_count, user_id) %>%
+  inner_join(tweetsDF %>% select(user_id, tweet_id=id, created_at, tweet_text, hashtag_entities,
+                                 favorites_count, retweet_count))
+colnames(to_nikhil)
+write.csv(to_nikhil, "Datanautix_formatted.csv", row.names = F)
+```
+
+
 Tweets from this [data.world dataset](https://data.world/bkey/politician-tweets). We have `r nTweets` tweets from `r nIndiv` individuals in our metadata. In addition to the text of the tweet and when it was created (ranging from `r lubridate::floor_date(firstTweetTime, "day")` to `r lubridate::floor_date(latestTweetTime, "day")`), they've pulled out hashtag entities, favorite counts, retweets, and urls.
 
 ## Tones
