@@ -227,6 +227,10 @@ colnames(to_nikhil)
 write.csv(to_nikhil, "Datanautix_formatted.csv", row.names = F)
 ```
 
+```{r}
+metaDF %>% select(fullname, twitter_account, description)
+```
+
 
 Tweets from this [data.world dataset](https://data.world/bkey/politician-tweets). We have `r nTweets` tweets from `r nIndiv` individuals in our metadata. In addition to the text of the tweet and when it was created (ranging from `r lubridate::floor_date(firstTweetTime, "day")` to `r lubridate::floor_date(latestTweetTime, "day")`), they've pulled out hashtag entities, favorite counts, retweets, and urls.
 
